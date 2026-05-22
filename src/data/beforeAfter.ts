@@ -10,7 +10,7 @@ export type BeforeAfterPair = {
   objectPosition: string;
   /** Optional scale to zoom further into the cropped area */
   imageScale: number;
-}
+};
 
 export const beforeAfterPairs: BeforeAfterPair[] = [
   {

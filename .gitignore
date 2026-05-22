@@ -1,5 +1,11 @@
 node_modules/
 out/
-public/
 .DS_Store
 *.log
+
+# public/ holds rushes (~700 MB of .mp4) which stay out of git.
+# But we DO commit the small images (logo + before/after photos).
+public/*
+!public/*.jpg
+!public/*.jpeg
+!public/*.png
