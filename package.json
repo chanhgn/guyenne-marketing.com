@@ -1,0 +1,21 @@
+{
+  "name": "lakhssassi-waitingroom",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion render src/index.ts WaitingRoom out/cabinet.mp4",
+    "render-preview": "remotion render src/index.ts WaitingRoom out/preview.mp4 --frames=0-300"
+  },
+  "dependencies": {
+    "@remotion/google-fonts": "4.0.380",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.380"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.380",
+    "@types/react": "19.0.0",
+    "typescript": "5.5.4"
+  }
+}
