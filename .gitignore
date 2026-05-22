@@ -9,3 +9,5 @@ public/*
 !public/*.jpg
 !public/*.jpeg
 !public/*.png
+previews/*
+!previews/*.mp4
