@@ -1,0 +1,16 @@
+export const cabinet = {
+  doctorName: 'Dr Karim Lakhssassi',
+  doctorNameAr: 'د. كريم لخصاصي',
+  specialty: 'Dermatologue · Dermatologie esthétique & laser',
+  specialtyAr: 'طبيب الأمراض الجلدية · أمراض الجلد التجميلية والليزر',
+  cityShort: 'Fès',
+  cityLong: 'Fès — Maroc',
+  cityAr: 'فاس — المغرب',
+  phone: '',
+  address: '',
+  website: '',
+  tagline: 'Une peau saine, un regard apaisé.',
+  taglineAr: 'بشرة سليمة، نظرة هادئة.',
+  outroLabel: 'Demandez votre consultation',
+  outroLabelAr: 'احجز موعد استشارتك',
+} as const;
