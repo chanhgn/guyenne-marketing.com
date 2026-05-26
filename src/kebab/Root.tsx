@@ -52,9 +52,9 @@ export const KebabRoot: React.FC = () => {
         height={H9}
         defaultProps={{
           clip: 'kebab/clips/sandwich-zoom.mp4',
-          name: 'SANDWICH KEBAB',
+          name: 'MAXI KEBAB',
           accentAr: 'بنّة ما كاينة',
-          price: 35,
+          price: 39,
           portrait: true,
         }}
       />

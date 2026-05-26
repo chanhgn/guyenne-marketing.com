@@ -102,15 +102,48 @@ export const ProductHero: React.FC<{ product: Product; index?: number; portrait?
         </div>
 
         {!portrait ? (
-          <div style={{ flexShrink: 0, marginBottom: 6 }}>
+          <div style={{ flexShrink: 0, marginBottom: 6, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
             <PriceTag price={product.price} delay={16} />
+            {product.priceNote ? (
+              <div
+                style={{
+                  fontFamily: kebabFonts.sans,
+                  fontWeight: 700,
+                  fontSize: 30,
+                  color: kebabTheme.cream,
+                  background: 'rgba(0,0,0,0.5)',
+                  border: `2px solid ${kebabTheme.goldDeep}`,
+                  borderRadius: 999,
+                  padding: '8px 22px',
+                  opacity: tagO,
+                }}
+              >
+                {product.priceNote} {/* Dh */}
+              </div>
+            ) : null}
           </div>
         ) : null}
       </AbsoluteFill>
 
       {portrait ? (
-        <AbsoluteFill style={{ alignItems: 'flex-end', justifyContent: 'flex-start', padding: '60px 56px 0 0' }}>
+        <AbsoluteFill style={{ alignItems: 'flex-end', justifyContent: 'flex-start', padding: '60px 56px 0 0', flexDirection: 'column', gap: 12 }}>
           <PriceTag price={product.price} delay={16} size={1} />
+          {product.priceNote ? (
+            <div
+              style={{
+                fontFamily: kebabFonts.sans,
+                fontWeight: 700,
+                fontSize: 28,
+                color: kebabTheme.cream,
+                background: 'rgba(0,0,0,0.5)',
+                border: `2px solid ${kebabTheme.goldDeep}`,
+                borderRadius: 999,
+                padding: '8px 20px',
+              }}
+            >
+              {product.priceNote}
+            </div>
+          ) : null}
         </AbsoluteFill>
       ) : null}
     </AbsoluteFill>

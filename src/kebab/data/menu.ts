@@ -1,11 +1,9 @@
 // ============================================================================
-// KEBAB DE LYON — donnees editables
+// KEBAB DE LYON — donnees menu (prix reels, en dirhams)
 // ============================================================================
-// >>> A COMPLETER PAR LE CLIENT <<<
-//   - prices : prix reels en dirhams (placeholders pour l'instant)
-//   - brand.contact : adresse / tel / horaires / livraison / reseaux
-//   - accentAr : punchline en darija (script arabe) — ajustez la formulation
-// Tout le reste (animations, formats) se met a jour automatiquement.
+// Prix issus du menu officiel. Formules : seul / + frites / menu (frites+boisson).
+// >>> A COMPLETER : brand.contact (adresse, tel, horaires, livraison, reseaux)
+//     Desserts "La casa del capo" : prix non communiques -> a confirmer.
 // ============================================================================
 
 export const FPS = 30;
@@ -20,25 +18,25 @@ export type Product = {
   name: string; // titre FR (gros)
   tag?: string; // sous-titre court FR
   accentAr?: string; // punchline darija (script arabe)
-  price: number; // en dirhams (Dh) — A CONFIRMER
+  price: number; // prix de base en dirhams (Dh)
+  priceNote?: string; // formules complementaires (frites / menu)
 };
 
-// --- ECRAN 1 : SANDWICHS / KEBABS -------------------------------------------
+// --- ECRAN 1 : KEBABS (3 tailles, 3 formules) -------------------------------
 export const sandwichs: Product[] = [
-  { id: 'sandwich-1', image: 'kebab/sandwich-1.png', name: 'Sandwich Kebab', tag: 'Pain maison garni', accentAr: 'بنّة ما كاينة', price: 35 },
-  { id: 'sandwich-2', image: 'kebab/sandwich-2.png', name: 'Kebab Fromage', tag: 'Fondant & généreux', accentAr: 'فروماج ذايب', price: 40 },
-  { id: 'sandwich-3', image: 'kebab/sandwich-3.png', name: 'Kebab Sauce Blanche', tag: 'Le grand classique', accentAr: 'كلاسيك ديالنا', price: 38 },
-  { id: 'sandwich-4', image: 'kebab/sandwich-4.png', name: 'Kebab Barbecue', tag: 'Saveur fumée', accentAr: 'دوق البراري', price: 38 },
+  { id: 'kebab', image: 'kebab/sandwich-1.png', name: 'Kebab', tag: 'Pain maison, viande marinée', accentAr: 'بنّة ما كاينة', price: 30, priceNote: '+ Frites 39 · Menu 49' },
+  { id: 'maxi-kebab', image: 'kebab/sandwich-4.png', name: 'Maxi Kebab', tag: 'Encore plus de viande', accentAr: 'للي جيعان بزاف', price: 39, priceNote: '+ Frites 49 · Menu 59' },
+  { id: 'mega-kebab', image: 'kebab/sandwich-2.png', name: 'Mega Kebab', tag: 'Le défi des gourmands', accentAr: 'ميڭا كيباب', price: 49, priceNote: '+ Frites 59 · Menu 69' },
 ];
 
 // --- ECRAN 2 : PLATS & MENUS ------------------------------------------------
 export const plats: Product[] = [
-  { id: 'tacos', image: 'kebab/tacos.png', name: 'French Tacos', tag: 'Frites + 4 sauces', accentAr: 'تاكوس كامل', price: 42 },
-  { id: 'assiette', image: 'kebab/assiette.png', name: 'Assiette Kebab', tag: 'Viande, frites & salade', accentAr: 'طبق شبعان', price: 55 },
-  { id: 'barquette', image: 'kebab/barquette.png', name: 'Barquette Cheese', tag: 'À emporter, pain offert', accentAr: 'ديال الدار', price: 45 },
+  { id: 'tacos', image: 'kebab/tacos.png', name: 'Tacos Kebab', tag: 'Frites + sauces', accentAr: 'تاكوس كامل', price: 55 },
+  { id: 'assiette', image: 'kebab/assiette.png', name: 'Assiette Kebab', tag: 'Viande, frites & salade', accentAr: 'طبق شبعان', price: 70 },
+  { id: 'poutine', image: 'kebab/barquette.png', name: 'Poutine Kebab', tag: 'Frites, fromage & viande', accentAr: 'بالفروماج ذايب', price: 60 },
 ];
 
-// --- ECRAN 3 : DESSERTS (La casa del capo) ----------------------------------
+// --- ECRAN 3 : DESSERTS (La casa del capo) — prix a confirmer ---------------
 export const desserts: Product[] = [
   { id: 'tiramisu-classique', image: 'kebab/tiramisu-classique.png', name: 'Tiramisu Classique', tag: 'Café & mascarpone', accentAr: 'دولسي', price: 28 },
   { id: 'tiramisu-kunafa', image: 'kebab/tiramisu-kunafa.png', name: 'Tiramisu Kunafa', tag: 'Croustillant doré', accentAr: 'كنافة كروسطيان', price: 32 },
@@ -47,12 +45,12 @@ export const desserts: Product[] = [
 ];
 
 // Selection "best-sellers" pour le stop-trottoir
-export const bestSellers: Product[] = [sandwichs[1], plats[0], desserts[1]];
+export const bestSellers: Product[] = [sandwichs[2], plats[0], sandwichs[0]];
 
 export const brand = {
   name: 'KEBAB DE LYON',
   slogan: 'Au goût unique',
-  sloganAr: 'بنّة ما كاينة', // darija : un goût introuvable ailleurs
+  sloganAr: 'بنّة ما كاينة',
   currency: 'Dh',
   // >>> A COMPLETER <<<
   contact: {
@@ -65,7 +63,7 @@ export const brand = {
 };
 
 export const screenTitle = {
-  sandwichs: { fr: 'NOS SANDWICHS', ar: 'سندويتشاتنا' },
+  sandwichs: { fr: 'NOS KEBABS', ar: 'الكباب ديالنا' },
   plats: { fr: 'NOS PLATS', ar: 'أطباقنا' },
   desserts: { fr: 'NOS DESSERTS', ar: 'تحلياتنا' },
 };

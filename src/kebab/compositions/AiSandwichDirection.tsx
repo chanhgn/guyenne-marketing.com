@@ -14,9 +14,9 @@ export const AiSandwichDirection: React.FC = () => {
         <Series.Sequence durationInFrames={CLIP_FRAMES}>
           <AiBrandedClip
             clip="kebab/clips/sandwich-zoom.mp4"
-            name="SANDWICH KEBAB"
+            name="MAXI KEBAB"
             accentAr="بنّة ما كاينة"
-            price={35}
+            price={39}
             portrait
             showCta={false}
           />
