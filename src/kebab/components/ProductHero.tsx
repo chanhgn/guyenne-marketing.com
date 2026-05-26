@@ -102,7 +102,12 @@ export const ProductHero: React.FC<{ product: Product; index?: number; portrait?
         </div>
 
         {!portrait ? (
-          <div style={{ flexShrink: 0, marginBottom: 6, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
+          <div style={{ flexShrink: 0, marginBottom: 6, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+            {product.from ? (
+              <div style={{ fontFamily: kebabFonts.sans, fontWeight: 800, fontSize: 24, letterSpacing: 3, color: kebabTheme.goldBright, textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,0.7)' }}>
+                À partir de
+              </div>
+            ) : null}
             <PriceTag price={product.price} delay={16} />
             {product.priceNote ? (
               <div
@@ -126,7 +131,12 @@ export const ProductHero: React.FC<{ product: Product; index?: number; portrait?
       </AbsoluteFill>
 
       {portrait ? (
-        <AbsoluteFill style={{ alignItems: 'flex-end', justifyContent: 'flex-start', padding: '60px 56px 0 0', flexDirection: 'column', gap: 12 }}>
+        <AbsoluteFill style={{ alignItems: 'flex-end', justifyContent: 'flex-start', padding: '60px 56px 0 0', flexDirection: 'column', gap: 8 }}>
+          {product.from ? (
+            <div style={{ fontFamily: kebabFonts.sans, fontWeight: 800, fontSize: 22, letterSpacing: 3, color: kebabTheme.goldBright, textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,0.7)' }}>
+              À partir de
+            </div>
+          ) : null}
           <PriceTag price={product.price} delay={16} size={1} />
           {product.priceNote ? (
             <div

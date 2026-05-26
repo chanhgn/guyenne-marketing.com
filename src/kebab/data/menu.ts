@@ -20,6 +20,7 @@ export type Product = {
   accentAr?: string; // punchline darija (script arabe)
   price: number; // prix de base en dirhams (Dh)
   priceNote?: string; // formules complementaires (frites / menu)
+  from?: boolean; // affiche "A partir de"
 };
 
 // --- ECRAN 1 : KEBABS (3 tailles, 3 formules) -------------------------------
@@ -31,17 +32,18 @@ export const sandwichs: Product[] = [
 
 // --- ECRAN 2 : PLATS & MENUS ------------------------------------------------
 export const plats: Product[] = [
-  { id: 'tacos', image: 'kebab/tacos.png', name: 'Tacos Kebab', tag: 'Frites + sauces', accentAr: 'تاكوس كامل', price: 55 },
-  { id: 'assiette', image: 'kebab/assiette.png', name: 'Assiette Kebab', tag: 'Viande, frites & salade', accentAr: 'طبق شبعان', price: 70 },
+  { id: 'tacos', image: 'kebab/tacos.png', name: 'Tacos Kebab', tag: 'Frites + sauces', accentAr: 'تاكوس كامل', price: 55, from: true },
+  { id: 'assiette', image: 'kebab/assiette.png', name: 'Assiette Kebab', tag: 'Viande, frites & salade', accentAr: 'طبق شبعان', price: 70, from: true },
   { id: 'poutine', image: 'kebab/barquette.png', name: 'Poutine Kebab', tag: 'Frites, fromage & viande', accentAr: 'بالفروماج ذايب', price: 60 },
+  // >>> Box Kebab (60 Dh) : en attente d'une photo dediee pour l'ajouter ici.
 ];
 
 // --- ECRAN 3 : DESSERTS (La casa del capo) — prix a confirmer ---------------
 export const desserts: Product[] = [
   { id: 'tiramisu-classique', image: 'kebab/tiramisu-classique.png', name: 'Tiramisu Classique', tag: 'Café & mascarpone', accentAr: 'دولسي', price: 28 },
-  { id: 'tiramisu-kunafa', image: 'kebab/tiramisu-kunafa.png', name: 'Tiramisu Kunafa', tag: 'Croustillant doré', accentAr: 'كنافة كروسطيان', price: 32 },
-  { id: 'tiramisu-citron', image: 'kebab/tiramisu-citron.png', name: 'Tiramisu Citron', tag: 'Frais & acidulé', accentAr: 'حامض و بنين', price: 30 },
-  { id: 'tiramisu-framboise', image: 'kebab/tiramisu-framboise.png', name: 'Tiramisu Framboise', tag: 'Fruité & gourmand', accentAr: 'فرامبواز', price: 30 },
+  { id: 'tiramisu-kunafa', image: 'kebab/tiramisu-kunafa.png', name: 'Tiramisu Kunafa', tag: 'Croustillant doré', accentAr: 'كنافة كروسطيان', price: 28 },
+  { id: 'tiramisu-citron', image: 'kebab/tiramisu-citron.png', name: 'Tiramisu Citron', tag: 'Frais & acidulé', accentAr: 'حامض و بنين', price: 28 },
+  { id: 'tiramisu-framboise', image: 'kebab/tiramisu-framboise.png', name: 'Tiramisu Framboise', tag: 'Fruité & gourmand', accentAr: 'فرامبواز', price: 28 },
 ];
 
 // Selection "best-sellers" pour le stop-trottoir
