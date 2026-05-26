@@ -1,30 +1,16 @@
 import { Composition } from 'remotion';
-import { WaitingRoom, computeTotalFrames } from './compositions/WaitingRoom';
-import { FPS, HEIGHT, WIDTH } from './data/treatments';
+import { W16, H16, W9, H9, FPS, sandwichs, plats, desserts, screenTitle } from './data/menu';
+import { MenuScreen, menuScreenFrames } from './compositions/MenuScreen';
+import { StopTrottoir, stopTrottoirFrames } from './compositions/StopTrottoir';
 
-import { W16, H16, W9, H9, FPS as KFPS, sandwichs, plats, desserts, screenTitle } from './kebab/data/menu';
-import { MenuScreen, menuScreenFrames } from './kebab/compositions/MenuScreen';
-import { StopTrottoir, stopTrottoirFrames } from './kebab/compositions/StopTrottoir';
-
-export const RemotionRoot: React.FC = () => {
-  const totalFrames = computeTotalFrames();
+export const KebabRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="WaitingRoom"
-        component={WaitingRoom}
-        durationInFrames={totalFrames}
-        fps={FPS}
-        width={WIDTH}
-        height={HEIGHT}
-      />
-
-      {/* === KEBAB DE LYON === */}
       <Composition
         id="Kebab-Ecran1-Sandwichs"
         component={MenuScreen}
         durationInFrames={menuScreenFrames(sandwichs.length)}
-        fps={KFPS}
+        fps={FPS}
         width={W16}
         height={H16}
         defaultProps={{ titleFr: screenTitle.sandwichs.fr, titleAr: screenTitle.sandwichs.ar, products: sandwichs }}
@@ -33,7 +19,7 @@ export const RemotionRoot: React.FC = () => {
         id="Kebab-Ecran2-Plats"
         component={MenuScreen}
         durationInFrames={menuScreenFrames(plats.length)}
-        fps={KFPS}
+        fps={FPS}
         width={W16}
         height={H16}
         defaultProps={{ titleFr: screenTitle.plats.fr, titleAr: screenTitle.plats.ar, products: plats }}
@@ -42,7 +28,7 @@ export const RemotionRoot: React.FC = () => {
         id="Kebab-Ecran3-Desserts"
         component={MenuScreen}
         durationInFrames={menuScreenFrames(desserts.length)}
-        fps={KFPS}
+        fps={FPS}
         width={W16}
         height={H16}
         defaultProps={{ titleFr: screenTitle.desserts.fr, titleAr: screenTitle.desserts.ar, products: desserts }}
@@ -51,7 +37,7 @@ export const RemotionRoot: React.FC = () => {
         id="Kebab-StopTrottoir"
         component={StopTrottoir}
         durationInFrames={stopTrottoirFrames()}
-        fps={KFPS}
+        fps={FPS}
         width={W9}
         height={H9}
       />

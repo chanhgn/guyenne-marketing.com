@@ -11,3 +11,7 @@ public/*
 !public/*.png
 previews/*
 !previews/*.mp4
+
+# Kebab de Lyon : on versionne les photos produits + polices auto-hebergees
+!public/kebab/
+!public/kebab/**
