@@ -69,7 +69,6 @@ export const OutroScene: React.FC<{ portrait?: boolean }> = ({ portrait = false 
           >
             <InfoChip label={`📍 ${contact.address}`} opacity={chipsO} />
             <InfoChip label={`📞 ${contact.phone}`} opacity={chipsO} />
-            <InfoChip label={`🕒 ${contact.hours}`} opacity={chipsO} />
             <InfoChip label={`🛵 ${contact.delivery}`} opacity={chipsO} />
             <InfoChip label={contact.instagram} opacity={chipsO} />
           </div>

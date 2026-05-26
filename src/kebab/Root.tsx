@@ -5,6 +5,7 @@ import { StopTrottoir, stopTrottoirFrames } from './compositions/StopTrottoir';
 import { AiBrandedClip } from './compositions/AiBrandedClip';
 import { AiSandwichDirection, aiSandwichDirectionFrames } from './compositions/AiSandwichDirection';
 import { MontageScreen, montageScreenFrames } from './compositions/MontageScreen';
+import { StopTrottoirMontage, stopTrottoirMontageFrames } from './compositions/StopTrottoirMontage';
 
 export const KebabRoot: React.FC = () => {
   return (
@@ -121,6 +122,16 @@ export const KebabRoot: React.FC = () => {
           accentAr: 'تيراميسو، بنين بزاف',
           items: [{ label: 'Tous les Tiramisu', price: 28 }],
         }}
+      />
+
+      {/* === Stop-trottoir 9:16 a partir des 3 montages dynamiques === */}
+      <Composition
+        id="Kebab-StopTrottoir-Montage"
+        component={StopTrottoirMontage}
+        durationInFrames={stopTrottoirMontageFrames()}
+        fps={FPS}
+        width={W9}
+        height={H9}
       />
     </>
   );

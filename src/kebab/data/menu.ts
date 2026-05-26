@@ -54,11 +54,10 @@ export const brand = {
   slogan: 'Au goût unique',
   sloganAr: 'بنّة ما كاينة',
   currency: 'Dh',
-  // >>> A COMPLETER <<<
+  // >>> Adresse exacte a confirmer <<<
   contact: {
     address: 'Fès — Maroc',
-    phone: '06 00 00 00 00',
-    hours: '11h — 00h · 7j/7',
+    phone: '07 80 65 20 05',
     delivery: 'Glovo',
     instagram: '@kebabdelyon',
   },
