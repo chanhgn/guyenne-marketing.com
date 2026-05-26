@@ -11,7 +11,8 @@ export const AiBrandedClip: React.FC<{
   accentAr?: string;
   price: number;
   portrait?: boolean;
-}> = ({ clip, name, accentAr, price, portrait = true }) => {
+  showCta?: boolean;
+}> = ({ clip, name, accentAr, price, portrait = true, showCta = true }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
@@ -81,7 +82,7 @@ export const AiBrandedClip: React.FC<{
       </AbsoluteFill>
 
       {/* CTA fin */}
-      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 40 }}>
+      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 40, display: showCta ? 'flex' : 'none' }}>
         <div
           style={{
             transform: `scale(${Math.max(0, ctaPop) * pulse})`,

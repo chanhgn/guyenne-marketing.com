@@ -3,6 +3,7 @@ import { W16, H16, W9, H9, FPS, sandwichs, plats, desserts, screenTitle } from '
 import { MenuScreen, menuScreenFrames } from './compositions/MenuScreen';
 import { StopTrottoir, stopTrottoirFrames } from './compositions/StopTrottoir';
 import { AiBrandedClip } from './compositions/AiBrandedClip';
+import { AiSandwichDirection, aiSandwichDirectionFrames } from './compositions/AiSandwichDirection';
 
 export const KebabRoot: React.FC = () => {
   return (
@@ -56,6 +57,14 @@ export const KebabRoot: React.FC = () => {
           price: 35,
           portrait: true,
         }}
+      />
+      <Composition
+        id="Kebab-AI-Sandwich-Direction-9x16"
+        component={AiSandwichDirection}
+        durationInFrames={aiSandwichDirectionFrames()}
+        fps={FPS}
+        width={W9}
+        height={H9}
       />
     </>
   );
