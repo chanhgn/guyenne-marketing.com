@@ -88,7 +88,7 @@ const Panel: React.FC<{
 };
 
 const PANEL = 180; // 6s par categorie
-const DIR = 132; // 4.4s scene "C'EST ICI"
+const DIR = 450; // 15s scene "C'EST ICI" (bien visible)
 export const stopTrottoirMontageFrames = () => PANEL * 3 + DIR;
 
 export const StopTrottoirMontage: React.FC = () => {

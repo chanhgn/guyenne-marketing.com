@@ -3,17 +3,9 @@ import { kebabTheme, kebabFonts } from '../theme';
 import { KebabBg } from './KebabBg';
 import { KebabLogo } from './KebabLogo';
 
-// Chevron simple pointant a droite
 const Chevron: React.FC<{ size: number; opacity: number }> = ({ size, opacity }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" style={{ opacity }}>
-    <path
-      d="M30 12 L68 50 L30 88"
-      fill="none"
-      stroke={kebabTheme.goldBright}
-      strokeWidth={16}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+  <svg width={size} height={size} viewBox="0 0 100 100" style={{ opacity, filter: 'drop-shadow(0 0 18px rgba(244,206,114,0.55))' }}>
+    <path d="M28 10 L70 50 L28 90" fill="none" stroke={kebabTheme.goldBright} strokeWidth={18} strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -23,88 +15,72 @@ export const DirectionScene: React.FC<{ portrait?: boolean }> = ({ portrait = tr
 
   const logoIn = spring({ frame, fps, config: { damping: 200, mass: 0.6 }, from: 0.9, to: 1 });
   const logoO = interpolate(frame, [0, 16], [0, 1], { extrapolateRight: 'clamp' });
+  const iciPop = spring({ frame: frame - 8, fps, config: { damping: 11, mass: 0.7, stiffness: 130 }, from: 0, to: 1 });
+  const subO = interpolate(frame, [26, 44], [0, 1], { extrapolateRight: 'clamp' });
 
-  const iciPop = spring({ frame: frame - 12, fps, config: { damping: 12, mass: 0.7, stiffness: 130 }, from: 0, to: 1 });
-  const subO = interpolate(frame, [30, 48], [0, 1], { extrapolateRight: 'clamp' });
+  // Pulsation du titre + glow qui respire
+  const t = frame / fps;
+  const iciPulse = 1 + 0.05 * Math.sin(t * Math.PI * 2.2);
+  const glow = 0.4 + 0.35 * (0.5 + 0.5 * Math.sin(t * Math.PI * 2.2));
 
-  // Mouvement de la fleche vers la droite (va-et-vient)
-  const slide = 26 * Math.sin((frame / fps) * Math.PI * 2.2);
-  // Chevrons qui s'allument en cascade
-  const t = (frame / fps) % 1;
-  const ch = (i: number) => {
-    const phase = (t + i * 0.18) % 1;
-    return 0.35 + 0.65 * Math.max(0, Math.sin(phase * Math.PI));
+  // Bandeau de chevrons qui defile vers la droite en continu
+  const N = portrait ? 4 : 6;
+  const chevSize = portrait ? 140 : 130;
+  const flow = (t * 1.1) % 1; // lumiere qui avance
+  const chOpacity = (i: number) => {
+    const phase = (i / N - flow + 1) % 1;
+    return 0.3 + 0.7 * Math.max(0, Math.cos(phase * Math.PI * 2));
   };
+  const groupSlide = 30 * Math.sin(t * Math.PI * 2.2);
 
-  const big = portrait ? 150 : 130;
+  const big = portrait ? 230 : 190;
 
   return (
     <AbsoluteFill>
       <KebabBg>
+        {/* Glow directionnel qui respire */}
+        <AbsoluteFill style={{ background: `radial-gradient(circle at 80% 50%, rgba(244,206,114,${glow * 0.45}) 0%, transparent 55%)` }} />
+
+        {/* Logo */}
         <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'flex-start', paddingTop: 70 }}>
           <div style={{ transform: `scale(${logoIn})`, opacity: logoO }}>
-            <KebabLogo width={portrait ? 640 : 520} />
+            <KebabLogo width={portrait ? 660 : 520} />
           </div>
         </AbsoluteFill>
 
-        <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 28 }}>
+        <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 30 }}>
           <div
             style={{
-              transform: `scale(${iciPop})`,
+              transform: `scale(${iciPop * iciPulse})`,
               fontFamily: kebabFonts.display,
-              fontSize: portrait ? 200 : 170,
-              lineHeight: 0.9,
+              fontSize: big,
+              lineHeight: 0.88,
               background: kebabTheme.goldGradient,
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               color: 'transparent',
               letterSpacing: 2,
-              textShadow: '0 8px 40px rgba(0,0,0,0.5)',
+              filter: `drop-shadow(0 0 ${glow * 40}px rgba(244,206,114,0.6))`,
+              textAlign: 'center',
             }}
           >
             C'EST ICI
           </div>
 
-          {/* Fleche + chevrons vers la droite */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, transform: `translateX(${slide}px)` }}>
-            <div
-              style={{
-                fontFamily: kebabFonts.display,
-                fontSize: portrait ? 70 : 60,
-                color: kebabTheme.cream,
-                letterSpacing: 1,
-                marginRight: 18,
-              }}
-            >
+          {/* Bandeau "PAR ICI" + chevrons qui defilent */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, transform: `translateX(${groupSlide}px)` }}>
+            <div style={{ fontFamily: kebabFonts.display, fontSize: portrait ? 78 : 68, color: kebabTheme.white, letterSpacing: 1, marginRight: 20, whiteSpace: 'nowrap', flexShrink: 0, textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
               PAR ICI
             </div>
-            <Chevron size={big} opacity={ch(0)} />
-            <Chevron size={big} opacity={ch(1)} />
-            <Chevron size={big} opacity={ch(2)} />
+            {Array.from({ length: N }).map((_, i) => (
+              <Chevron key={i} size={chevSize} opacity={chOpacity(i)} />
+            ))}
           </div>
 
-          <div
-            style={{
-              opacity: subO,
-              fontFamily: kebabFonts.arabic,
-              fontWeight: 800,
-              fontSize: portrait ? 66 : 56,
-              color: kebabTheme.goldBright,
-              direction: 'rtl',
-              marginTop: 8,
-            }}
-          >
+          <div style={{ opacity: subO, fontFamily: kebabFonts.arabic, fontWeight: 800, fontSize: portrait ? 72 : 60, color: kebabTheme.goldBright, direction: 'rtl', marginTop: 12 }}>
             راه هنا، تفضّلوا
           </div>
-          <div
-            style={{
-              opacity: subO,
-              fontFamily: kebabFonts.sans,
-              fontWeight: 600,
-              fontSize: portrait ? 42 : 36,
-              color: kebabTheme.cream,
-            }}
-          >
+          <div style={{ opacity: subO, fontFamily: kebabFonts.sans, fontWeight: 700, fontSize: portrait ? 48 : 40, color: kebabTheme.cream }}>
             Notre restaurant vous attend
           </div>
         </AbsoluteFill>
