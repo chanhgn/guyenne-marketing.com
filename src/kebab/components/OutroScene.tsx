@@ -4,7 +4,15 @@ import { brand } from '../data/menu';
 import { KebabBg } from './KebabBg';
 import { KebabLogo } from './KebabLogo';
 
-const InfoChip: React.FC<{ label: string; opacity: number }> = ({ label, opacity }) => (
+const InstagramIcon: React.FC<{ size?: number }> = ({ size = 38 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <rect x="2" y="2" width="20" height="20" rx="6" stroke={kebabTheme.goldBright} strokeWidth="2" />
+    <circle cx="12" cy="12" r="5" stroke={kebabTheme.goldBright} strokeWidth="2" />
+    <circle cx="17.5" cy="6.5" r="1.5" fill={kebabTheme.goldBright} />
+  </svg>
+);
+
+const InfoChip: React.FC<{ label: React.ReactNode; opacity: number }> = ({ label, opacity }) => (
   <div
     style={{
       opacity,
@@ -16,6 +24,9 @@ const InfoChip: React.FC<{ label: string; opacity: number }> = ({ label, opacity
       borderRadius: 999,
       padding: '12px 28px',
       whiteSpace: 'nowrap',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
     }}
   >
     {label}
@@ -70,7 +81,7 @@ export const OutroScene: React.FC<{ portrait?: boolean }> = ({ portrait = false 
             <InfoChip label={`📍 ${contact.address}`} opacity={chipsO} />
             <InfoChip label={`📞 ${contact.phone}`} opacity={chipsO} />
             <InfoChip label={`🛵 ${contact.delivery}`} opacity={chipsO} />
-            <InfoChip label={contact.instagram} opacity={chipsO} />
+            <InfoChip label={<><InstagramIcon /> {contact.instagram}</>} opacity={chipsO} />
           </div>
         </AbsoluteFill>
       </KebabBg>

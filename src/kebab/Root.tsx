@@ -87,6 +87,12 @@ export const KebabRoot: React.FC = () => {
             { label: 'Maxi', price: 39 },
             { label: 'Mega', price: 49 },
           ],
+          showTiers: true,
+          rows: [
+            { name: 'Kebab', ingredients: 'Viande marinée, salade, tomate, oignon, sauce au choix, pain maison', tiers: { seul: 30, frites: 39, menu: 49 } },
+            { name: 'Maxi Kebab', ingredients: 'Double viande, crudités, sauce au choix, pain maison', tiers: { seul: 39, frites: 49, menu: 59 } },
+            { name: 'Mega Kebab', ingredients: 'Triple viande, fromage, crudités, sauce au choix', tiers: { seul: 49, frites: 59, menu: 69 } },
+          ],
         }}
       />
       <Composition
@@ -106,6 +112,11 @@ export const KebabRoot: React.FC = () => {
             { label: 'Assiette', price: 70, from: true },
             { label: 'Poutine', price: 60 },
           ],
+          rows: [
+            { name: 'Tacos Kebab', ingredients: 'Galette grillée, viande, frites, fromage, sauces', price: 55, from: true },
+            { name: 'Assiette Kebab', ingredients: 'Viande, frites, salade variée, sauce, pain', price: 70, from: true },
+            { name: 'Poutine Kebab', ingredients: 'Frites, viande, fromage fondu, sauce', price: 60 },
+          ],
         }}
       />
       <Composition
@@ -121,6 +132,12 @@ export const KebabRoot: React.FC = () => {
           titleAr: 'تحلياتنا',
           accentAr: 'تيراميسو، بنين بزاف',
           items: [{ label: 'Tous les Tiramisu', price: 28 }],
+          rows: [
+            { name: 'Tiramisu Classique', ingredients: 'Mascarpone, café, biscuit cuillère, cacao', price: 28 },
+            { name: 'Tiramisu Kunafa', ingredients: 'Mascarpone, kunafa croustillant doré', price: 28 },
+            { name: 'Tiramisu Citron', ingredients: 'Mascarpone, citron frais', price: 28 },
+            { name: 'Tiramisu Framboise', ingredients: 'Mascarpone, framboises fraîches', price: 28 },
+          ],
         }}
       />
 
