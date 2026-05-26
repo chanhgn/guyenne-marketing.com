@@ -4,6 +4,7 @@ import { MenuScreen, menuScreenFrames } from './compositions/MenuScreen';
 import { StopTrottoir, stopTrottoirFrames } from './compositions/StopTrottoir';
 import { AiBrandedClip } from './compositions/AiBrandedClip';
 import { AiSandwichDirection, aiSandwichDirectionFrames } from './compositions/AiSandwichDirection';
+import { MontageScreen, montageScreenFrames } from './compositions/MontageScreen';
 
 export const KebabRoot: React.FC = () => {
   return (
@@ -65,6 +66,61 @@ export const KebabRoot: React.FC = () => {
         fps={FPS}
         width={W9}
         height={H9}
+      />
+
+      {/* === Montages dynamiques IA (Seedance) habilles, 16:9 === */}
+      <Composition
+        id="Kebab-Montage-Kebabs"
+        component={MontageScreen}
+        durationInFrames={montageScreenFrames()}
+        fps={FPS}
+        width={W16}
+        height={H16}
+        defaultProps={{
+          clip: 'kebab/clips/montage-kebabs.mp4',
+          titleFr: 'NOS KEBABS',
+          titleAr: 'الكباب ديالنا',
+          accentAr: 'بنّة ما كاينة',
+          items: [
+            { label: 'Kebab', price: 30 },
+            { label: 'Maxi', price: 39 },
+            { label: 'Mega', price: 49 },
+          ],
+        }}
+      />
+      <Composition
+        id="Kebab-Montage-Plats"
+        component={MontageScreen}
+        durationInFrames={montageScreenFrames()}
+        fps={FPS}
+        width={W16}
+        height={H16}
+        defaultProps={{
+          clip: 'kebab/clips/montage-plats.mp4',
+          titleFr: 'NOS PLATS',
+          titleAr: 'أطباقنا',
+          accentAr: 'طبق شبعان',
+          items: [
+            { label: 'Tacos', price: 55, from: true },
+            { label: 'Assiette', price: 70, from: true },
+            { label: 'Poutine', price: 60 },
+          ],
+        }}
+      />
+      <Composition
+        id="Kebab-Montage-Desserts"
+        component={MontageScreen}
+        durationInFrames={montageScreenFrames()}
+        fps={FPS}
+        width={W16}
+        height={H16}
+        defaultProps={{
+          clip: 'kebab/clips/montage-desserts.mp4',
+          titleFr: 'NOS DESSERTS',
+          titleAr: 'تحلياتنا',
+          accentAr: 'تيراميسو، بنين بزاف',
+          items: [{ label: 'Tous les Tiramisu', price: 28 }],
+        }}
       />
     </>
   );
