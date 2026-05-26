@@ -2,6 +2,7 @@ import { Composition } from 'remotion';
 import { W16, H16, W9, H9, FPS, sandwichs, plats, desserts, screenTitle } from './data/menu';
 import { MenuScreen, menuScreenFrames } from './compositions/MenuScreen';
 import { StopTrottoir, stopTrottoirFrames } from './compositions/StopTrottoir';
+import { AiBrandedClip } from './compositions/AiBrandedClip';
 
 export const KebabRoot: React.FC = () => {
   return (
@@ -40,6 +41,21 @@ export const KebabRoot: React.FC = () => {
         fps={FPS}
         width={W9}
         height={H9}
+      />
+      <Composition
+        id="Kebab-AI-Sandwich-9x16"
+        component={AiBrandedClip}
+        durationInFrames={300}
+        fps={FPS}
+        width={W9}
+        height={H9}
+        defaultProps={{
+          clip: 'kebab/clips/sandwich-zoom.mp4',
+          name: 'SANDWICH KEBAB',
+          accentAr: 'بنّة ما كاينة',
+          price: 35,
+          portrait: true,
+        }}
       />
     </>
   );
