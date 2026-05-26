@@ -2,7 +2,7 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { kebabTheme, kebabFonts } from '../theme';
 import { brand } from '../data/menu';
 import { KebabBg } from './KebabBg';
-import { KebabLogo } from './KebabLogo';
+import { Logo3D } from './Logo3D';
 
 const InstagramIcon: React.FC<{ size?: number }> = ({ size = 38 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
@@ -49,7 +49,7 @@ export const OutroScene: React.FC<{ portrait?: boolean }> = ({ portrait = false 
       <KebabBg>
         <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', gap: portrait ? 64 : 52, padding: 60 }}>
           <div style={{ transform: `scale(${logoIn})`, opacity: logoO }}>
-            <KebabLogo width={portrait ? 860 : 800} />
+            <Logo3D width={portrait ? 760 : 720} />
           </div>
 
           <div

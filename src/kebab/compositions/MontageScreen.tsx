@@ -6,7 +6,7 @@ import { MenuBoard, BoardRow } from './MenuBoard';
 
 export const MONTAGE_FRAMES = 300; // 10s de clip
 export const BOARD_FRAMES = 510; // 17s (entree animee + ~15s stable)
-export const MONTAGE_OUTRO = 110; // ~3.7s
+export const MONTAGE_OUTRO = 300; // 10s (outro avec logo 3D)
 export const montageScreenFrames = () => MONTAGE_FRAMES + BOARD_FRAMES + MONTAGE_OUTRO;
 
 export const MontageScreen: React.FC<{
