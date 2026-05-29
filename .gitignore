@@ -3,6 +3,9 @@ out/
 .DS_Store
 *.log
 
+# Modèle MediaPipe (binaire ~3.7 Mo, téléchargé automatiquement par le script)
+scripts/face_landmarker.task
+
 # public/ holds rushes (~700 MB of .mp4) which stay out of git.
 # But we DO commit the small images (logo + before/after photos).
 public/*
