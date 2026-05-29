@@ -14,3 +14,7 @@ public/*
 !public/*.png
 previews/*
 !previews/*.mp4
+
+# Python
+__pycache__/
+*.pyc
