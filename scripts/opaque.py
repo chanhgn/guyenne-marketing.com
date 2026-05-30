@@ -20,17 +20,21 @@ def detect_boxes(orig, blur):
     if orig is None or orig.shape!=blur.shape:
         return []   # pas d'original fiable -> on ne devine pas (évite les parasites)
     d=cv2.absdiff(cv2.cvtColor(orig,cv2.COLOR_BGR2GRAY),cv2.cvtColor(blur,cv2.COLOR_BGR2GRAY))
-    mask=(d>30).astype(np.uint8)*255
-    k=max(10,W//50)
+    mask=(d>12).astype(np.uint8)*255
+    k=max(12,W//45)
     mask=cv2.morphologyEx(mask,cv2.MORPH_CLOSE,np.ones((k,k),np.uint8))
-    mask=cv2.morphologyEx(mask,cv2.MORPH_OPEN,np.ones((max(5,k//2),)*2,np.uint8))
+    mask=cv2.morphologyEx(mask,cv2.MORPH_OPEN,np.ones((max(6,k//2),)*2,np.uint8))
     cnts,_=cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     boxes=[]
     for c in cnts:
         x,y,w,h=cv2.boundingRect(c)
-        region_mean=float(d[y:y+h,x:x+w].mean())
-        if w*h > 0.004*W*H and w>0.05*W and region_mean>42:
-            boxes.append((x,y,w,h))
+        if w*h > 0.005*W*H and w>0.06*W and h>0.03*H:
+            # marge de sécurité : on agrandit le bandeau pour couvrir
+            # totalement la zone oculaire (non-reconnaissance)
+            gx=int(w*0.10); gy=int(h*0.18)
+            nx=max(0,x-gx); ny=max(0,y-gy)
+            nw=min(W-nx, w+2*gx); nh=min(H-ny, h+2*gy)
+            boxes.append((nx,ny,nw,nh))
     return boxes
 
 def draw(base_img, boxes):
@@ -51,6 +55,7 @@ def draw(base_img, boxes):
             im.paste(lg,(x0+(bw-lw)//2, y0+(bh-lh)//2), lg)
     return cv2.cvtColor(np.array(im),cv2.COLOR_RGB2BGR)
 
+missed=[]
 n=nb=0
 for dp,_,_ in os.walk(SRC):
     for f in A.list_images(dp, dedup_copies=False):
@@ -60,7 +65,16 @@ for dp,_,_ in os.walk(SRC):
         if blur is None: continue
         orig=A.load_image_oriented(INDEX[f]) if f in INDEX else None
         boxes=detect_boxes(orig,blur)
-        base=orig if (orig is not None and orig.shape==blur.shape) else blur
-        out=draw(base.copy(),boxes) if boxes else (base.copy())
-        cv2.imwrite(outp,out); n+=1; nb+=len(boxes)
+        if boxes and orig is not None and orig.shape==blur.shape:
+            # dessine le bandeau opaque sur l'ORIGINAL net, aux zones détectées
+            out=draw(orig.copy(),boxes)
+        else:
+            # SÉCURITÉ : jamais l'original nu -> on garde l'image déjà floutée
+            out=blur
+            if boxes is not None and len(boxes)==0:
+                missed.append(rel)
+        cv2.imwrite(outp,out); n+=1; nb+=len(boxes or [])
 print(f"{n} images, {nb} bandeaux opaques posés -> {DST}")
+if missed:
+    print(f"\n⚠ {len(missed)} image(s) SANS bandeau détecté (gardées floutées, à vérifier) :")
+    for m in missed: print("   -",m)
