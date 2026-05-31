@@ -26,11 +26,12 @@ def blur_zone(img, x0, y0, x1, y1):
         return
     roi = img[y0i:y1i, x0i:x1i]
     h, w = roi.shape[:2]
-    tw = max(3, w // 18); th = max(3, h // 18)
+    tw = max(2, w // 45); th = max(2, h // 45)
     small = cv2.resize(roi, (tw, th), interpolation=cv2.INTER_AREA)
     mos = cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
-    k = max(31, (min(w, h) // 3) | 1)
+    k = max(61, (min(w, h) // 2) | 1)
     blurred = cv2.GaussianBlur(mos, (k, k), 0)
+    blurred = cv2.GaussianBlur(blurred, (k, k), 0)
     # masque adouci pour fondre les bords
     m = np.zeros((h, w), np.uint8)
     cv2.rectangle(m, (0, 0), (w, h), 255, -1)
