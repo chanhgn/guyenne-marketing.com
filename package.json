@@ -9,7 +9,9 @@
     "kobo:studio": "remotion studio src/kobo/index.ts",
     "kobo:render": "remotion render src/kobo/index.ts KoboPresentation out/kobo-presentation.mp4",
     "kobo:preview": "remotion render src/kobo/index.ts KoboPresentation out/kobo-apercu-540p.mp4 --scale=0.5 --crf=28",
-    "kobo:pptx": "python3 scripts/build_kobo_pptx.py"
+    "kobo:pptx": "python3 scripts/build_kobo_pptx.py",
+    "kobo:deck-render": "bash scripts/render_kobo_deck.sh",
+    "kobo:deck-pptx": "bash scripts/render_kobo_deck.sh && python3 scripts/build_kobo_deck_pptx.py"
   },
   "dependencies": {
     "@remotion/google-fonts": "4.0.380",
