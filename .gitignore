@@ -9,5 +9,8 @@ public/*
 !public/*.jpg
 !public/*.jpeg
 !public/*.png
+# Polices auto-hébergées (nécessaires au rendu hors-ligne de la présentation KOBO)
+!public/fonts/
+!public/fonts/*.woff2
 previews/*
 !previews/*.mp4
