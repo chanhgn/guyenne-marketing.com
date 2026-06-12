@@ -10,12 +10,28 @@ import os
 import glob
 from pptx import Presentation
 from pptx.util import Emu
+from pptx.oxml.ns import qn
+from pptx.oxml import parse_xml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "out", "deck_png")
 OUT = os.path.join(ROOT, "out", "KOBO-BNI-Sexy.pptx")
 EMU_IN = 914400
 SW, SH = 13.333, 7.5
+
+P_NS = 'xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"'
+
+
+def add_fade(slide, spd="med"):
+    """Ajoute une transition en fondu (convertie en animation par Google Slides)."""
+    sld = slide._element
+    xml = f'<p:transition {P_NS} spd="{spd}"><p:fade/></p:transition>'
+    trans = parse_xml(xml)
+    clr = sld.find(qn("p:clrMapOvr"))
+    if clr is not None:
+        clr.addnext(trans)
+    else:
+        sld.find(qn("p:cSld")).addnext(trans)
 
 
 def build():
@@ -29,9 +45,10 @@ def build():
     for p in pngs:
         s = prs.slides.add_slide(blank)
         s.shapes.add_picture(p, 0, 0, width=prs.slide_width, height=prs.slide_height)
+        add_fade(s)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     prs.save(OUT)
-    print("Saved:", OUT, "—", len(pngs), "slides")
+    print("Saved:", OUT, "—", len(pngs), "slides (transitions fondu)")
 
 
 if __name__ == "__main__":
