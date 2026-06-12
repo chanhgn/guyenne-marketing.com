@@ -5,7 +5,11 @@
   "scripts": {
     "start": "remotion studio",
     "render": "remotion render src/index.ts WaitingRoom out/cabinet.mp4",
-    "render-preview": "remotion render src/index.ts WaitingRoom out/preview.mp4 --frames=0-300"
+    "render-preview": "remotion render src/index.ts WaitingRoom out/preview.mp4 --frames=0-300",
+    "kobo:studio": "remotion studio src/kobo/index.ts",
+    "kobo:render": "remotion render src/kobo/index.ts KoboPresentation out/kobo-presentation.mp4",
+    "kobo:preview": "remotion render src/kobo/index.ts KoboPresentation out/kobo-apercu-540p.mp4 --scale=0.5 --crf=28",
+    "kobo:pptx": "python3 scripts/build_kobo_pptx.py"
   },
   "dependencies": {
     "@remotion/google-fonts": "4.0.380",
