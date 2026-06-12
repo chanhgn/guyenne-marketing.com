@@ -259,10 +259,13 @@ def band(slide, x, y, w, label, text, h=0.8):
     p.line_spacing = 1.12
 
 
+TOTAL_SLIDES = 13
+
+
 def page_no(slide, n):
     textbox(slide, SW - 1.6, SH - 0.55, 1.2, 0.3,
-            [{"text": f"{n:02d} / 13", "size": 11, "bold": True, "color": SLATE_FAINT,
-              "align": PP_ALIGN.RIGHT}], align=PP_ALIGN.RIGHT)
+            [{"text": f"{n:02d} / {TOTAL_SLIDES:02d}", "size": 11, "bold": True,
+              "color": SLATE_FAINT, "align": PP_ALIGN.RIGHT}], align=PP_ALIGN.RIGHT)
 
 
 def base(prs, n, with_bracket=True):
@@ -276,7 +279,9 @@ def base(prs, n, with_bracket=True):
 
 
 # =========================================================================
-def build():
+def build(out_path=OUT):
+    global TOTAL_SLIDES
+    TOTAL_SLIDES = 13
     prs = Presentation()
     prs.slide_width = Emu(int(SW * EMU_IN))
     prs.slide_height = Emu(int(SH * EMU_IN))
@@ -521,10 +526,236 @@ def build():
          "color": SLATE_FAINT, "align": PP_ALIGN.CENTER},
     ], align=PP_ALIGN.CENTER)
 
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    prs.save(OUT)
-    print("Saved:", OUT, "—", len(prs.slides._sldIdLst), "slides")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    prs.save(out_path)
+    print("Saved:", out_path, "—", len(prs.slides._sldIdLst), "slides")
+
+
+# =========================================================================
+# Helpers spécifiques au deck BNI (orienté recommandation)
+# =========================================================================
+def tag_card(slide, x, y, w, h, text):
+    rect(slide, x, y, w, h, INK_CARD, rounded=True, ln=HAIRLINE, lnw=0.75)
+    rect(slide, x + w / 2 - 0.18, y + 0.24, 0.36, 0.045, COPPER_GLOW)
+    textbox(slide, x + 0.1, y + 0.1, w - 0.2, h - 0.2,
+            [{"text": text, "size": 12.5, "bold": True, "color": WHITE,
+              "align": PP_ALIGN.CENTER, "line_spacing": 1.05}],
+            align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+
+
+def quote_card(slide, x, y, w, h, text):
+    rect(slide, x, y, w, h, INK_CARD, rounded=True, ln=HAIRLINE, lnw=0.75)
+    rect(slide, x, y + 0.12, 0.06, h - 0.24, COPPER)
+    textbox(slide, x + 0.32, y, w - 0.55, h,
+            [{"text": "« " + text + " »", "size": 13.5, "italic": True, "color": WHITE,
+              "line_spacing": 1.2}], anchor=MSO_ANCHOR.MIDDLE)
+
+
+def check_row(slide, x, y, w, lead, rest):
+    textbox(slide, x, y - 0.02, 0.4, 0.4,
+            [{"text": "✓", "size": 17, "bold": True, "color": COPPER_GLOW}])
+    textbox(slide, x + 0.42, y, w - 0.42, 0.9,
+            [{"runs": [
+                {"text": lead + " ", "size": 14.5, "bold": True, "color": WHITE},
+                {"text": rest, "size": 14.5, "color": SLATE},
+            ], "line_spacing": 1.2}])
+
+
+def build_bni(out_path):
+    """Deck BNI : pensé pour le PUBLIC (comment recommander KOBO)."""
+    global TOTAL_SLIDES
+    TOTAL_SLIDES = 10
+    prs = Presentation()
+    prs.slide_width = Emu(int(SW * EMU_IN))
+    prs.slide_height = Emu(int(SH * EMU_IN))
+    MX = 0.85
+
+    # ---- 1. Couverture ----
+    s = base(prs, None, with_bracket=False)
+    corner_bracket(s, size=1.1, x=SW - 0.55 - 1.1, y=0.5)
+    _bx, _by, _bs, _th = 0.55, SH - 0.5, 1.1, 0.028
+    rect(s, _bx, _by - _th, _bs, _th, COPPER_GLOW)
+    rect(s, _bx, _by - _bs, _th, _bs, COPPER_GLOW)
+    lh = add_logo(s, SW / 2 - 2.6, 1.95, 5.2, full=True)
+    rect(s, SW / 2 - 1.6, 1.95 + lh + 0.32, 3.2, 0.03, COPPER_GLOW)
+    textbox(s, 1, 1.95 + lh + 0.55, SW - 2, 1.4, [
+        {"text": "Sandrine Cruchon", "size": 25, "bold": True, "color": WHITE,
+         "align": PP_ALIGN.CENTER, "space_after": 5},
+        {"text": "GÉRANTE ASSOCIÉE — KOBO MENUISERIE", "size": 12.5, "bold": True,
+         "color": SLATE, "align": PP_ALIGN.CENTER, "tracking": 2.5, "space_after": 14},
+        {"text": "Menuiseries & aménagements extérieurs  ·  Tournefeuille – Toulouse",
+         "size": 14, "color": COPPER_GLOW, "align": PP_ALIGN.CENTER},
+    ], align=PP_ALIGN.CENTER)
+
+    # ---- 2. Ce que je fais, simplement ----
+    s = base(prs, 2)
+    kicker(s, "KOBO en 10 secondes", MX, 0.85)
+    title(s, "Ce que je fais, simplement", MX, 1.3, 11, 32)
+    textbox(s, MX, 2.7, 11.6, 0.9, [
+        {"text": "Je remplace et je pose tout ce qui ouvre et ferme votre maison.",
+         "size": 21, "bold": True, "color": WHITE, "line_spacing": 1.1}])
+    cats = ["Fenêtres\n& baies vitrées", "Portes\n& portails", "Volets\n& stores",
+            "Pergolas\n& carports", "Garde-corps\n& clôtures"]
+    cw = (11.633 - 4 * 0.25) / 5
+    for i, c in enumerate(cats):
+        tag_card(s, MX + i * (cw + 0.25), 3.95, cw, 1.25, c)
+    band(s, MX, 5.7, 11.633, "Du conseil à la pose",
+         "Aluminium · PVC · Bois — sur-mesure, neuf & rénovation, sur Tournefeuille, "
+         "Toulouse & environs.")
+
+    # ---- 3. En qui vous avez confiance (express) ----
+    s = base(prs, 3)
+    add_cover(s, img("kobo_portrait_sandrine.png"), MX, 1.0, 4.4, 5.5, radius=True)
+    tx = MX + 4.9
+    kicker(s, "À qui vous avez affaire", tx, 1.05)
+    title(s, "Une experte de l’enveloppe du bâtiment", tx, 1.5, 7.2, 27)
+    trust = [
+        ("Ingénieure des façades —", "BTS Enveloppe du Bâtiment + DNTS spécialiste façades & aluminium."),
+        ("+ de 50 ans d’expérience cumulée —", "avec mon associé Jean-François Mores."),
+        ("Certifiée RGE & Qualibat —", "vos clients ont droit aux aides de l’État pour l’énergie."),
+        ("4.9/5 de satisfaction —", "plus de 100 chantiers uniques par an en Occitanie."),
+        ("Fabrication interne & suivi dirigeant —", "pas de commercial : vous parlez au patron."),
+    ]
+    yy = 2.95
+    for lead, rest in trust:
+        check_row(s, tx, yy, 7.2, lead, rest)
+        yy += 0.78
+
+    # ---- 4. Qui je cherche à rencontrer (client idéal) ----
+    s = base(prs, 4)
+    kicker(s, "Mon client idéal", MX, 0.85)
+    title(s, "À qui penser pour me recommander", MX, 1.3, 11.5, 31)
+    pw = 2.75
+    targets = [
+        ("01", "Particuliers", "Propriétaires de maison qui rénovent ou font construire (Toulouse Ouest et agglomération)."),
+        ("02", "Prescripteurs", "Architectes, maîtres d’œuvre, constructeurs de maisons individuelles."),
+        ("03", "Immobilier", "Agences immobilières, syndics de copropriété, gestionnaires de biens."),
+        ("04", "Tertiaire & public", "Mairies, collectivités, entreprises — façades, secteur ABF, appels d’offres."),
+    ]
+    for i, (n, hd, bd) in enumerate(targets):
+        pillar(s, MX + i * (pw + 0.27), 2.5, pw, 3.4, n, hd, bd, head_size=16, body_size=12)
+    band(s, MX, 6.05, 11.633, "Astuce",
+         "Pas besoin que la personne sache ce qu’elle veut : si elle a une maison et un projet, pensez à moi.")
+
+    # ---- 5. Les phrases déclic ----
+    s = base(prs, 5)
+    kicker(s, "Le réflexe recommandation", MX, 0.85)
+    title(s, "Si vous entendez ça, pensez à moi", MX, 1.3, 11.5, 31)
+    phrases = [
+        "Mes fenêtres sont vieilles, j’ai froid et de la condensation.",
+        "J’aimerais une pergola ou un carport pour cet été.",
+        "Mon portail ou mon volet roulant est en panne.",
+        "Je rénove ma maison / je fais construire.",
+        "Je veux profiter des aides RGE pour mieux isoler.",
+        "Notre copropriété ou notre mairie a un projet de façade.",
+    ]
+    qw, qh = 5.6, 1.18
+    for i, ph in enumerate(phrases):
+        cx = MX + (i % 2) * (qw + 0.4)
+        cy = 2.45 + (i // 2) * (qh + 0.22)
+        quote_card(s, cx, cy, qw, qh, ph)
+
+    # ---- 6. Recommandez-moi en confiance ----
+    s = base(prs, 6)
+    kicker(s, "Zéro risque pour vous", MX, 0.85)
+    title(s, "Recommandez-moi en confiance", MX, 1.3, 11.5, 31)
+    pw6 = 3.7
+    derisk = [
+        ("01", "Fabrication interne", "Sur-mesure fabriqué en interne : délais maîtrisés et qualité constante."),
+        ("02", "Suivi 100 % dirigeant", "Sandrine ou Jean-François contrôlent chaque chantier en direct."),
+        ("03", "Partenaires d’élite", "Fenêtréa, Schüco, Méo, Maison Cadiou, Ates — et un showroom à Tournefeuille."),
+    ]
+    for i, (n, hd, bd) in enumerate(derisk):
+        pillar(s, MX + i * (pw6 + 0.3), 2.45, pw6, 2.6, n, hd, bd)
+    chip(s, img("kobo_qualibat.png"), MX, 5.35, 1.45, 0.95)
+    chip(s, img("kobo_fenetrea.png"), MX + 1.65, 5.35, 2.0, 0.95)
+    chip(s, img("kobo_schuco.png"), MX + 3.85, 5.35, 1.6, 0.95)
+    chip(s, img("kobo_cadiou.png"), MX + 5.65, 5.35, 2.0, 0.95)
+    textbox(s, MX + 7.95, 5.35, 3.6, 0.95, [
+        {"text": "4.9/5", "size": 26, "bold": True, "color": WHITE, "space_after": 0},
+        {"text": "100+ chantiers / an · RGE", "size": 12, "color": SLATE}],
+        anchor=MSO_ANCHOR.MIDDLE)
+
+    # ---- 7. Ils nous ont fait confiance (preuves) ----
+    s = base(prs, 7)
+    kicker(s, "La preuve par les réalisations", MX, 0.85)
+    title(s, "Ils nous ont fait confiance", MX, 1.3, 11.5, 31)
+    cwp = 5.6
+    add_cover(s, img("kobo_villa_balma.jpg"), MX, 2.5, cwp, 2.7)
+    add_cover(s, img("kobo_mairie_rabastens.jpg"), MX + cwp + 0.4, 2.5, cwp, 2.7)
+    textbox(s, MX, 5.35, cwp, 1.4, [
+        {"text": "Villa de Balma — particulier", "size": 14, "bold": True, "color": COPPER_GLOW,
+         "space_after": 3},
+        {"text": "Rénovation complète alu + PVC, persiennes d’origine restaurées. "
+                 "Projet né d’une recommandation client.", "size": 12.5, "color": SLATE,
+         "line_spacing": 1.2}])
+    textbox(s, MX + cwp + 0.4, 5.35, cwp, 1.4, [
+        {"text": "Mairie de Rabastens — tertiaire / ABF", "size": 14, "bold": True,
+         "color": COPPER_GLOW, "space_after": 3},
+        {"text": "Façade aluminium Schüco cintrée, secteur classé. Remportée sur appel d’offres.",
+         "size": 12.5, "color": SLATE, "line_spacing": 1.2}])
+
+    # ---- 8. Ma demande cette semaine (LE slide clé) ----
+    s = base(prs, 8)
+    kicker(s, "Le plus important", MX, 0.9)
+    title(s, "Ma demande cette semaine", MX, 1.4, 11, 34)
+    rect(s, MX, 2.95, 11.633, 1.7, INK_CARD, rounded=True, ln=COPPER, lnw=1.25)
+    rect(s, MX, 3.1, 0.08, 1.4, COPPER)
+    textbox(s, MX + 0.5, 2.95, 10.8, 1.7, [
+        {"runs": [
+            {"text": "Présentez-moi à ", "size": 22, "color": WHITE},
+            {"text": "une seule personne", "size": 22, "bold": True, "color": COPPER_GLOW},
+            {"text": " qui change ses fenêtres, rénove sa maison ou veut une pergola.",
+             "size": 22, "color": WHITE},
+        ], "line_spacing": 1.18}], anchor=MSO_ANCHOR.MIDDLE)
+    band(s, MX, 5.05, 11.633, "Cette semaine en particulier",
+         "Je cherche à rencontrer un architecte ou un constructeur de maisons individuelles "
+         "de l’agglomération toulousaine.", h=1.0)
+    textbox(s, MX, 6.25, 11.633, 0.5, [
+        {"text": "→ une recommandation précise vaut dix contacts vagues.",
+         "size": 13, "italic": True, "color": SLATE_FAINT}])
+
+    # ---- 9. Comment me recommander ----
+    s = base(prs, 9)
+    kicker(s, "Passez-moi le relais", MX, 0.85)
+    title(s, "Comment me recommander", MX, 1.3, 11, 32)
+    pw9 = 3.7
+    steps = [
+        ("1", "Donnez mon nom", "Transmettez mon nom et mon numéro à la personne concernée."),
+        ("2", "Ou ma carte / le showroom", "Remettez-lui ma carte ou invitez-la à passer au showroom de Tournefeuille."),
+        ("3", "Le mieux : en direct", "Mettez-nous directement en relation — c’est le plus efficace pour conclure."),
+    ]
+    for i, (n, hd, bd) in enumerate(steps):
+        pillar(s, MX + i * (pw9 + 0.3), 2.55, pw9, 2.7, n, hd, bd)
+    band(s, MX, 5.7, 11.633, "Donnant-donnant",
+         "Une bonne recommandation = un projet bien fait et un client qui VOUS remerciera.")
+
+    # ---- 10. Merci / contact ----
+    s = base(prs, None, with_bracket=False)
+    corner_bracket(s, size=1.1, x=SW - 0.55 - 1.1, y=0.5)
+    _bx, _by, _bs, _th = 0.55, SH - 0.5, 1.1, 0.028
+    rect(s, _bx, _by - _th, _bs, _th, COPPER_GLOW)
+    rect(s, _bx, _by - _bs, _th, _bs, COPPER_GLOW)
+    lh = add_logo(s, SW / 2 - 1.85, 1.45, 3.7, full=True)
+    textbox(s, 1, 1.45 + lh + 0.45, SW - 2, 1.2, [
+        {"text": "Merci — et pensez à KOBO !", "size": 30, "bold": True, "color": WHITE,
+         "align": PP_ALIGN.CENTER, "space_after": 6},
+        {"text": "Créateur d’ouvertures", "size": 18, "italic": True, "color": COPPER_GLOW,
+         "align": PP_ALIGN.CENTER},
+    ], align=PP_ALIGN.CENTER)
+    rect(s, SW / 2 - 1.6, 4.75, 3.2, 0.03, COPPER_GLOW)
+    textbox(s, 1, 5.0, SW - 2, 1.2, [
+        {"text": "contact@kobo-alu.fr     |     05 61 85 51 40     |     www.kobo-alu.fr",
+         "size": 15, "color": SLATE, "align": PP_ALIGN.CENTER, "space_after": 8},
+        {"text": "164 Chemin de Larramet, 31170 Tournefeuille", "size": 12.5,
+         "color": SLATE_FAINT, "align": PP_ALIGN.CENTER},
+    ], align=PP_ALIGN.CENTER)
+
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    prs.save(out_path)
+    print("Saved:", out_path, "—", len(prs.slides._sldIdLst), "slides")
 
 
 if __name__ == "__main__":
-    build()
+    build_bni(os.path.join(ROOT, "out", "KOBO-Presentation-BNI.pptx"))
+    build(os.path.join(ROOT, "out", "KOBO-Portrait-Dirigeante.pptx"))
