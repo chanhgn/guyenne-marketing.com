@@ -1,16 +1,30 @@
 {
-  "_comment": "Donnees de configuration Mister Jack pour TastyIgniter. Les champs a null doivent etre completes depuis l'export GloriaFood (menu > prix) et les infos du client (adresse Casablanca, coordonnees GPS exactes).",
+  "_source": "Carte et coordonnées relevées sur misterjack.ma le 24/08/2026 (pages /casablanca/ et /fes/).",
+  "_notes": {
+    "prix": "1er prix = article seul, 2e prix = en menu (frites + boisson). L'écart est porté par l'option « Formule », au prix exact de chaque article.",
+    "coordonnees": "lat/lng approximatives : à ajuster sur la carte de l'admin, elles définissent le centre des zones de livraison.",
+    "telephones": "Fès commande via WhatsApp +212 660 871231 ; le +212 691 537984 est le numéro affiché sur la page menu et sur Casablanca."
+  },
+
   "settings": {
     "site_name": "Mister Jack",
     "site_email": "contact@misterjack.ma",
-    "order_email": "contact@misterjack.ma",
+    "default_location_mode": "multiple",
+    "site_logo": null,
     "timezone": "Africa/Casablanca",
+    "default_language": "fr",
     "distance_unit": "km",
-    "site_location_mode": "multiple"
+    "menus_page_limit": 60,
+    "allow_guest_order": 1,
+    "order_email": ["admin", "location", "customer"],
+    "processing_order_status": 1,
+    "completed_order_status": 5,
+    "canceled_order_status": 6
   },
+
   "currency": {
     "code": "MAD",
-    "name": "Moroccan Dirham",
+    "name": "Dirham marocain",
     "symbol": "DH",
     "symbol_position": 1,
     "thousand_sign": " ",
@@ -18,116 +32,118 @@
     "decimal_position": 2,
     "country_iso2": "MA"
   },
+
   "locations": [
     {
       "slug": "fes",
       "name": "Mister Jack Fès",
-      "email": "contact@misterjack.ma",
-      "description": "Burgers smashés et hot-dogs faits maison, pain cuit sur place, viande de bœuf halal. Livraison à Fès et alentours.",
+      "description": "Smash burgers et hot-dogs 100 % faits maison, pain cuit sur place, viande de bœuf halal sélectionnée.",
+      "email": "fes@misterjack.ma",
       "address_1": "1 avenue Saint Louis",
       "address_2": "Aïn Chkef",
       "city": "Fès",
-      "state": "Fès-Meknès",
       "postcode": "30050",
+      "state": "Fès-Meknès",
       "country_iso2": "MA",
-      "telephone": "+212691537984",
-      "lat": 33.9628,
-      "lng": -5.0242,
+      "telephone": "+212660871231",
+      "lat": 34.0022,
+      "lng": -5.0300,
       "coords_verified": false,
-      "is_default": true,
       "status": true,
-      "hours": {
-        "regular": { "open": "11:30", "close": "00:00" },
-        "late_nights": { "weekdays": [4, 5], "open": "11:30", "close": "02:00" }
-      },
+      "is_default": true,
+      "hours": { "regular": { "open": "12:00", "close": "02:00" } },
       "delivery_areas": [
-        {
-          "name": "Aïn Chkef / Saïss (zone proche)",
-          "type": "circle",
-          "radius_km": 5,
-          "delivery_fee": 10,
-          "min_order": 50,
-          "priority": 1
-        },
-        {
-          "name": "Fès Ville Nouvelle / Agdal / Narjiss",
-          "type": "circle",
-          "radius_km": 10,
-          "delivery_fee": 15,
-          "min_order": 80,
-          "priority": 2
-        },
-        {
-          "name": "Grand Fès (périphérie)",
-          "type": "circle",
-          "radius_km": 18,
-          "delivery_fee": 25,
-          "min_order": 120,
-          "priority": 3
-        }
+        { "name": "Aïn Chkef et centre Fès", "type": "circle", "radius_km": 6,  "delivery_fee": 15, "min_order": 60,  "priority": 1 },
+        { "name": "Grand Fès",               "type": "circle", "radius_km": 12, "delivery_fee": 25, "min_order": 100, "priority": 2 }
       ]
     },
     {
       "slug": "casablanca",
       "name": "Mister Jack Casablanca",
-      "email": "contact@misterjack.ma",
-      "description": "Burgers smashés et hot-dogs faits maison à Casablanca. À emporter et livraison.",
-      "address_1": null,
-      "address_2": null,
+      "description": "Smash burgers et hot-dogs faits maison, à emporter ou en livraison directe.",
+      "email": "casablanca@misterjack.ma",
+      "address_1": "1 Rue Imam Al Boukhari",
+      "address_2": "",
       "city": "Casablanca",
+      "postcode": "20100",
       "state": "Casablanca-Settat",
-      "postcode": null,
       "country_iso2": "MA",
-      "telephone": null,
-      "lat": null,
-      "lng": null,
+      "telephone": "+212691537984",
+      "lat": 33.5866,
+      "lng": -7.6325,
       "coords_verified": false,
+      "status": true,
       "is_default": false,
-      "status": false,
-      "_note": "Restera desactivee tant que adresse + telephone + GPS ne sont pas renseignes.",
-      "hours": {
-        "regular": { "open": "11:30", "close": "00:00" },
-        "late_nights": { "weekdays": [4, 5], "open": "11:30", "close": "02:00" }
-      },
+      "hours": { "regular": { "open": "12:00", "close": "02:00" } },
       "delivery_areas": [
-        {
-          "name": "Maârif / Gauthier / Anfa",
-          "type": "circle",
-          "radius_km": 6,
-          "delivery_fee": 15,
-          "min_order": 80,
-          "priority": 1
-        },
-        {
-          "name": "Sidi Maârouf / Aïn Diab",
-          "type": "circle",
-          "radius_km": 12,
-          "delivery_fee": 25,
-          "min_order": 120,
-          "priority": 2
-        }
+        { "name": "Maârif, Gauthier, Anfa",       "type": "circle", "radius_km": 5,  "delivery_fee": 15, "min_order": 60,  "priority": 1 },
+        { "name": "Grand Casablanca (Sidi Maârouf, Aïn Diab)", "type": "circle", "radius_km": 12, "delivery_fee": 25, "min_order": 100, "priority": 2 }
       ]
     }
   ],
+
+  "options": [
+    {
+      "name": "Formule",
+      "display_type": "radio",
+      "is_required": true,
+      "values": [
+        { "name": "Seul", "price": 0, "is_default": true },
+        { "name": "En menu — frites + boisson", "price": 15 }
+      ]
+    }
+  ],
+
   "categories": [
-    { "name": "Burgers signature", "description": "Burgers smashés sur plaque chaude, pain maison cuit sur place, viande de bœuf halal sélectionnée", "priority": 1 },
-    { "name": "Hot-dogs", "description": "Hot-dogs américains artisanaux, pain maison, saucisses halal de qualité", "priority": 2 },
-    { "name": "Sides", "description": "Frites maison, onion rings et accompagnements", "priority": 3 },
-    { "name": "Boissons & milkshakes", "description": "Milkshakes maison et boissons fraîches", "priority": 4 }
+    { "name": "Smash UNO",          "priority": 1, "description": "Smashburgers simple steak, cuits à la commande sur plaque chaude." },
+    { "name": "Smash Double",       "priority": 2, "description": "Les mêmes recettes, en double steak." },
+    { "name": "Burgers signatures", "priority": 3, "description": "Les créations d'exception de la maison." },
+    { "name": "Hot-dogs artisanaux","priority": 4, "description": "Pain maison cuit sur place et saucisse de canard." },
+    { "name": "Entrées",            "priority": 5, "description": "À partager avant le burger." },
+    { "name": "Desserts",           "priority": 6, "description": "Pour finir en beauté." }
   ],
+
   "menu_items": [
-    { "name": "Le Classic", "category": "Burgers signature", "description": "Burger signature avec cheddar fondu, oignons frits maison et notre sauce signature", "price": null, "priority": 1 },
-    { "name": "Smash UNO", "category": "Burgers signature", "description": "Smashburger phare cuit à la commande sur plaque chaude, façon diner New-Yorkais", "price": null, "priority": 2 },
-    { "name": "Hot-dog Pepperoni", "category": "Hot-dogs", "description": "Saveurs italo-américaines, pepperoni et garniture maison", "price": null, "priority": 1 },
-    { "name": "Hot-dog Cheesy", "category": "Hot-dogs", "description": "Hot-dog ultra-fondu au fromage", "price": null, "priority": 2 },
-    { "name": "Hot-dog Classique", "category": "Hot-dogs", "description": "Moutarde, ketchup et oignons frits maison", "price": null, "priority": 3 },
-    { "name": "Frites maison", "category": "Sides", "description": "Frites fraîches préparées sur place", "price": null, "priority": 1 },
-    { "name": "Onion rings", "category": "Sides", "description": "Rondelles d'oignon panées maison", "price": null, "priority": 2 },
-    { "name": "Milkshake", "category": "Boissons & milkshakes", "description": "Milkshake maison", "price": null, "priority": 1 },
-    { "name": "Boisson fraîche", "category": "Boissons & milkshakes", "description": "Sodas et boissons fraîches", "price": null, "priority": 2 }
+    { "name": "Smash UNO — Classic", "category": "Smash UNO", "price": 45, "menu_price": 60, "priority": 1,
+      "description": "Bœuf juteux, cheddar fondant, oignons caramélisés, pickles, jalapeños, moutarde américaine et ketchup." },
+    { "name": "Smash UNO — Little Italy", "category": "Smash UNO", "price": 59, "menu_price": 75, "priority": 2,
+      "description": "Bœuf, cheddar, oignons caramélisés, jalapeños, pickles, crème de tomate confite maison et pepperoni artisanal." },
+    { "name": "Smash UNO — Brooklyn", "category": "Smash UNO", "price": 59, "menu_price": 75, "priority": 3,
+      "description": "Bœuf, cheddar fondant, oignons caramélisés, jalapeños, pickles et bacon de canard croustillant." },
+    { "name": "Smash UNO — Forest", "category": "Smash UNO", "price": 59, "menu_price": 75, "priority": 4,
+      "description": "Bœuf, cheddar, oignons caramélisés, jalapeños, pickles, crème de champignons maison et champignons fondants." },
+
+    { "name": "Smash Double — Classic", "category": "Smash Double", "price": 75, "menu_price": 89, "priority": 1,
+      "description": "Double bœuf juteux, cheddar fondant, oignons caramélisés, pickles, jalapeños, moutarde américaine et ketchup." },
+    { "name": "Smash Double — Little Italy", "category": "Smash Double", "price": 89, "menu_price": 99, "priority": 2,
+      "description": "Double bœuf, cheddar, oignons caramélisés, jalapeños, pickles, crème de tomate confite maison et pepperoni artisanal." },
+    { "name": "Smash Double — Brooklyn", "category": "Smash Double", "price": 89, "menu_price": 99, "priority": 3,
+      "description": "Double bœuf, cheddar fondant, oignons caramélisés, jalapeños, pickles et bacon de canard croustillant." },
+    { "name": "Smash Double — Forest", "category": "Smash Double", "price": 89, "menu_price": 99, "priority": 4,
+      "description": "Double bœuf, cheddar, oignons caramélisés, jalapeños, pickles, crème de champignons maison et champignons fondants." },
+
+    { "name": "Snow Burger", "category": "Burgers signatures", "price": 110, "menu_price": 125, "priority": 1,
+      "description": "Pain maison, bœuf juteux, fondue de fromages Mister Jack et oignons caramélisés. Crémeux et intensément gourmand." },
+    { "name": "Jack's Burger", "category": "Burgers signatures", "price": 130, "menu_price": 145, "priority": 2,
+      "description": "Pain brioché, bœuf sélectionné, foie gras de canard, crème de truffe et oignons caramélisés. Le burger d'exception." },
+
+    { "name": "Hot-dog Original", "category": "Hot-dogs artisanaux", "price": 60, "menu_price": 75, "priority": 1,
+      "description": "Saucisse de canard, cheddar fondant, oignons caramélisés, moutarde, ketchup, oignons crispy, pickles et jalapeños." },
+    { "name": "Hot-dog Pepperoni", "category": "Hot-dogs artisanaux", "price": 70, "menu_price": 85, "priority": 2,
+      "description": "Sauce pepperoni maison, pepperoni, tomates confites, sauce cheddar, moutarde, ketchup, oignons caramélisés et jalapeños." },
+    { "name": "Hot-dog Delikatessen", "category": "Hot-dogs artisanaux", "price": 70, "menu_price": 85, "priority": 3,
+      "description": "Saucisse et bacon de canard, cheddar fondant, moutarde, ketchup, oignons caramélisés, pickles et jalapeños." },
+    { "name": "Hot-dog Cheesy", "category": "Hot-dogs artisanaux", "price": 70, "menu_price": 85, "priority": 4,
+      "description": "Saucisse de canard, mozzarella gratinée, cheddar coulant, oignons caramélisés, pickles et jalapeños. Ultra fondant." },
+
+    { "name": "Tarte tomate", "category": "Entrées", "price": 45, "priority": 1, "description": "Tomate confite maison." },
+    { "name": "Mac & cheese balls", "category": "Entrées", "price": 45, "priority": 2, "description": "Croustillantes dehors, coulantes dedans." },
+    { "name": "Crispy Chicken Jack's", "category": "Entrées", "price": 50, "priority": 3, "description": "Poulet croustillant, sauce maison." },
+
+    { "name": "Moelleux", "category": "Desserts", "price": 40, "priority": 1, "description": "Cœur coulant au chocolat intense. Chaud et irrésistible." },
+    { "name": "Cookies", "category": "Desserts", "price": 40, "priority": 2, "description": "Maison, moelleux et généreux. Le finish parfait." },
+    { "name": "Apple pie", "category": "Desserts", "price": 40, "priority": 3, "description": "Tarte aux pommes façon diner américain." }
   ],
-  "payments": {
-    "enabled": ["cod"],
-    "default": "cod"
-  }
+
+  "payments": { "enabled": ["cod"], "default": "cod" }
 }

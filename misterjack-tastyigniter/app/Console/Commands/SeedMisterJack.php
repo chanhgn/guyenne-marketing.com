@@ -6,22 +6,28 @@ namespace App\Console\Commands;
 
 use Igniter\Cart\Models\Category;
 use Igniter\Cart\Models\Menu;
+use Igniter\Cart\Models\MenuItemOption;
+use Igniter\Cart\Models\MenuItemOptionValue;
+use Igniter\Cart\Models\MenuOption;
+use Igniter\Cart\Models\MenuOptionValue;
 use Igniter\Local\Models\Location;
 use Igniter\Local\Models\LocationArea;
 use Igniter\Local\Models\WorkingHour;
 use Igniter\PayRegister\Models\Payment;
 use Igniter\System\Models\Country;
 use Igniter\System\Models\Currency;
+use Igniter\System\Models\Language;
 use Igniter\System\Models\Settings;
 use Illuminate\Console\Command;
 
 /**
  * Configure une installation TastyIgniter neuve avec les données Mister Jack :
- * réglages boutique, dirham marocain, établissements, horaires, zones de
- * livraison, catégories, carte et paiement à la livraison.
+ * réglages boutique, dirham marocain, établissements de Fès et Casablanca,
+ * horaires, zones de livraison, carte complète avec formules et paiement à la
+ * livraison.
  *
- * La commande est idempotente : on peut la relancer après avoir complété
- * data/misterjack.json (prix, adresse Casablanca) sans dupliquer les données.
+ * La commande est idempotente : on peut la relancer après avoir corrigé
+ * data/misterjack.json sans dupliquer les données.
  *
  * Usage : php artisan misterjack:seed --file=data/misterjack.json
  */
@@ -38,8 +44,14 @@ class SeedMisterJack extends Command
 
     private const HOUR_TYPES = ['opening', 'delivery', 'collection'];
 
-    /** Nombre d'articles Mister Jack laissés hors ligne faute de prix. */
+    /** Nom de l'option qui porte le supplément « en menu ». */
+    private const FORMULA_OPTION = 'Formule';
+
+    /** Nombre d'articles laissés hors ligne faute de prix. */
     private int $missingPrices = 0;
+
+    /** Langue demandée mais pas encore installée depuis le marketplace. */
+    private ?string $missingLanguage = null;
 
     public function handle(): int
     {
@@ -65,16 +77,17 @@ class SeedMisterJack extends Command
         $this->seedCurrency($data['currency'] ?? []);
         $this->seedLocations($data['locations'] ?? []);
         $categories = $this->seedCategories($data['categories'] ?? []);
-        $this->seedMenuItems($data['menu_items'] ?? [], $categories);
+        $options = $this->seedOptions($data['options'] ?? []);
+        $this->seedMenuItems($data['menu_items'] ?? [], $categories, $options);
         $this->seedPayments($data['payments'] ?? []);
 
         if (!$this->option('keep-demo')) {
-            $this->disableDemoData();
+            $this->disableDemoData($data);
         }
 
         $this->newLine();
         $this->info('Configuration Mister Jack appliquée.');
-        $this->reportPending();
+        $this->reportPending($data);
 
         return self::SUCCESS;
     }
@@ -83,6 +96,25 @@ class SeedMisterJack extends Command
     {
         if ($settings === []) {
             return;
+        }
+
+        // Le pack de langue s'installe depuis le marketplace, séparément : tant
+        // qu'il n'est pas là, forcer « fr » afficherait une interface anglaise
+        // sous une étiquette française. On ne bascule que si la langue existe.
+        $wanted = $settings['default_language'] ?? null;
+        unset($settings['default_language']);
+
+        if ($wanted !== null) {
+            $language = Language::query()
+                ->where('code', $wanted)
+                ->orWhere('code', 'like', $wanted.'\_%')
+                ->first();
+
+            if ($language) {
+                $settings['default_language'] = $language->code;
+            } else {
+                $this->missingLanguage = $wanted;
+            }
         }
 
         Settings::set($settings);
@@ -96,8 +128,6 @@ class SeedMisterJack extends Command
             return;
         }
 
-        $countryId = $this->countryId($currency['country_iso2'] ?? 'MA');
-
         $model = Currency::firstOrNew(['currency_code' => $currency['code']]);
         $model->currency_name = $currency['name'];
         $model->currency_symbol = $currency['symbol'];
@@ -107,13 +137,14 @@ class SeedMisterJack extends Command
         $model->decimal_position = (int) ($currency['decimal_position'] ?? 2);
         $model->currency_rate = 1;
         $model->currency_status = 1;
-        $model->country_id = $countryId;
+        $model->country_id = $this->countryId($currency['country_iso2'] ?? 'MA');
         $model->iso_alpha2 = $currency['country_iso2'] ?? 'MA';
         $model->save();
 
         // Un seul is_default possible : on bascule le drapeau à la main.
         Currency::query()->where('currency_id', '!=', $model->currency_id)->update(['is_default' => 0]);
         Currency::query()->where('currency_id', $model->currency_id)->update(['is_default' => 1]);
+        Settings::set(['default_currency_code' => $currency['code']]);
 
         $this->line("Devise par défaut : {$currency['code']} ({$currency['symbol']}).");
     }
@@ -134,11 +165,13 @@ class SeedMisterJack extends Command
             $location->location_telephone = $data['telephone'] ?? '';
             $location->location_lat = $data['lat'] ?? null;
             $location->location_lng = $data['lng'] ?? null;
+            // Coordonnées fournies : on coupe le géocodage automatique, qui
+            // échouerait en CLI (Nominatim exige un User-Agent de requête).
             $location->is_auto_lat_lng = ($data['lat'] ?? null) === null ? 1 : 0;
             $location->permalink_slug = $data['slug'];
 
-            // Sécurité : un établissement sans adresse ni téléphone ne doit pas
-            // encaisser de commandes, on le laisse hors ligne.
+            // Un établissement sans adresse ni téléphone ne doit pas encaisser
+            // de commandes : on le laisse hors ligne.
             $complete = !empty($data['address_1']) && !empty($data['telephone']);
             $location->location_status = ($data['status'] ?? false) && $complete ? 1 : 0;
             $location->is_default = ($data['is_default'] ?? false) ? 1 : 0;
@@ -158,23 +191,21 @@ class SeedMisterJack extends Command
             return;
         }
 
-        $regular = $hours['regular'] ?? ['open' => '11:30', 'close' => '00:00'];
+        $regular = $hours['regular'] ?? ['open' => '12:00', 'close' => '02:00'];
         $late = $hours['late_nights'] ?? null;
         $lateDays = $late['weekdays'] ?? [];
 
         foreach (self::HOUR_TYPES as $type) {
             foreach (self::WEEKDAYS as $weekday) {
                 $isLate = in_array($weekday, $lateDays, true);
-                $open = $isLate ? $late['open'] : $regular['open'];
-                $close = $isLate ? $late['close'] : $regular['close'];
 
                 $hour = WorkingHour::firstOrNew([
                     'location_id' => $location->getKey(),
                     'type' => $type,
                     'weekday' => $weekday,
                 ]);
-                $hour->opening_time = $open;
-                $hour->closing_time = $close;
+                $hour->opening_time = $isLate ? $late['open'] : $regular['open'];
+                $hour->closing_time = $isLate ? $late['close'] : $regular['close'];
                 $hour->status = 1;
                 $hour->save();
             }
@@ -231,10 +262,50 @@ class SeedMisterJack extends Command
         return $created;
     }
 
-    /** @param array<string, Category> $categories */
-    private function seedMenuItems(array $items, array $categories): void
+    /**
+     * Crée les options partagées (« Formule : seul / en menu »). Le prix porté
+     * ici n'est qu'une valeur par défaut : chaque article surcharge le
+     * supplément avec son écart réel, relevé sur la carte.
+     *
+     * @return array<string, MenuOption>
+     */
+    private function seedOptions(array $options): array
+    {
+        $created = [];
+
+        foreach ($options as $data) {
+            $option = MenuOption::firstOrNew(['option_name' => $data['name']]);
+            $option->display_type = $data['display_type'] ?? 'radio';
+            $option->save();
+
+            foreach ($data['values'] ?? [] as $index => $value) {
+                $model = MenuOptionValue::firstOrNew([
+                    'option_id' => $option->getKey(),
+                    'name' => $value['name'],
+                ]);
+                $model->price = $value['price'] ?? 0;
+                $model->priority = $value['priority'] ?? ($index + 1);
+                $model->save();
+            }
+
+            $created[$data['name']] = $option->refresh();
+        }
+
+        if ($created !== []) {
+            $this->line('Options : '.implode(', ', array_keys($created)).'.');
+        }
+
+        return $created;
+    }
+
+    /**
+     * @param array<string, Category> $categories
+     * @param array<string, MenuOption> $options
+     */
+    private function seedMenuItems(array $items, array $categories, array $options): void
     {
         $this->missingPrices = 0;
+        $withFormula = 0;
 
         foreach ($items as $data) {
             $menu = Menu::firstOrNew(['menu_name' => $data['name']]);
@@ -256,9 +327,60 @@ class SeedMisterJack extends Command
             if ($category instanceof Category) {
                 $menu->categories()->sync([$category->getKey()]);
             }
+
+            if ($this->attachFormula($menu, $data, $options)) {
+                $withFormula++;
+            }
         }
 
-        $this->line('Articles : '.count($items)." (dont {$this->missingPrices} sans prix, laissés hors ligne).");
+        $this->line('Articles : '.count($items)." (dont {$withFormula} avec formule, {$this->missingPrices} sans prix laissés hors ligne).");
+    }
+
+    /**
+     * Attache l'option « Formule » à un article et fixe le supplément menu au
+     * prix exact de la carte (menu_price - price), qui varie d'un burger à
+     * l'autre : +15 DH sur le Classic, +10 DH sur les Smash Double.
+     *
+     * @param array<string, MenuOption> $options
+     */
+    private function attachFormula(Menu $menu, array $data, array $options): bool
+    {
+        $option = $options[self::FORMULA_OPTION] ?? null;
+        $menuPrice = $data['menu_price'] ?? null;
+
+        if (!$option instanceof MenuOption || $menuPrice === null) {
+            return false;
+        }
+
+        $supplement = round((float) $menuPrice - (float) ($data['price'] ?? 0), 2);
+        if ($supplement <= 0) {
+            return false;
+        }
+
+        $itemOption = MenuItemOption::firstOrNew([
+            'menu_id' => $menu->getKey(),
+            'option_id' => $option->getKey(),
+        ]);
+        $itemOption->is_required = 1;
+        $itemOption->min_selected = 1;
+        $itemOption->max_selected = 1;
+        $itemOption->priority = 1;
+        $itemOption->save();
+
+        foreach ($option->option_values as $value) {
+            $isFormula = (float) $value->price > 0;
+
+            $itemValue = MenuItemOptionValue::firstOrNew([
+                'menu_option_id' => $itemOption->getKey(),
+                'option_value_id' => $value->getKey(),
+            ]);
+            $itemValue->override_price = $isFormula ? $supplement : 0;
+            $itemValue->priority = $value->priority;
+            $itemValue->is_default = $isFormula ? 0 : 1;
+            $itemValue->save();
+        }
+
+        return true;
     }
 
     private function seedPayments(array $payments): void
@@ -278,39 +400,47 @@ class SeedMisterJack extends Command
      * carte anglaise). On le désactive au lieu de le supprimer pour garder les
      * contraintes de clés étrangères intactes.
      */
-    private function disableDemoData(): void
+    private function disableDemoData(array $data): void
     {
-        $keptSlugs = Location::query()->whereIn('permalink_slug', ['fes', 'casablanca'])->pluck('location_id');
+        $ourSlugs = array_column($data['locations'] ?? [], 'slug');
+        $ourNames = array_column($data['menu_items'] ?? [], 'name');
 
         $demoLocations = Location::query()
-            ->whereNotIn('location_id', $keptSlugs)
+            ->whereNotIn('permalink_slug', $ourSlugs)
             ->update(['location_status' => 0, 'is_default' => 0]);
 
-        $ourCategories = Category::query()
-            ->whereIn('name', ['Burgers signature', 'Hot-dogs', 'Sides', 'Boissons & milkshakes'])
-            ->pluck('category_id');
-
         $demoMenus = Menu::query()
-            ->whereDoesntHave('categories', fn($query) => $query->whereIn('categories.category_id', $ourCategories))
+            ->whereNotIn('menu_name', $ourNames)
             ->update(['menu_status' => 0]);
 
         $this->line("Démo TastyIgniter désactivée : {$demoLocations} établissement(s), {$demoMenus} article(s).");
     }
 
-    private function reportPending(): void
+    private function reportPending(array $data): void
     {
         $pending = [];
 
         if ($this->missingPrices > 0) {
-            $pending[] = $this->missingPrices.' article(s) sans prix : compléter data/misterjack.json depuis l\'export GloriaFood, puis relancer la commande.';
+            $pending[] = $this->missingPrices.' article(s) sans prix, laissés hors ligne : compléter data/misterjack.json puis relancer.';
         }
 
-        if (Location::query()->where('location_status', 0)->where('permalink_slug', 'casablanca')->exists()) {
-            $pending[] = 'Établissement Casablanca : adresse, téléphone et GPS manquants.';
+        foreach ($data['locations'] ?? [] as $location) {
+            if (($location['coords_verified'] ?? true) === false) {
+                $pending[] = "Coordonnées GPS de « {$location['name']} » approximatives : les ajuster sur la carte de l'admin, elles définissent le centre des zones de livraison.";
+            }
+        }
+
+        $offline = Location::query()->where('location_status', 0)->pluck('location_name')->all();
+        if ($offline !== []) {
+            $pending[] = 'Établissement(s) hors ligne : '.implode(', ', $offline).'.';
+        }
+
+        if ($this->missingLanguage !== null) {
+            $pending[] = "Langue « {$this->missingLanguage} » absente : l'interface reste en anglais. Installer le pack (php artisan igniter:language-install fr_FR) puis relancer cette commande.";
         }
 
         if (!setting('maps_api_key')) {
-            $pending[] = 'Clé Google Maps absente : le contrôle des zones de livraison par adresse ne fonctionnera pas.';
+            $pending[] = 'Pas de clé Google Maps : le géocodage passe par Nominatim (OpenStreetMap), gratuit mais moins précis sur les adresses marocaines. Le retrait sur place ne dépend pas du géocodage.';
         }
 
         if ($pending === []) {
@@ -318,7 +448,7 @@ class SeedMisterJack extends Command
         }
 
         $this->newLine();
-        $this->warn('À compléter avant mise en production :');
+        $this->warn('À surveiller avant mise en production :');
         foreach ($pending as $item) {
             $this->warn(' - '.$item);
         }

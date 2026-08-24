@@ -12,6 +12,7 @@
 
 set -euo pipefail
 
+KIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOMAIN="${DOMAIN:-order.misterjack.ma}"
 APP_DIR="${APP_DIR:-$HOME/apps/order}"
 DOCROOT="${DOCROOT:-$HOME/domains/$DOMAIN/public_html}"
@@ -129,6 +130,44 @@ log "Création des tables TastyIgniter"
 
 $PHP_BIN artisan igniter:install --no-interaction --force
 
+# --- 5b. Fichiers du kit Mister Jack ----------------------------------------
+
+log "Copie des fichiers Mister Jack"
+
+mkdir -p "$APP_DIR/app/Console/Commands" "$APP_DIR/data" "$APP_DIR/scripts" "$APP_DIR/config"
+cp "$KIT_DIR"/app/Console/Commands/*.php "$APP_DIR/app/Console/Commands/"
+cp "$KIT_DIR"/data/*.json "$APP_DIR/data/"
+cp "$KIT_DIR"/scripts/*.sh "$APP_DIR/scripts/"
+cp "$KIT_DIR"/config/geocoder.php "$APP_DIR/config/"
+chmod +x "$APP_DIR"/scripts/*.sh
+echo "Commandes, données et scripts en place"
+
+# --- 5c. Compte administrateur ----------------------------------------------
+# Sans administrateur, TastyIgniter redirige toute la boutique vers /admin.
+
+log "Création du compte administrateur"
+
+if [ "$($PHP_BIN artisan tinker --execute='echo \Igniter\User\Models\User::count();' 2>/dev/null | tail -1)" = "0" ]; then
+    $PHP_BIN artisan misterjack:admin
+else
+    echo "Un administrateur existe déjà, étape ignorée"
+fi
+
+# --- 5d. Données Mister Jack ------------------------------------------------
+
+log "Chargement de la carte, des établissements et des horaires"
+
+$PHP_BIN artisan misterjack:seed
+
+# --- 5e. Traduction française -----------------------------------------------
+# Le pack passe par le marketplace TastyIgniter : si le serveur ne l'atteint
+# pas, l'interface reste en anglais et se traduit plus tard, sans bloquer.
+
+log "Installation de la traduction française"
+
+$PHP_BIN artisan igniter:language-install fr_FR 2>/dev/null \
+    || warn "Pack français non installé (marketplace injoignable). À relancer plus tard : php artisan igniter:language-install"
+
 # --- 6. Racine web ----------------------------------------------------------
 # Laravel expose uniquement public/. On pointe la racine du sous-domaine
 # dessus par un lien symbolique : rien d'autre n'est accessible depuis le web.
@@ -154,7 +193,18 @@ $PHP_BIN artisan storage:link 2>/dev/null || true
 chmod -R 755 storage bootstrap/cache
 $PHP_BIN artisan optimize:clear >/dev/null
 
-# --- 7. Suite ---------------------------------------------------------------
+# --- 7. Jeton API pour l'application de cuisine TaCo -------------------------
+
+log "Jeton API pour TaCo (application mobile de réception des commandes)"
+
+read -rp "E-mail de l'administrateur pour le jeton TaCo (vide pour passer) : " TACO_EMAIL
+if [ -n "$TACO_EMAIL" ]; then
+    $PHP_BIN artisan igniter:api-token --name="TaCo cuisine" --email="$TACO_EMAIL" --admin \
+        || warn "Jeton non émis : vérifier l'adresse. Relançable à tout moment."
+    echo "À saisir dans TaCo avec l'URL https://$DOMAIN"
+fi
+
+# --- 8. Suite ---------------------------------------------------------------
 
 cat <<EOF
 
@@ -164,24 +214,29 @@ cat <<EOF
 
 Étapes suivantes, dans l'ordre :
 
- 1. Ouvrir https://$DOMAIN/admin et compléter l'assistant
-    « Initial Setup » : il crée le compte administrateur.
-    (Sans ce compte, la boutique redirige vers /admin.)
+ 1. Ajouter les tâches planifiées dans hPanel > Tâches Cron :
 
- 2. Charger les données Mister Jack :
-      cd $APP_DIR
-      cp -r <kit>/data data
-      cp -r <kit>/app/Console/Commands/SeedMisterJack.php app/Console/Commands/
-      $PHP_BIN artisan misterjack:seed
-
- 3. Ajouter le cron dans hPanel > Tâches Cron (toutes les minutes) :
+    Toutes les minutes — paniers, statuts, relances :
       cd $APP_DIR && $PHP_BIN artisan schedule:run >/dev/null 2>&1
 
- 4. Renseigner la clé Google Maps dans l'admin
-    (Système > Réglages > Carte) : sans elle, le contrôle des zones
-    de livraison par adresse ne fonctionne pas.
+    Tous les jours à 4h15 — sauvegarde base + fichiers, 14 jours d'historique :
+      cd $APP_DIR && bash scripts/backup.sh >> \$HOME/logs/backup.log 2>&1
 
- 5. Passer une commande test en paiement à la livraison avant
-    de rediriger le trafic depuis misterjack.ma.
+    Lundi 5h00 — mise à jour avec sauvegarde et restauration automatique :
+      cd $APP_DIR && bash scripts/update.sh >> \$HOME/logs/update.log 2>&1
+
+ 2. Ouvrir https://$DOMAIN/admin et vérifier :
+    - le point GPS de chaque restaurant sur la carte (il définit le centre
+      des zones de livraison, les coordonnées du kit sont approximatives) ;
+    - les horaires (12h00 – 02h00 tous les jours) ;
+    - le SMTP d'envoi des mails de commande.
+
+ 3. Installer TaCo sur le téléphone ou la tablette de la cuisine
+    (App Store / Google Play), la connecter avec l'URL et le jeton
+    ci-dessus, et vérifier qu'une commande test déclenche la notification.
+
+ 4. Passer une commande test en paiement à la livraison, en retrait
+    puis en livraison, avant de rediriger le trafic depuis misterjack.ma
+    (voir docs/03-integration-wordpress.md).
 
 EOF

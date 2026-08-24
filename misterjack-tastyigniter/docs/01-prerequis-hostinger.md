@@ -33,18 +33,30 @@ propre base. Le site WordPress n'est pas modifié, hormis les liens « Commander
    extensions `intl`, `zip`, `gd`, `dom`, `fileinfo`, `mbstring`, `curl`,
    `pdo_mysql`. Le script vérifie et s'arrête si l'une manque.
 
-## Google Maps : le point à ne pas négliger
+## Géocodage des adresses, sans clé Google
 
-Les zones de livraison de TastyIgniter fonctionnent par géocodage de l'adresse
-du client. Sans clé Google Maps Platform (API Geocoding + Maps JavaScript,
-facturation activée), le client ne peut pas être rattaché à une zone et la
-livraison est refusée à la commande.
+Les zones de livraison fonctionnent par géocodage : TastyIgniter convertit
+l'adresse saisie par le client en coordonnées, puis regarde dans quelle zone
+elle tombe. Le cœur sait le faire avec deux fournisseurs, Google Maps et
+Nominatim (OpenStreetMap).
 
-Deux options :
-- créer la clé sur Google Cloud, la restreindre au domaine `order.misterjack.ma`,
-  et la saisir dans Admin > Système > Réglages > Carte ;
-- ou démarrer en **retrait sur place uniquement** (aucune clé nécessaire) et
-  activer la livraison ensuite.
+Le kit règle le géocodeur sur **Nominatim** (`config/geocoder.php`), localisé
+sur le Maroc : gratuit, sans clé ni carte bancaire. Ce qu'il faut savoir :
+
+- la couverture des adresses marocaines y est plus inégale que chez Google.
+  Une adresse mal reconnue empêche la livraison, mais **jamais le retrait sur
+  place**, qui ne dépend d'aucun géocodage ;
+- l'usage est plafonné à environ une requête par seconde, ce qui est très
+  au-dessus du volume d'un restaurant ;
+- le jour où la précision devient un problème : créer une clé Google Maps
+  Platform, la restreindre à `order.misterjack.ma`, la saisir dans
+  Admin > Système > Réglages > Carte, et passer `GEOCODER_DRIVER=chain` dans le
+  `.env`. Google reprend alors la main, avec Nominatim en secours.
+
+Les coordonnées des deux restaurants sont écrites en dur dans
+`data/misterjack.json` pour éviter tout appel au géocodeur pendant
+l'installation. Elles sont approximatives : les ajuster sur la carte de l'admin
+après l'installation, puisqu'elles définissent le centre des zones de livraison.
 
 ## Repli si `composer create-project` échoue
 
