@@ -1,0 +1,133 @@
+{
+  "_comment": "Donnees de configuration Mister Jack pour TastyIgniter. Les champs a null doivent etre completes depuis l'export GloriaFood (menu > prix) et les infos du client (adresse Casablanca, coordonnees GPS exactes).",
+  "settings": {
+    "site_name": "Mister Jack",
+    "site_email": "contact@misterjack.ma",
+    "order_email": "contact@misterjack.ma",
+    "timezone": "Africa/Casablanca",
+    "distance_unit": "km",
+    "site_location_mode": "multiple"
+  },
+  "currency": {
+    "code": "MAD",
+    "name": "Moroccan Dirham",
+    "symbol": "DH",
+    "symbol_position": 1,
+    "thousand_sign": " ",
+    "decimal_sign": ",",
+    "decimal_position": 2,
+    "country_iso2": "MA"
+  },
+  "locations": [
+    {
+      "slug": "fes",
+      "name": "Mister Jack Fès",
+      "email": "contact@misterjack.ma",
+      "description": "Burgers smashés et hot-dogs faits maison, pain cuit sur place, viande de bœuf halal. Livraison à Fès et alentours.",
+      "address_1": "1 avenue Saint Louis",
+      "address_2": "Aïn Chkef",
+      "city": "Fès",
+      "state": "Fès-Meknès",
+      "postcode": "30050",
+      "country_iso2": "MA",
+      "telephone": "+212691537984",
+      "lat": 33.9628,
+      "lng": -5.0242,
+      "coords_verified": false,
+      "is_default": true,
+      "status": true,
+      "hours": {
+        "regular": { "open": "11:30", "close": "00:00" },
+        "late_nights": { "weekdays": [4, 5], "open": "11:30", "close": "02:00" }
+      },
+      "delivery_areas": [
+        {
+          "name": "Aïn Chkef / Saïss (zone proche)",
+          "type": "circle",
+          "radius_km": 5,
+          "delivery_fee": 10,
+          "min_order": 50,
+          "priority": 1
+        },
+        {
+          "name": "Fès Ville Nouvelle / Agdal / Narjiss",
+          "type": "circle",
+          "radius_km": 10,
+          "delivery_fee": 15,
+          "min_order": 80,
+          "priority": 2
+        },
+        {
+          "name": "Grand Fès (périphérie)",
+          "type": "circle",
+          "radius_km": 18,
+          "delivery_fee": 25,
+          "min_order": 120,
+          "priority": 3
+        }
+      ]
+    },
+    {
+      "slug": "casablanca",
+      "name": "Mister Jack Casablanca",
+      "email": "contact@misterjack.ma",
+      "description": "Burgers smashés et hot-dogs faits maison à Casablanca. À emporter et livraison.",
+      "address_1": null,
+      "address_2": null,
+      "city": "Casablanca",
+      "state": "Casablanca-Settat",
+      "postcode": null,
+      "country_iso2": "MA",
+      "telephone": null,
+      "lat": null,
+      "lng": null,
+      "coords_verified": false,
+      "is_default": false,
+      "status": false,
+      "_note": "Restera desactivee tant que adresse + telephone + GPS ne sont pas renseignes.",
+      "hours": {
+        "regular": { "open": "11:30", "close": "00:00" },
+        "late_nights": { "weekdays": [4, 5], "open": "11:30", "close": "02:00" }
+      },
+      "delivery_areas": [
+        {
+          "name": "Maârif / Gauthier / Anfa",
+          "type": "circle",
+          "radius_km": 6,
+          "delivery_fee": 15,
+          "min_order": 80,
+          "priority": 1
+        },
+        {
+          "name": "Sidi Maârouf / Aïn Diab",
+          "type": "circle",
+          "radius_km": 12,
+          "delivery_fee": 25,
+          "min_order": 120,
+          "priority": 2
+        }
+      ]
+    }
+  ],
+  "categories": [
+    { "name": "Burgers signature", "description": "Burgers smashés sur plaque chaude, pain maison cuit sur place, viande de bœuf halal sélectionnée", "priority": 1 },
+    { "name": "Hot-dogs", "description": "Hot-dogs américains artisanaux, pain maison, saucisses halal de qualité", "priority": 2 },
+    { "name": "Sides", "description": "Frites maison, onion rings et accompagnements", "priority": 3 },
+    { "name": "Boissons & milkshakes", "description": "Milkshakes maison et boissons fraîches", "priority": 4 }
+  ],
+  "menu_items": [
+    { "name": "Le Classic", "category": "Burgers signature", "description": "Burger signature avec cheddar fondu, oignons frits maison et notre sauce signature", "price": null, "priority": 1 },
+    { "name": "Smash UNO", "category": "Burgers signature", "description": "Smashburger phare cuit à la commande sur plaque chaude, façon diner New-Yorkais", "price": null, "priority": 2 },
+    { "name": "Hot-dog Pepperoni", "category": "Hot-dogs", "description": "Saveurs italo-américaines, pepperoni et garniture maison", "price": null, "priority": 1 },
+    { "name": "Hot-dog Cheesy", "category": "Hot-dogs", "description": "Hot-dog ultra-fondu au fromage", "price": null, "priority": 2 },
+    { "name": "Hot-dog Classique", "category": "Hot-dogs", "description": "Moutarde, ketchup et oignons frits maison", "price": null, "priority": 3 },
+    { "name": "Frites maison", "category": "Sides", "description": "Frites fraîches préparées sur place", "price": null, "priority": 1 },
+    { "name": "Onion rings", "category": "Sides", "description": "Rondelles d'oignon panées maison", "price": null, "priority": 2 },
+    { "name": "Milkshake", "category": "Boissons & milkshakes", "description": "Milkshake maison", "price": null, "priority": 1 },
+    { "name": "Boisson fraîche", "category": "Boissons & milkshakes", "description": "Sodas et boissons fraîches", "price": null, "priority": 2 }
+  ],
+  "payments": {
+    "enabled": ["cod"],
+    "default": "cod"
+  }
+}
