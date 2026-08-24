@@ -49,17 +49,32 @@ done
 [ -z "$MISSING" ] || die "Extensions PHP manquantes :$MISSING (à activer dans hPanel > PHP Configuration)"
 echo "Extensions PHP OK"
 
-if command -v composer >/dev/null; then
-    COMPOSER="composer"
+# Sur mutualisé, le PHP de la ligne de commande est souvent plus ancien que
+# celui du site (Hostinger : 8.2 en CLI, 8.3 sur le web). Composer lancé nu
+# hériterait du vieux PHP et échouerait sur la contrainte de plateforme, avec
+# un message peu parlant. On l'invoque donc explicitement avec $PHP_BIN.
+if [ -n "${COMPOSER:-}" ]; then
+    echo "Composer imposé : $COMPOSER"
+elif COMPOSER_PHAR="$(command -v composer 2>/dev/null)"; then
+    COMPOSER="$PHP_BIN $COMPOSER_PHAR"
 else
     warn "Composer absent du PATH, installation locale dans $HOME/bin"
     mkdir -p "$HOME/bin"
     $PHP_BIN -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
     $PHP_BIN /tmp/composer-setup.php --install-dir="$HOME/bin" --filename=composer
     rm -f /tmp/composer-setup.php
-    COMPOSER="$HOME/bin/composer"
+    COMPOSER="$PHP_BIN $HOME/bin/composer"
 fi
 echo "Composer : $($COMPOSER --version 2>/dev/null | head -1)"
+
+# Contrôle explicite : le PHP vu par Composer est celui qui compte.
+COMPOSER_PHP="$($COMPOSER show --platform 2>/dev/null | awk '$1=="php"{print $2; exit}')"
+if [ -n "$COMPOSER_PHP" ]; then
+    echo "Composer tourne sur PHP $COMPOSER_PHP"
+    if [ "$(printf '%s\n%s\n' "$MIN_PHP" "$COMPOSER_PHP" | sort -V | head -1)" != "$MIN_PHP" ]; then
+        die "Composer tourne sur PHP $COMPOSER_PHP, TastyIgniter exige >= $MIN_PHP. Relancez avec PHP_BIN pointant sur un PHP $MIN_PHP+."
+    fi
+fi
 
 # --- 2. Récupération des identifiants MySQL --------------------------------
 # Base à créer au préalable dans hPanel > Bases de données MySQL.
