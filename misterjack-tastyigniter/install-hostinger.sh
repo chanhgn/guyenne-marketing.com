@@ -6,6 +6,13 @@
 #
 #   bash install-hostinger.sh
 #
+# Mode non interactif : renseigner les variables et le script ne pose aucune
+# question (utile pour coller une seule commande dans un terminal navigateur).
+#
+#   DB_DATABASE=… DB_USERNAME=… DB_PASSWORD=… \
+#   ADMIN_EMAIL=… ADMIN_PASSWORD=… TACO_EMAIL=… \
+#   bash install-hostinger.sh
+#
 # Le script est idempotent : en cas d'interruption, on peut le relancer.
 # Il ne stocke aucun mot de passe : les identifiants MySQL sont demandés
 # à l'exécution et écrits uniquement dans le .env du serveur.
@@ -59,16 +66,21 @@ echo "Composer : $($COMPOSER --version 2>/dev/null | head -1)"
 
 log "Identifiants de la base de données (hPanel > Bases de données MySQL)"
 
-read -rp "Nom de la base   : " DB_DATABASE
-read -rp "Utilisateur      : " DB_USERNAME
-read -rsp "Mot de passe     : " DB_PASSWORD; echo
+[ -n "${DB_DATABASE:-}" ] || read -rp "Nom de la base   : " DB_DATABASE
+[ -n "${DB_USERNAME:-}" ] || read -rp "Utilisateur      : " DB_USERNAME
+if [ -z "${DB_PASSWORD:-}" ]; then
+    read -rsp "Mot de passe     : " DB_PASSWORD; echo
+fi
 DB_HOST="${DB_HOST:-localhost}"
 
+# mysqli lève des exceptions par défaut depuis PHP 8.1 : sans ce report_off,
+# un mauvais mot de passe crache une trace fatale au lieu du message.
 $PHP_BIN -r '
+mysqli_report(MYSQLI_REPORT_OFF);
 $c = @mysqli_connect($argv[1], $argv[2], $argv[3], $argv[4]);
 if (!$c) { fwrite(STDERR, "Connexion MySQL refusee: ".mysqli_connect_error()."\n"); exit(1); }
 echo "Connexion MySQL OK\n";
-' "$DB_HOST" "$DB_USERNAME" "$DB_PASSWORD" "$DB_DATABASE" || die "Identifiants MySQL invalides"
+' "$DB_HOST" "$DB_USERNAME" "$DB_PASSWORD" "$DB_DATABASE" || die "Identifiants MySQL invalides (verifier base, utilisateur, mot de passe dans hPanel)"
 
 # --- 3. Installation du code ------------------------------------------------
 
@@ -148,7 +160,15 @@ echo "Commandes, données et scripts en place"
 log "Création du compte administrateur"
 
 if [ "$($PHP_BIN artisan tinker --execute='echo \Igniter\User\Models\User::count();' 2>/dev/null | tail -1)" = "0" ]; then
-    $PHP_BIN artisan misterjack:admin
+    if [ -n "${ADMIN_EMAIL:-}" ] && [ -n "${ADMIN_PASSWORD:-}" ]; then
+        $PHP_BIN artisan misterjack:admin \
+            --email="$ADMIN_EMAIL" \
+            --name="${ADMIN_NAME:-Mister Jack}" \
+            --username="${ADMIN_USERNAME:-admin}" \
+            --password="$ADMIN_PASSWORD"
+    else
+        $PHP_BIN artisan misterjack:admin
+    fi
 else
     echo "Un administrateur existe déjà, étape ignorée"
 fi
@@ -197,7 +217,10 @@ $PHP_BIN artisan optimize:clear >/dev/null
 
 log "Jeton API pour TaCo (application mobile de réception des commandes)"
 
-read -rp "E-mail de l'administrateur pour le jeton TaCo (vide pour passer) : " TACO_EMAIL
+TACO_EMAIL="${TACO_EMAIL:-${ADMIN_EMAIL:-}}"
+if [ -z "$TACO_EMAIL" ]; then
+    read -rp "E-mail de l'administrateur pour le jeton TaCo (vide pour passer) : " TACO_EMAIL
+fi
 if [ -n "$TACO_EMAIL" ]; then
     $PHP_BIN artisan igniter:api-token --name="TaCo cuisine" --email="$TACO_EMAIL" --admin \
         || warn "Jeton non émis : vérifier l'adresse. Relançable à tout moment."
