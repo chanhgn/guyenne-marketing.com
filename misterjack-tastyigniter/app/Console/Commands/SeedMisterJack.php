@@ -117,9 +117,35 @@ class SeedMisterJack extends Command
             }
         }
 
-        Settings::set($settings);
+        Settings::set($this->normaliseStatusSettings($settings));
 
         $this->line('Réglages boutique : '.count($settings).' clés écrites.');
+    }
+
+    /**
+     * Les statuts de commande n'ont pas tous le même type côté TastyIgniter :
+     * « en cours » et « terminée » sont des listes (le cœur fait un array_merge
+     * dessus), « par défaut » et « annulée » sont des identifiants simples.
+     * Un scalaire là où une liste est attendue casse tout le rendu de la
+     * boutique, sans rien écrire dans les logs : on normalise ici plutôt que de
+     * compter sur la rigueur du fichier JSON.
+     */
+    private function normaliseStatusSettings(array $settings): array
+    {
+        foreach (['processing_order_status', 'completed_order_status'] as $key) {
+            if (array_key_exists($key, $settings)) {
+                $settings[$key] = array_values(array_map('intval', (array) $settings[$key]));
+            }
+        }
+
+        foreach (['default_order_status', 'canceled_order_status'] as $key) {
+            if (array_key_exists($key, $settings)) {
+                $value = $settings[$key];
+                $settings[$key] = (int) (is_array($value) ? reset($value) : $value);
+            }
+        }
+
+        return $settings;
     }
 
     private function seedCurrency(array $currency): void

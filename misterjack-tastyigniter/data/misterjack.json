@@ -17,9 +17,10 @@
     "menus_page_limit": 60,
     "allow_guest_order": 1,
     "order_email": ["admin", "location", "customer"],
-    "processing_order_status": 1,
-    "completed_order_status": 5,
-    "canceled_order_status": 6
+    "default_order_status": 1,
+    "processing_order_status": [2, 3, 4],
+    "completed_order_status": [5],
+    "canceled_order_status": 9
   },
 
   "currency": {
