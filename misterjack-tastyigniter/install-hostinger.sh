@@ -161,11 +161,10 @@ $PHP_BIN artisan igniter:install --no-interaction --force
 
 log "Copie des fichiers Mister Jack"
 
-mkdir -p "$APP_DIR/app/Console/Commands" "$APP_DIR/data" "$APP_DIR/scripts" "$APP_DIR/config"
+mkdir -p "$APP_DIR/app/Console/Commands" "$APP_DIR/data" "$APP_DIR/scripts"
 cp "$KIT_DIR"/app/Console/Commands/*.php "$APP_DIR/app/Console/Commands/"
 cp "$KIT_DIR"/data/*.json "$APP_DIR/data/"
 cp "$KIT_DIR"/scripts/*.sh "$APP_DIR/scripts/"
-cp "$KIT_DIR"/config/geocoder.php "$APP_DIR/config/"
 chmod +x "$APP_DIR"/scripts/*.sh
 echo "Commandes, données et scripts en place"
 

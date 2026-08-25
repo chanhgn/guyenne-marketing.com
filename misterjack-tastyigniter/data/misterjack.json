@@ -13,6 +13,8 @@
     "site_logo": null,
     "timezone": "Africa/Casablanca",
     "default_language": "fr",
+    "default_geocoder": "chain",
+    "location_order": 0,
     "distance_unit": "km",
     "menus_page_limit": 60,
     "allow_guest_order": 1,

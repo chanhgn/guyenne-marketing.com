@@ -74,6 +74,7 @@ class SeedMisterJack extends Command
         }
 
         $this->seedSettings($data['settings'] ?? []);
+        $this->seedCountry($data['currency']['country_iso2'] ?? 'MA');
         $this->seedCurrency($data['currency'] ?? []);
         $this->seedLocations($data['locations'] ?? []);
         $categories = $this->seedCategories($data['categories'] ?? []);
@@ -146,6 +147,30 @@ class SeedMisterJack extends Command
         }
 
         return $settings;
+    }
+
+    /**
+     * Le pays par défaut de la boutique ne sert pas qu'à l'affichage : le cœur
+     * en tire la région envoyée au géocodeur (`igniter-geocoder.providers.*.region`).
+     * Laissé sur la valeur d'usine, il fait chercher les adresses marocaines
+     * dans un autre pays et le géocodage ne renvoie jamais rien.
+     */
+    private function seedCountry(string $iso2): void
+    {
+        $country = Country::query()->where('iso_code_2', $iso2)->first();
+        if (!$country) {
+            $this->warn("Pays {$iso2} introuvable : géocodage laissé sur la région par défaut.");
+
+            return;
+        }
+
+        Country::query()->where('is_default', 1)->update(['is_default' => 0]);
+        Country::query()->where('country_id', $country->country_id)->update([
+            'is_default' => 1,
+            'status' => 1,
+        ]);
+
+        $this->line("Pays par défaut : {$country->country_name} ({$iso2}) — région du géocodeur.");
     }
 
     private function seedCurrency(array $currency): void

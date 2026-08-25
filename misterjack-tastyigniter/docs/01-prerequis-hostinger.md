@@ -33,25 +33,37 @@ propre base. Le site WordPress n'est pas modifié, hormis les liens « Commander
    extensions `intl`, `zip`, `gd`, `dom`, `fileinfo`, `mbstring`, `curl`,
    `pdo_mysql`. Le script vérifie et s'arrête si l'une manque.
 
-## Géocodage des adresses, sans clé Google
+## Géocodage des adresses
 
 Les zones de livraison fonctionnent par géocodage : TastyIgniter convertit
 l'adresse saisie par le client en coordonnées, puis regarde dans quelle zone
-elle tombe. Le cœur sait le faire avec deux fournisseurs, Google Maps et
-Nominatim (OpenStreetMap).
+elle tombe. Deux fournisseurs sont disponibles, Nominatim (OpenStreetMap,
+gratuit) et Google Maps.
 
-Le kit règle le géocodeur sur **Nominatim** (`config/geocoder.php`), localisé
-sur le Maroc : gratuit, sans clé ni carte bancaire. Ce qu'il faut savoir :
+Deux réglages commandent tout, et se posent depuis la base, pas depuis un
+fichier de configuration :
 
-- la couverture des adresses marocaines y est plus inégale que chez Google.
-  Une adresse mal reconnue empêche la livraison, mais **jamais le retrait sur
-  place**, qui ne dépend d'aucun géocodage ;
-- l'usage est plafonné à environ une requête par seconde, ce qui est très
-  au-dessus du volume d'un restaurant ;
-- le jour où la précision devient un problème : créer une clé Google Maps
-  Platform, la restreindre à `order.misterjack.ma`, la saisir dans
-  Admin > Système > Réglages > Carte, et passer `GEOCODER_DRIVER=chain` dans le
-  `.env`. Google reprend alors la main, avec Nominatim en secours.
+- `default_geocoder` : `nominatim`, `google` ou `chain` (Google d'abord,
+  Nominatim en secours). Le kit met `chain`.
+- le **pays par défaut de la boutique**, qui fournit la région envoyée au
+  géocodeur (`igniter-geocoder.providers.*.region`). Laissé sur la valeur
+  d'usine, il fait chercher les adresses marocaines dans un autre pays et le
+  géocodage ne renvoie jamais rien. Le kit force le Maroc.
+
+Sur les adresses marocaines, Nominatim reste inégal même bien réglé. Pour une
+livraison fiable, prévoir une clé Google Maps Platform :
+
+1. console.cloud.google.com, nouveau projet, facturation activée
+   (10 000 appels de géocodage gratuits par mois, très au-dessus du volume
+   d'un restaurant) ;
+2. activer **Geocoding API** ;
+3. créer une clé API, la restreindre par **adresse IP** — celle du serveur,
+   car TastyIgniter géocode côté serveur, pas depuis le navigateur — et la
+   limiter à Geocoding API ;
+4. la coller dans Admin > Système > Réglages > clé API Google Maps.
+
+Le retrait sur place ne dépend d'aucun géocodage : il fonctionne même sans clé
+et sans réseau vers OpenStreetMap.
 
 Les coordonnées des deux restaurants sont écrites en dur dans
 `data/misterjack.json` pour éviter tout appel au géocodeur pendant
