@@ -272,11 +272,15 @@ class SeedMisterJack extends Command
             ]);
             $model->location_id = $location->getKey();
             $model->type = $area['type'] ?? 'circle';
+            // Le rayon se stocke en mètres : le cœur le reconvertit vers l'unité
+            // de la boutique (Circle::pointInRadius -> convertToUserUnit).
+            // Écrire des kilomètres ici donne un cercle de quelques mètres, et
+            // toute adresse est refusée « hors zone ».
             $model->boundaries = [
                 'circle' => json_encode([
                     'lat' => $location->location_lat,
                     'lng' => $location->location_lng,
-                    'radius' => $area['radius_km'],
+                    'radius' => (int) round($area['radius_km'] * 1000),
                 ]),
                 'vertices' => json_encode([]),
                 'components' => [],
