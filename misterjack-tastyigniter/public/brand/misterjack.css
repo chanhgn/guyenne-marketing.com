@@ -1,0 +1,91 @@
+/*
+ * Mister Jack — finitions de la boutique de commande.
+ *
+ * Les couleurs, elles, ne sont PAS ici : elles passent par les variables du
+ * thème (data/theme-misterjack.json + `php artisan misterjack:brand`), qui
+ * recompilent app.css. Ce fichier ne garde que ce que ces variables ne savent
+ * pas faire : la police des titres et les quelques valeurs écrites en dur
+ * dans le thème.
+ *
+ * Chargé par App\Providers\AppServiceProvider, après app.css.
+ */
+
+:root {
+    --mj-red: #E3151A;
+    --mj-red-dark: #C20F14;
+    --mj-ink: #171717;
+    --mj-dark: #141414;
+    --mj-grey: #EDEDED;
+    --mj-muted: #6B6B6B;
+    --mj-title-font: "Josefin Sans", "Inter", Arial, sans-serif;
+}
+
+/* Titres : Josefin Sans, comme sur misterjack.ma */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.navbar-brand .text-logo,
+.footer-title {
+    font-family: var(--mj-title-font);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* Boutons : plus affirmés, comme les CTA du site */
+.btn {
+    font-weight: 700;
+    border-radius: 0.5rem;
+}
+
+.btn-primary,
+.btn-outline-primary {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Un liseré rouge sous la barre de navigation, signature de la marque */
+body > header nav.navbar-top {
+    border-bottom: 2px solid var(--mj-red);
+}
+
+/* Le thème écrit l'orange d'origine en dur sur les icônes du pied de page */
+.footer-links i {
+    color: var(--mj-red);
+}
+
+/* Pied de page : le gris clair du site sur les liens secondaires */
+.footer .footer-title {
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+}
+
+/* Onglets (catégories du menu, choix livraison/emporter) : les inactifs en
+   noir, l'actif garde la pastille rouge. Sans ça tout l'ensemble est rouge et
+   on ne voit plus quel onglet est ouvert. */
+.nav-pills,
+.nav-categories {
+    --bs-nav-link-color: var(--mj-ink);
+    --bs-nav-link-hover-color: var(--mj-red);
+}
+
+/* Bandeau cookies : posé sur le pied de page, il a besoin d'un trait pour
+   qu'on le distingue du noir qui est derrière. */
+#euCookieBanner > div {
+    border-top: 2px solid var(--mj-red);
+}
+
+#euCookieBanner #eu-cookie-action {
+    color: #FFFFFF;
+    background-color: var(--mj-red);
+    border-color: var(--mj-red);
+}
+
+#euCookieBanner #eu-cookie-action:hover {
+    background-color: var(--mj-red-dark);
+    border-color: var(--mj-red-dark);
+}
+
+/* Cartes produits : coins et bordures alignés sur la charte */
+.menu-group .menu-group-item,
+.card {
+    border-color: var(--mj-grey);
+}

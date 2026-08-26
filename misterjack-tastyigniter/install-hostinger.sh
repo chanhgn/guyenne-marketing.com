@@ -167,7 +167,9 @@ cp "$KIT_DIR"/app/Providers/*.php "$APP_DIR/app/Providers/"
 cp "$KIT_DIR"/data/*.json "$APP_DIR/data/"
 cp "$KIT_DIR"/scripts/*.sh "$APP_DIR/scripts/"
 chmod +x "$APP_DIR"/scripts/*.sh
-echo "Commandes, données et scripts en place"
+mkdir -p "$APP_DIR/public/brand"
+cp "$KIT_DIR"/public/brand/*.css "$APP_DIR/public/brand/"
+echo "Commandes, données, scripts et habillage en place"
 
 # --- 5c. Compte administrateur ----------------------------------------------
 # Sans administrateur, TastyIgniter redirige toute la boutique vers /admin.
@@ -193,6 +195,14 @@ fi
 log "Chargement de la carte, des établissements et des horaires"
 
 $PHP_BIN artisan misterjack:seed
+
+# --- 5d bis. Charte graphique -----------------------------------------------
+# Couleurs et polices de misterjack.ma : elles passent par les réglages du
+# thème, puis app.css est recompilé. Rien n'est modifié dans vendor/.
+
+log "Application de la charte Mister Jack"
+
+$PHP_BIN artisan misterjack:brand
 
 # --- 5e. Traduction française -----------------------------------------------
 # Le pack passe par le marketplace TastyIgniter : si le serveur ne l'atteint

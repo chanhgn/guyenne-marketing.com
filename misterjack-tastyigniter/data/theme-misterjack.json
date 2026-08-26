@@ -1,0 +1,30 @@
+{
+    "_comment": "Personnalisation du thème Orange aux couleurs de misterjack.ma. Ces valeurs sont exactement celles du formulaire Design > Thèmes de l'admin : elles sont injectées comme variables SCSS puis le thème est recompilé (app.css). Rien n'est modifié dans vendor/.",
+
+    "font-url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Josefin+Sans:wght@600;700&display=swap",
+    "font-download": false,
+    "font-family": "\"Inter\", Arial, sans-serif",
+    "font-weight": "400",
+    "logo_height": "48px",
+
+    "heading-background": "#FFFFFF",
+    "heading-color": "#171717",
+    "footer-background": "#141414",
+    "footer-font_color": "#FFFFFF",
+    "body-background": "#FFFFFF",
+    "font-color": "#171717",
+    "border-color": "#EDEDED",
+
+    "color-primary": "#E3151A",
+    "color-default": "#6B6B6B",
+    "color-success": "#1E9E4A",
+    "color-info": "#17A2B8",
+    "color-warning": "#F5A623",
+    "color-danger": "#DC3545",
+    "color-light": "#F5F5F5",
+    "color-dark": "#171717",
+
+    "enable_gdpr": true,
+    "gdpr_background_color": "#141414",
+    "gdpr_text_color": "#FFFFFF"
+}

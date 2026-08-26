@@ -4,15 +4,67 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Igniter\Flame\Support\Facades\Igniter;
+use Igniter\System\Libraries\Assets;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Feuille de style de marque, relative au dossier public/.
+     */
+    private const string BRAND_STYLESHEET = 'brand/misterjack.css';
+
+    /**
+     * Police des titres de misterjack.ma. Le thème ne charge qu'Inter.
+     */
+    private const string BRAND_FONTS = 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap';
+
     public function register(): void {}
 
     public function boot(): void
     {
         $this->useServerSideGoogleKey();
+        $this->addBrandAssets();
+    }
+
+    /**
+     * Ajoute l'habillage Mister Jack aux pages de la boutique.
+     *
+     * Les couleurs viennent des variables du thème (voir la commande
+     * `misterjack:brand`) ; il ne reste ici que la police des titres et les
+     * quelques finitions que ces variables ne couvrent pas.
+     *
+     * L'ordre compte : le cœur assemble les feuilles de style dans l'ordre où
+     * elles sont déclarées, et la nôtre doit passer après app.css. On s'inscrit
+     * donc sur la résolution du gestionnaire d'assets, qui a lieu après celle
+     * du thème — ou on l'ajoute tout de suite s'il est déjà résolu.
+     */
+    private function addBrandAssets(): void
+    {
+        if ($this->app->runningInConsole() || Igniter::runningInAdmin()) {
+            return;
+        }
+
+        if ($this->app->resolved('assets')) {
+            $this->putBrandAssets($this->app->make('assets'));
+
+            return;
+        }
+
+        $this->app->resolving('assets', function(Assets $manager): void {
+            $this->putBrandAssets($manager);
+        });
+    }
+
+    private function putBrandAssets(Assets $manager): void
+    {
+        $manager->addCss(self::BRAND_FONTS, ['data-navigate-track' => 'true']);
+
+        // Absente tant que le kit n'a pas été copié : on ne casse rien.
+        if (is_file(public_path(self::BRAND_STYLESHEET))) {
+            $manager->addCss(self::BRAND_STYLESHEET, ['data-navigate-track' => 'true']);
+        }
     }
 
     /**

@@ -46,16 +46,20 @@ théorique :
 ```
 install-hostinger.sh                       Installation complète, à lancer en SSH
 env/.env.production.example                Modèle de configuration serveur
-config/geocoder.php                        Géocodage Nominatim (sans clé Google)
 app/Console/Commands/SeedMisterJack.php    Carte, établissements, horaires, zones
 app/Console/Commands/CreateMisterJackAdmin.php  Compte administrateur
+app/Console/Commands/BrandMisterJack.php   Charte graphique du thème
+app/Providers/AppServiceProvider.php       Clé Google côté serveur + habillage
 data/misterjack.json                       Données Mister Jack relevées sur le site
+data/theme-misterjack.json                 Couleurs et polices de misterjack.ma
+public/brand/misterjack.css                Finitions du front (titres, boutons)
 scripts/backup.sh                          Sauvegarde quotidienne base + fichiers
 scripts/update.sh                          Mise à jour surveillée avec restauration
 docs/01-prerequis-hostinger.md             Ce qu'il faut préparer dans hPanel
 docs/02-migration-gloriafood.md            Ordre de bascule
 docs/03-integration-wordpress.md           Remplacement des liens sur misterjack.ma
 docs/04-exploitation.md                    TaCo, crons, sauvegardes, mises à jour, coûts
+docs/05-charte-graphique.md                Couleurs du site, où les changer
 ```
 
 ## Marche à suivre
@@ -68,7 +72,8 @@ docs/04-exploitation.md                    TaCo, crons, sauvegardes, mises à jo
    ```
    Le script vérifie PHP et ses extensions, installe TastyIgniter, écrit le
    `.env`, crée les tables, copie les fichiers du kit, crée l'administrateur,
-   charge la carte, branche le sous-domaine et émet le jeton TaCo.
+   charge la carte, applique la charte graphique, branche le sous-domaine et
+   émet le jeton TaCo.
 3. Ajouter les trois tâches cron affichées en fin d'installation.
 4. Ajuster le point GPS de chaque restaurant sur la carte de l'admin.
 5. Connecter TaCo, passer une commande test en paiement à la livraison.

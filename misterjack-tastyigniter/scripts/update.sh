@@ -65,6 +65,14 @@ if [ "$UPDATE_OK" = "1" ]; then
     $PHP_BIN artisan igniter:update --force || UPDATE_OK=0
 fi
 
+# La mise à jour du thème republie sa feuille de style d'origine : on
+# réapplique la charte pour que la boutique ne reparte pas en orange.
+if [ "$UPDATE_OK" = "1" ]; then
+    log "Réapplication de la charte Mister Jack"
+    $PHP_BIN artisan misterjack:brand >/dev/null 2>&1 \
+        || log "AVERTISSEMENT : charte non réappliquée, relancer php artisan misterjack:brand"
+fi
+
 $PHP_BIN artisan optimize:clear >/dev/null 2>&1 || true
 
 # --- 3. Contrôle de santé ---------------------------------------------------
