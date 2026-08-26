@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Support\SafeImageUploadValidator;
 use Igniter\Flame\Support\Facades\Igniter;
+use Igniter\Flame\Support\MediaUploadValidator;
 use Igniter\System\Libraries\Assets;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +28,22 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->useServerSideGoogleKey();
         $this->addBrandAssets();
+        $this->unblockSafePhotoUploads();
+    }
+
+    /**
+     * Débloque les photos refusées à tort par le contrôle « contenu non sûr ».
+     *
+     * Voir SafeImageUploadValidator : le contrôle d'origine reste en place,
+     * on lui redonne simplement l'image ré-encodée quand il bute sur une
+     * suite d'octets tombée au hasard dans une photo saine.
+     */
+    private function unblockSafePhotoUploads(): void
+    {
+        $this->app->singleton(
+            MediaUploadValidator::class,
+            fn(): MediaUploadValidator => new SafeImageUploadValidator,
+        );
     }
 
     /**
