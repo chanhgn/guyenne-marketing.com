@@ -49,6 +49,7 @@ env/.env.production.example                Modèle de configuration serveur
 app/Console/Commands/SeedMisterJack.php    Carte, établissements, horaires, zones
 app/Console/Commands/CreateMisterJackAdmin.php  Compte administrateur
 app/Console/Commands/BrandMisterJack.php   Charte graphique du thème
+app/Console/Commands/ImportMisterJackPhotos.php  Rattache les photos aux articles
 app/Providers/AppServiceProvider.php       Clé Google côté serveur + habillage
 app/Support/SafeImageUploadValidator.php   Photos refusées à tort par le contrôle d'envoi
 app/Support/SharpMenuItemPhoto.php         Photo nette sur la fiche article
