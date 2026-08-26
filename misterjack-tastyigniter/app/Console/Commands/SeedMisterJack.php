@@ -118,7 +118,17 @@ class SeedMisterJack extends Command
             }
         }
 
-        Settings::set($this->normaliseStatusSettings($settings));
+        // Un réglage à null efface la valeur posée par l'installation. Sur
+        // site_logo, cela suffit à faire tomber tout l'admin en erreur 500 :
+        // le gabarit appelle media_url() sur un chemin vide. On n'écrit donc
+        // que ce qui a une valeur, et on laisse les autres tranquilles.
+        $settings = array_filter(
+            $this->normaliseStatusSettings($settings),
+            fn($value): bool => !is_null($value),
+        );
+
+        Settings::set($settings);
+        $this->repairSiteLogo();
 
         $this->line('Réglages boutique : '.count($settings).' clés écrites.');
     }
@@ -155,6 +165,21 @@ class SeedMisterJack extends Command
      * Laissé sur la valeur d'usine, il fait chercher les adresses marocaines
      * dans un autre pays et le géocodage ne renvoie jamais rien.
      */
+    /**
+     * Répare un site_logo vidé : l'admin appelle media_url() dessus sans
+     * garde-fou et renvoie une erreur 500 sur toutes ses pages, connexion
+     * comprise. On remet l'image neutre livrée par TastyIgniter.
+     */
+    private function repairSiteLogo(): void
+    {
+        if (filled(setting('site_logo'))) {
+            return;
+        }
+
+        Settings::set(['site_logo' => 'no_photo.png']);
+        $this->warn("Logo du site vide : image par défaut rétablie (l'admin tombait en erreur 500).");
+    }
+
     private function seedCountry(string $iso2): void
     {
         $country = Country::query()->where('iso_code_2', $iso2)->first();
