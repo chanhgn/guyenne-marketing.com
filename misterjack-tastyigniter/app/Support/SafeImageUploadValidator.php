@@ -60,8 +60,62 @@ class SafeImageUploadValidator extends MediaUploadValidator
                 }
             }
 
-            throw $exception;
+            throw new ApplicationException($this->explain($filename, $contents, $exception));
         }
+    }
+
+    /**
+     * Remplace « contenu non sûr » par une phrase qui dit ce qui a coincé.
+     *
+     * Le message d'origine ne distingue pas une photo malchanceuse d'un vrai
+     * fichier piégé, et n'indique pas pourquoi le ré-encodage n'a pas pu la
+     * sauver. Sans ça, un refus ne laisse rien à quoi se raccrocher.
+     */
+    private function explain(string $filename, string $contents, ApplicationException $exception): string
+    {
+        $extension = strtolower(pathinfo(basename($filename), PATHINFO_EXTENSION));
+        $size = @getimagesizefromstring($contents);
+
+        $reason = match (true) {
+            !in_array($extension, self::REENCODABLE, true) => sprintf(
+                'format %s non ré-encodable', $extension === '' ? 'inconnu' : $extension,
+            ),
+            !function_exists('imagecreatefromstring') => 'GD absent du serveur',
+            !$size => 'image illisible par GD',
+            ($size[0] * $size[1]) > self::MAX_PIXELS => sprintf('image trop grande (%dx%d)', $size[0], $size[1]),
+            !$this->isDecodable($contents) => sprintf('décodage GD impossible (%s)', $size['mime'] ?? '?'),
+            default => 'ré-encodage tenté sans succès',
+        };
+
+        $markers = array_keys(array_filter([
+            '<?php' => (bool) preg_match('/<\\?php/i', $contents),
+            '<?=' => (bool) preg_match('/<\\?=/', $contents),
+            '<?' => (bool) preg_match('/<\\?(?!xml)/i', $contents),
+            'directive Apache' => (bool) preg_match('/SetHandler|AddHandler|php_value|php_flag/i', $contents),
+            '<script' => (bool) preg_match('/<script/i', $contents),
+        ]));
+
+        return sprintf(
+            '%s [%s, %s, %.0f Ko, motif : %s, %s]',
+            $exception->getMessage(),
+            $filename,
+            $size ? $size[0].'x'.$size[1] : 'dimensions inconnues',
+            strlen($contents) / 1024,
+            $markers ? implode(' ', $markers) : 'aucun',
+            $reason,
+        );
+    }
+
+    private function isDecodable(string $contents): bool
+    {
+        $image = @imagecreatefromstring($contents);
+        if (!$image instanceof GdImage) {
+            return false;
+        }
+
+        imagedestroy($image);
+
+        return true;
     }
 
     /**
