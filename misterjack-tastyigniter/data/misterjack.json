@@ -3,6 +3,7 @@
   "_notes": {
     "prix": "1er prix = article seul, 2e prix = en menu (frites + boisson). L'écart est porté par l'option « Formule », au prix exact de chaque article.",
     "coordonnees": "lat/lng relevées via le géocodeur Google le 24/08/2026 à partir des adresses des deux restaurants. Elles définissent le centre des zones de livraison.",
+    "geocodeur": "default_geocoder reste sur nominatim : ce reglage pilote AUSSI la carte affichee au client (nominatim => Leaflet/OpenStreetMap, sans cle). Le moteur reellement utilise pour le geocodage est force en chain par AppServiceProvider des que GOOGLE_GEOCODER_KEY est renseignee dans le .env.",
     "telephones": "Fès commande via WhatsApp +212 660 871231 ; le +212 691 537984 est le numéro affiché sur la page menu et sur Casablanca."
   },
 
@@ -13,7 +14,7 @@
     "site_logo": null,
     "timezone": "Africa/Casablanca",
     "default_language": "fr",
-    "default_geocoder": "chain",
+    "default_geocoder": "nominatim",
     "location_order": 0,
     "distance_unit": "km",
     "menus_page_limit": 60,
