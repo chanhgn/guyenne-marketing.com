@@ -51,6 +51,7 @@ app/Console/Commands/CreateMisterJackAdmin.php  Compte administrateur
 app/Console/Commands/BrandMisterJack.php   Charte graphique du thème
 app/Providers/AppServiceProvider.php       Clé Google côté serveur + habillage
 app/Support/SafeImageUploadValidator.php   Photos refusées à tort par le contrôle d'envoi
+app/Support/SharpMenuItemPhoto.php         Photo nette sur la fiche article
 data/misterjack.json                       Données Mister Jack relevées sur le site
 data/theme-misterjack.json                 Couleurs et polices de misterjack.ma
 public/brand/misterjack.css                Finitions du front (titres, boutons)

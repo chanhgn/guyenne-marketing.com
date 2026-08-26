@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Support\SafeImageUploadValidator;
+use App\Support\SharpMenuItemPhoto;
 use Igniter\Flame\Support\Facades\Igniter;
 use Igniter\Flame\Support\MediaUploadValidator;
 use Igniter\System\Libraries\Assets;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     private const string BRAND_FONTS = 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap';
 
-    public function register(): void {}
+    public function register(): void
+    {
+        // Livewire fige la liste de ses crochets à son démarrage, avant le
+        // nôtre : celui-ci doit donc être déclaré ici, pas dans boot().
+        Livewire::componentHook(SharpMenuItemPhoto::class);
+    }
 
     public function boot(): void
     {
