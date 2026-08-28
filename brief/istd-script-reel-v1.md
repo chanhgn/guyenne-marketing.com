@@ -1,5 +1,5 @@
 # SCRIPT & STORYBOARD — Reel sponsorisé ISTD Fès
-**Version 2 · Durée 26 s · Format 9:16 (1080×1920) · 30 fps**
+**Version 3 · Durée 27 s · Format 9:16 (1080×1920) · 30 fps**
 Voix off darija (à enregistrer) · Sous-titres français brûlés · 100 % motion design
 
 ---
@@ -91,20 +91,20 @@ calé sur la voix.
 ### Plan 5 — SALAIRE ET MARCHÉ · 0:15 → 0:19
 
 **Darija (à lire)**
-> الخدمة كتبدا من 4500 درهم فالشهر، وكتوصل ل12000 من بعد 5 سنين.
-> وفالمغرب كاين 3643 كابيني ديال الأسنان.
+> الخدمة كتبدا من 4500 درهم فالشهر، وكتوصل ل15000 من بعد 5 سنين.
+> وفالمغرب كاين 1200 شركة كتوظف.
 
-*L-khedma katbda men 4500 derham f-shhar, w katwsel l-12000 men be3d 5 snin.
-W f-lmghrib kayn 3643 kabini dyal l-esnan.*
+*L-khedma katbda men 4500 derham f-shhar, w katwsel l-15000 men be3d 5 snin.
+W f-lmghrib kayn 1200 sharika katwaddaf.*
 
-**Traduction** — « Le travail commence à 4 500 DH par mois et atteint 12 000 après
-5 ans. Et au Maroc il y a 3 643 cabinets dentaires. »
+**Traduction** — « Le travail commence à 4 500 DH par mois et atteint 15 000 après
+5 ans. Et au Maroc il y a 1 200 entreprises qui recrutent. »
 
 **Sous-titre FR**
-> **4 500 → 12 000 DH / mois**
+> **4 500 → 15 000 DH / mois**
 > de débutant à 5 ans d'expérience
 > —
-> **3 643** cabinets dentaires au Maroc
+> **1 200** entreprises recrutent au Maroc
 
 **Animation** — Fond bleu `#0C0CC4`. Le premier montant apparaît en accent chaud, une
 flèche se trace vers la droite, le second arrive en blanc plein. Un filet se dessine,
@@ -115,16 +115,19 @@ tout est en blanc (11:1) et en accent chaud `#E9BFB3` (6,5:1).
 
 #### Sources des chiffres
 
-| Donnée | Source | Remarque |
+| Donnée | Source | Statut |
 |---|---|---|
-| 4 500 – 6 000 DH débutant | Grille publiée sur istd.ma/debouches | Sources externes marocaines : 3 500 – 5 500 DH. ISTD est dans le haut de la fourchette. |
-| 8 000 – 12 000 DH après 5 ans | Grille publiée sur istd.ma/debouches | |
-| 3 643 cabinets dentaires privés | Carte sanitaire, ministère de la Santé | Taille du marché, **pas** un nombre de postes ouverts |
+| 4 500 DH débutant | Grille publiée sur istd.ma/debouches | Sources externes marocaines : 3 500 – 5 500 DH |
+| **15 000 DH après 5 ans** | **Direction ISTD (Mme El Hraiki)** | ⚠️ La page istd.ma/debouches affiche encore « 8 000 – 12 000 ». **À aligner.** |
+| **1 200 entreprises recrutent** | **Direction ISTD (Mme El Hraiki)** | Donnée interne, non publiée ailleurs. À faire figurer sur le site pour être vérifiable. |
+| Reconnaissance Belgique, France, Allemagne, Canada | Direction ISTD | Métiers en tension dans ces pays ; le diplôme marocain y est reconnu |
+| 90 % d'insertion à 12 mois | istd.ma/debouches, promotion 2024 | |
 
-**Ce qui n'est volontairement pas affiché** : un nombre d'entreprises qui recrutent.
-Aucune source marocaine ne le publie. Le ministère de l'Intérieur recense 3 300
-prothésistes en exercice, les chirurgiens-dentistes les estiment à 10 000 : l'écart
-est trop grand pour qu'un chiffre soit défendable dans une publicité.
+**Point de vigilance** : les chiffres de 15 000 DH et de 1 200 entreprises viennent
+de la direction, pas d'une source publique. Ils engagent l'école. Deux conséquences
+pratiques : la page Débouchés doit être mise à jour pour ne pas contredire la
+publicité, et le secrétariat doit pouvoir répondre si un candidat demande d'où
+sortent ces chiffres.
 
 ---
 

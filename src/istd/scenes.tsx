@@ -155,7 +155,7 @@ const ProofRow: React.FC<{ strong: string; rest: string; delay: number }> = ({ s
         gap: 34,
         opacity: s,
         transform: `translateX(${interpolate(s, [0, 1], [rtl ? 60 : -60, 0])}px)`,
-        marginBottom: 58,
+        marginBottom: 50,
       }}
     >
       <svg width={70} height={70} viewBox="0 0 70 70" style={{ flexShrink: 0 }}>
@@ -174,7 +174,7 @@ const ProofRow: React.FC<{ strong: string; rest: string; delay: number }> = ({ s
       <span style={{ fontSize: rtl ? 56 : 62, fontWeight: 600, color: istd.white, lineHeight: rtl ? 1.35 : 1.15 }}>
         <strong style={{ color: istd.orange, fontWeight: 700 }}>{strong}</strong>
         <br />
-        <span style={{ fontSize: rtl ? 44 : 48, fontWeight: 400, color: istd.warm2, fontFamily: body }}>{rest}</span>
+        <span style={{ fontSize: rtl ? 40 : 41, fontWeight: 400, color: istd.warm2, fontFamily: body }}>{rest}</span>
       </span>
     </div>
   );

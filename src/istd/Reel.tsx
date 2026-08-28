@@ -22,13 +22,13 @@ export const PLANS = [
   { id: 'Plan1Hook', from: 0, duration: 90, component: localized(Hook) },
   { id: 'Plan2Promesse', from: 90, duration: 120, component: localized(Promise) },
   { id: 'Plan3Preuve', from: 210, duration: 120, component: localized(BigNumber) },
-  { id: 'Plan4Preuves', from: 330, duration: 120, component: localized(Proofs) },
-  { id: 'Plan5Salaire', from: 450, duration: 120, component: localized(Money) },
-  { id: 'Plan6Autorite', from: 570, duration: 90, component: localized(Authority) },
-  { id: 'Plan7Cta', from: 660, duration: 120, component: localized(Cta) },
+  { id: 'Plan4Preuves', from: 330, duration: 150, component: localized(Proofs) },
+  { id: 'Plan5Salaire', from: 480, duration: 120, component: localized(Money) },
+  { id: 'Plan6Autorite', from: 600, duration: 90, component: localized(Authority) },
+  { id: 'Plan7Cta', from: 690, duration: 120, component: localized(Cta) },
 ] as const;
 
-export const REEL_FRAMES = 780; // 26 s à 30 fps
+export const REEL_FRAMES = 810; // 27 s à 30 fps
 
 export const Reel: React.FC<LangProps> = ({ lang }) => (
   <AbsoluteFill style={{ background: istd.bgDark }}>
