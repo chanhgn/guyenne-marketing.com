@@ -28,7 +28,7 @@ export type ReelCopy = {
 export const COPY: Record<Lang, ReelCopy> = {
   fr: {
     dir: 'ltr',
-    hook: { white: ['Un métier', 'de la santé.'], orange: ['Sans faire', 'médecine.'] },
+    hook: { white: ['Un métier', 'dans la santé.'], orange: ['Sans faire', 'médecine.'] },
     promise: {
       kicker: 'Formation diplômante',
       lines: ['Devenez', 'Technicien Spécialisé', 'en Prothèse Dentaire'],

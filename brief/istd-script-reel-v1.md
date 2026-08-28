@@ -26,7 +26,7 @@ Typo : **Jost 600** (titres, chiffres) · **Inter 400/600** (sous-titres, mentio
 *Wach bghiti tkhdem f majal s-se77a, bla ma teqra t-tebb ?*
 
 **Sous-titre FR à l'écran**
-> Un métier de la santé.
+> Un métier dans la santé.
 > **Sans faire médecine.**
 
 **Animation** — Fond `#1C1C1C`. « Sans faire médecine » arrive en orange `#F4380F`,
@@ -138,7 +138,7 @@ droite-à-gauche.
 
 | | Français | Darija |
 |---|---|---|
-| Plan 1 | Un métier de la santé. / Sans faire médecine. | خدمة فمجال الصحة. / بلا ما تقرا الطب. |
+| Plan 1 | Un métier dans la santé. / Sans faire médecine. | خدمة فمجال الصحة. / بلا ما تقرا الطب. |
 | Plan 2 | Devenez Technicien Spécialisé en Prothèse Dentaire | ولّي تقني متخصص فتركيب الأسنان |
 | Plan 3 | de nos diplômés trouvent un emploi dans l'année | من الخريجين ديالنا كيلقاو الخدمة ف عام |
 | Plan 4 | Diplôme Bac+3 · 3 ans · 68 % de pratique | ديبلوم باك+3 · 3 سنين · 68٪ تطبيق فاللابو |
@@ -175,7 +175,7 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 ## Copy de l'annonce Meta
 
 **Texte principal**
-> Un métier de la santé, sans passer par médecine.
+> Un métier dans la santé, sans passer par médecine.
 >
 > À l'ISTD Fès, vous devenez Technicien Spécialisé en Prothèse Dentaire en 3 ans,
 > avec un diplôme Bac+3 reconnu par l'État et 68 % du cursus en laboratoire.
@@ -192,7 +192,7 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 **Destination** : `https://wa.me/212661256965?text=Bonjour, je souhaite des informations sur la formation en prothèse dentaire.`
 
 ### Variantes de hook à tester (plan 1 uniquement)
-- **A** — « Un métier de la santé. Sans faire médecine. » *(version de référence)*
+- **A** — « Un métier dans la santé. Sans faire médecine. » *(version de référence)*
 - **B** — « 90 % de nos diplômés trouvent un emploi dans l'année. » *(chiffre en ouverture)*
 - **C** — « Tu n'as pas eu médecine ? Il reste ce métier-là. » *(émotionnel, cible réorientation)*
 

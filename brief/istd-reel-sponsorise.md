@@ -15,7 +15,7 @@
 | Style | 100 % motion design (aucun footage réel) |
 | Langue | Voix off darija + sous-titres français à l'écran |
 | Voix | Enregistrée par un locuteur réel (script fourni, minuté) |
-| Angle | Le débouché : un métier de la santé qui recrute |
+| Angle | Le débouché : un métier dans la santé qui recrute |
 | CTA / destination | WhatsApp direct |
 | Prix affiché | Non — communiqué en conversation WhatsApp |
 | Ciblage | Fès + 100 km (Fès-Meknès, Sefrou, Taza, Moulay Yacoub) |
