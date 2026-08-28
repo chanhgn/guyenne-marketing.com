@@ -61,8 +61,8 @@ sur bleu. Le texte se cale en Jost 600.
 *Tes3in fel-miya men t-tolba dyalna kaylqaw l-khedma f 3am men be3d t-takharoj.*
 
 **Sous-titre FR**
-> **90 %** de nos diplômés
-> en poste dans l'année
+> **90 %** de nos diplômés trouvent
+> un emploi dans l'année
 
 **Animation** — Fond clair `#FAF6F3`. Le « 90 » est compté de 0 à 90 en 0,8 s, en Jost 600,
 corps très large (≈ 420 px), orange `#F4380F`. Le symbole % apparaît en bleu. Anneau de
@@ -158,7 +158,7 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 > À l'ISTD Fès, vous devenez Technicien Spécialisé en Prothèse Dentaire en 3 ans,
 > avec un diplôme Bac+3 reconnu par l'État et 68 % du cursus en laboratoire.
 >
-> 90 % de nos diplômés sont en poste dans l'année.
+> 90 % de nos diplômés trouvent un emploi dans l'année.
 >
 > Rentrée le 7 septembre 2026 — places limitées.
 > Écrivez-nous sur WhatsApp, on répond à toutes vos questions.
@@ -171,7 +171,7 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 
 ### Variantes de hook à tester (plan 1 uniquement)
 - **A** — « Un métier de la santé. Sans faire médecine. » *(version de référence)*
-- **B** — « 90 % de nos diplômés trouvent un poste dans l'année. » *(chiffre en ouverture)*
+- **B** — « 90 % de nos diplômés trouvent un emploi dans l'année. » *(chiffre en ouverture)*
 - **C** — « Tu n'as pas eu médecine ? Il reste ce métier-là. » *(émotionnel, cible réorientation)*
 
 ---

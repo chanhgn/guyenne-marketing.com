@@ -141,8 +141,8 @@ export const BigNumber: React.FC = () => {
         <div style={{ height: 76 }} />
 
         <div style={{ textAlign: 'center' }}>
-          <Words text="de nos diplômés" color={istd.heading} delay={38} size={70} />
-          <Words text="en poste dans l’année" color={istd.heading} delay={44} size={70} />
+          <Words text="de nos diplômés trouvent" color={istd.heading} delay={38} size={70} />
+          <Words text="un emploi dans l’année" color={istd.heading} delay={44} size={70} />
         </div>
       </div>
     </Stage>
