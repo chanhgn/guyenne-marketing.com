@@ -22,6 +22,14 @@ export type ReelCopy = {
     marketLabel: string;
   };
   proofs: { kicker: string; rows: Array<[string, string]> };
+  intl: {
+    kicker: string;
+    lead: string;
+    countries: string[];
+    salaryLabel: string;
+    salary: string;
+    convert: string;
+  };
   authority: { name: string; sub: string };
   cta: {
     kicker: string;
@@ -58,8 +66,15 @@ export const COPY: Record<Lang, ReelCopy> = {
         ['Diplôme Bac+3', 'reconnu par l’État'],
         ['3 ans', '2 808 heures de formation'],
         ['68 %', 'de pratique en laboratoire'],
-        ['Reconnu à l’international', 'Belgique · France · Allemagne · Canada'],
       ],
+    },
+    intl: {
+      kicker: 'Et à l’étranger',
+      lead: 'Un diplôme marocain reconnu en',
+      countries: ['Belgique', 'France', 'Allemagne', 'Canada'],
+      salaryLabel: 'En France',
+      salary: '1 800 – 3 500 € / mois',
+      convert: 'soit 19 000 à 37 000 DH',
     },
     authority: { name: 'ISTD Fès', sub: 'Depuis 2006 · plus de 500 diplômés' },
     cta: {
@@ -96,8 +111,15 @@ export const COPY: Record<Lang, ReelCopy> = {
         ['ديبلوم باك+3', 'معترف بيه من الدولة'],
         ['3 سنين', '2808 ساعة ديال التكوين'],
         ['68٪', 'تطبيق فاللابو'],
-        ['معترف بيه فالخارج', 'بلجيكا · فرنسا · ألمانيا · كندا'],
       ],
+    },
+    intl: {
+      kicker: 'وفالخارج',
+      lead: 'ديبلوم مغربي معترف بيه ف',
+      countries: ['بلجيكا', 'فرنسا', 'ألمانيا', 'كندا'],
+      salaryLabel: 'ففرنسا',
+      salary: '1 800 – 3 500 € / الشهر',
+      convert: 'يعني من 19 000 حتى 37 000 درهم',
     },
     authority: { name: 'ISTD فاس', sub: 'من 2006 · أكثر من 500 خريج' },
     cta: {

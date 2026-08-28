@@ -286,6 +286,81 @@ export const Money: React.FC = () => {
 };
 
 /* ------------------------------------------------------------------ *
+ * Plan 6 — INTERNATIONAL · 0:19 → 0:23
+ *
+ * Le montant français vient de la grille istd.ma/debouches. Il est
+ * converti en dirhams : c'est la conversion qui rend le chiffre parlant
+ * pour un candidat à Fès.
+ * ------------------------------------------------------------------ */
+export const International: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { c, body, rtl } = useLang();
+  const i = c.intl;
+  const riseLead = useRise(6);
+  const riseSalary = useRise(52);
+  const riseConvert = useRise(60);
+
+  return (
+    <Stage background={istd.bgDark} center>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <Kicker delay={0}>{i.kicker}</Kicker>
+        <div style={riseLead}>
+          <span style={{ fontSize: rtl ? 52 : 56, fontWeight: 600, color: istd.white, lineHeight: 1.25 }}>{i.lead}</span>
+        </div>
+
+        <div style={{ height: 48 }} />
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            columnGap: 34,
+            rowGap: 26,
+            justifyItems: rtl ? 'end' : 'start',
+          }}
+        >
+          {i.countries.map((country, k) => {
+            const s = spring({ frame, fps, delay: 16 + k * 6, config: { damping: 200, mass: 0.5 } });
+            return (
+              <div
+                key={country}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 18,
+                  opacity: s,
+                  transform: `translateY(${interpolate(s, [0, 1], [26, 0])}px)`,
+                }}
+              >
+                <span style={{ width: 16, height: 16, borderRadius: 16, background: istd.orange, flexShrink: 0 }} />
+                <span style={{ fontSize: rtl ? 62 : 66, fontWeight: 700, color: istd.white, letterSpacing: '-0.01em' }}>
+                  {country}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div style={{ height: 66 }} />
+
+        <div style={riseSalary}>
+          <span style={{ fontFamily: body, fontSize: 38, fontWeight: 600, color: istd.warm2 }}>{i.salaryLabel}</span>
+          <div style={{ height: 10 }} />
+          <span dir="ltr" style={{ fontSize: rtl ? 62 : 66, fontWeight: 700, color: istd.orange, letterSpacing: '-0.02em' }}>
+            {i.salary}
+          </span>
+        </div>
+        <div style={{ height: 16 }} />
+        <div style={riseConvert}>
+          <span style={{ fontFamily: body, fontSize: rtl ? 42 : 40, fontWeight: 600, color: istd.warm1 }}>{i.convert}</span>
+        </div>
+      </div>
+    </Stage>
+  );
+};
+
+/* ------------------------------------------------------------------ *
  * Plan 5 — AUTORITÉ · 0:15 → 0:18
  * Fond clair imposé : le bleu du logo tombe à 1,5:1 sur fond sombre.
  * ------------------------------------------------------------------ */

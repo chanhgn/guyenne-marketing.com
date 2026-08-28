@@ -1,5 +1,5 @@
 # SCRIPT & STORYBOARD — Reel sponsorisé ISTD Fès
-**Version 3 · Durée 27 s · Format 9:16 (1080×1920) · 30 fps**
+**Version 4 · Durée 30 s · Format 9:16 (1080×1920) · 30 fps**
 Voix off darija (à enregistrer) · Sous-titres français brûlés · 100 % motion design
 
 ---
@@ -90,6 +90,7 @@ calé sur la voix.
 
 ### Plan 5 — SALAIRE ET MARCHÉ · 0:15 → 0:19
 
+
 **Darija (à lire)**
 > الخدمة كتبدا من 4500 درهم فالشهر، وكتوصل ل15000 من بعد 5 سنين.
 > وفالمغرب كاين 1200 شركة كتوظف.
@@ -120,7 +121,6 @@ tout est en blanc (11:1) et en accent chaud `#E9BFB3` (6,5:1).
 | 4 500 DH débutant | Grille publiée sur istd.ma/debouches | Sources externes marocaines : 3 500 – 5 500 DH |
 | **15 000 DH après 5 ans** | **Direction ISTD (Mme El Hraiki)** | ⚠️ La page istd.ma/debouches affiche encore « 8 000 – 12 000 ». **À aligner.** |
 | **1 200 entreprises recrutent** | **Direction ISTD (Mme El Hraiki)** | Donnée interne, non publiée ailleurs. À faire figurer sur le site pour être vérifiable. |
-| Reconnaissance Belgique, France, Allemagne, Canada | Direction ISTD | Métiers en tension dans ces pays ; le diplôme marocain y est reconnu |
 | 90 % d'insertion à 12 mois | istd.ma/debouches, promotion 2024 | |
 
 **Point de vigilance** : les chiffres de 15 000 DH et de 1 200 entreprises viennent
@@ -131,7 +131,48 @@ sortent ces chiffres.
 
 ---
 
-### Plan 6 — AUTORITÉ · 0:19 → 0:22
+### Plan 6 — INTERNATIONAL · 0:19 → 0:23
+
+**Darija (à lire)**
+> الديبلوم معترف بيه ف بلجيكا، فرنسا، ألمانيا وكندا.
+> وففرنسا الخدمة كتبدا من 1800 حتى 3500 أورو فالشهر.
+
+*D-diplôme mo3taraf bih f Beljika, Fransa, Almanya w Kanada.
+W f-Fransa l-khedma katbda men 1800 hetta 3500 euro f-shhar.*
+
+**Traduction** — « Le diplôme est reconnu en Belgique, France, Allemagne et Canada.
+Et en France le travail commence de 1 800 à 3 500 euros par mois. »
+
+**Sous-titre FR**
+> ET À L'ÉTRANGER
+> Un diplôme marocain reconnu en
+> **Belgique · France · Allemagne · Canada**
+> En France : **1 800 – 3 500 € / mois**
+> soit 19 000 à 37 000 DH
+
+**Animation** — Fond sombre. Les quatre pays arrivent en grille 2×2, décalés de
+6 frames, chacun précédé d'une pastille orange. Le montant monte ensuite, suivi de
+la conversion en dirhams.
+
+**Pourquoi la conversion en dirhams** — 3 500 € ne parle pas à un jeune de Fès.
+37 000 DH, si. C'est la conversion qui fait le travail, pas le montant en euros.
+
+#### Sources
+
+| Donnée | Source | Statut |
+|---|---|---|
+| Reconnaissance Belgique, France, Allemagne, Canada | Direction ISTD | Métiers en tension dans ces pays |
+| France : 1 800 – 3 500 € / mois | Grille publiée sur istd.ma/debouches | Seul pays pour lequel un montant est sourcé |
+| Conversion en dirhams | Taux ~10,8 DH/€, arrondi à la baisse | 1 800 € → 19 000 DH, 3 500 € → 37 000 DH |
+
+**Manquant** : aucun montant pour la Belgique, l'Allemagne et le Canada. La page
+Débouchés donne aussi les Émirats (2 500 – 5 000 USD), pays non retenu ici.
+Si la direction fournit des fourchettes pour les trois autres, le plan peut les
+afficher à la place du seul exemple français.
+
+---
+
+### Plan 7 — AUTORITÉ · 0:23 → 0:26
 
 **Darija**
 > ISTD فاس. من 2006، أكثر من 500 طالب تخرجو.
@@ -149,7 +190,7 @@ tracé bleu. Sous le logo, la baseline en Inter :
 
 ---
 
-### Plan 7 — URGENCE + CTA · 0:22 → 0:26
+### Plan 8 — URGENCE + CTA · 0:26 → 0:30
 
 **Darija**
 > التسجيل محلول. الدخول فسبعة شتنبر، والأماكن محدودة. صيفط لينا رسالة دابا فواتساب.
