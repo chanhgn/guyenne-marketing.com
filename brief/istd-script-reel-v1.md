@@ -120,6 +120,8 @@ tracé bleu. Sous le logo, la baseline en Inter :
 **Bandeau CTA final (reste 2,5 s à l'écran)**
 > 📱 **Écrivez-nous sur WhatsApp**
 > 06 61 25 69 65
+>
+> En savoir plus sur **istd.ma**
 
 **Animation** — Fond orange plein `#F4380F`. Bouton blanc arrondi (rayon 10 px, comme le
 site) avec pulsation lente. Le pictogramme WhatsApp entre en pop. Logo ISTD en petit,
@@ -160,9 +162,10 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 >
 > Rentrée le 7 septembre 2026 — places limitées.
 > Écrivez-nous sur WhatsApp, on répond à toutes vos questions.
+> Tous les détails sur istd.ma
 
 **Titre** : Devenez prothésiste dentaire en 3 ans
-**Description** : Diplôme Bac+3 reconnu par l'État · ISTD Fès depuis 2006
+**Description** : Diplôme Bac+3 reconnu par l'État · istd.ma
 **Bouton** : Envoyer un message WhatsApp
 **Destination** : `https://wa.me/212661256965?text=Bonjour, je souhaite des informations sur la formation en prothèse dentaire.`
 

@@ -293,19 +293,30 @@ export const Cta: React.FC = () => {
           </div>
         </div>
 
-        <div style={{ height: 58 }} />
-        <div style={{ ...useRise(44) }}>
-          <span
+        <div style={{ height: 54 }} />
+        {/* Le site en appel secondaire : il ne doit pas concurrencer le bouton WhatsApp. */}
+        <div style={{ ...useRise(44), textAlign: 'center' }}>
+          <div
             style={{
-              fontSize: 40,
-              fontWeight: 700,
-              color: istd.white,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              opacity: 0.92,
+              fontFamily: istdFonts.body,
+              fontSize: 30,
+              fontWeight: 600,
+              color: istd.warm1,
+              letterSpacing: '0.06em',
+              marginBottom: 10,
             }}
           >
-            ISTD Fès
+            En savoir plus sur
+          </div>
+          <span
+            style={{
+              fontSize: 54,
+              fontWeight: 700,
+              color: istd.white,
+              letterSpacing: '0.04em',
+            }}
+          >
+            istd.ma
           </span>
         </div>
       </div>
