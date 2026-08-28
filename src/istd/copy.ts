@@ -25,10 +25,8 @@ export type ReelCopy = {
   intl: {
     kicker: string;
     lead: string;
-    countries: string[];
-    salaryLabel: string;
-    salary: string;
-    convert: string;
+    rows: Array<{ flag: string; country: string; local: string; mad: string }>;
+    footnote: string;
   };
   authority: { name: string; sub: string };
   cta: {
@@ -45,10 +43,10 @@ export type ReelCopy = {
 export const COPY: Record<Lang, ReelCopy> = {
   fr: {
     dir: 'ltr',
-    hook: { white: ['Un métier', 'dans la santé.'], orange: ['Sans faire', 'médecine.'] },
+    hook: { white: ['Devenez', 'Prothésiste', 'Dentaire'], orange: ['reconnu à', 'l’international'] },
     promise: {
-      kicker: 'Formation diplômante',
-      lines: ['Devenez', 'Technicien Spécialisé', 'en Prothèse Dentaire'],
+      kicker: 'Un métier dans la santé',
+      lines: ['Sans faire', 'médecine.'],
     },
     number: { lines: ['de nos diplômés trouvent', 'un emploi dans l’année'] },
     money: {
@@ -70,11 +68,14 @@ export const COPY: Record<Lang, ReelCopy> = {
     },
     intl: {
       kicker: 'Et à l’étranger',
-      lead: 'Un diplôme marocain reconnu en',
-      countries: ['Belgique', 'France', 'Allemagne', 'Canada'],
-      salaryLabel: 'En France',
-      salary: '1 800 – 3 500 € / mois',
-      convert: 'soit 19 000 à 37 000 DH',
+      lead: 'Salaire moyen avec ce diplôme',
+      rows: [
+        { flag: '🇧🇪', country: 'Belgique', local: '≈ 3 000 €', mad: '32 000 DH' },
+        { flag: '🇫🇷', country: 'France', local: '≈ 2 500 €', mad: '27 000 DH' },
+        { flag: '🇩🇪', country: 'Allemagne', local: '≈ 2 400 €', mad: '26 000 DH' },
+        { flag: '🇨🇦', country: 'Canada', local: '≈ 3 500 $CA', mad: '25 000 DH' },
+      ],
+      footnote: 'salaires bruts moyens, convertis en dirhams',
     },
     authority: { name: 'ISTD Fès', sub: 'Depuis 2006 · plus de 500 diplômés' },
     cta: {
@@ -90,10 +91,10 @@ export const COPY: Record<Lang, ReelCopy> = {
 
   ar: {
     dir: 'rtl',
-    hook: { white: ['خدمة', 'فمجال الصحة.'], orange: ['بلا ما تقرا', 'الطب.'] },
+    hook: { white: ['ولّي', 'تقني ديال الأسنان'], orange: ['معترف بيك', 'فالخارج'] },
     promise: {
-      kicker: 'تكوين ديبلومي',
-      lines: ['ولّي', 'تقني متخصص', 'فتركيب الأسنان'],
+      kicker: 'خدمة فمجال الصحة',
+      lines: ['بلا ما تقرا', 'الطب.'],
     },
     number: { lines: ['من الخريجين ديالنا', 'كيلقاو الخدمة ف عام'] },
     money: {
@@ -115,11 +116,14 @@ export const COPY: Record<Lang, ReelCopy> = {
     },
     intl: {
       kicker: 'وفالخارج',
-      lead: 'ديبلوم مغربي معترف بيه ف',
-      countries: ['بلجيكا', 'فرنسا', 'ألمانيا', 'كندا'],
-      salaryLabel: 'ففرنسا',
-      salary: '1 800 – 3 500 € / الشهر',
-      convert: 'يعني من 19 000 حتى 37 000 درهم',
+      lead: 'متوسط الأجرة بهاد الديبلوم',
+      rows: [
+        { flag: '🇧🇪', country: 'بلجيكا', local: '≈ 3 000 €', mad: '32 000 درهم' },
+        { flag: '🇫🇷', country: 'فرنسا', local: '≈ 2 500 €', mad: '27 000 درهم' },
+        { flag: '🇩🇪', country: 'ألمانيا', local: '≈ 2 400 €', mad: '26 000 درهم' },
+        { flag: '🇨🇦', country: 'كندا', local: '≈ 3 500 $CA', mad: '25 000 درهم' },
+      ],
+      footnote: 'أجور خام متوسطة، محولة للدرهم',
     },
     authority: { name: 'ISTD فاس', sub: 'من 2006 · أكثر من 500 خريج' },
     cta: {

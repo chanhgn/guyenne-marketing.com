@@ -1,5 +1,5 @@
 # SCRIPT & STORYBOARD — Reel sponsorisé ISTD Fès
-**Version 4 · Durée 30 s · Format 9:16 (1080×1920) · 30 fps**
+**Version 5 · Durée 30 s · 8 plans · Format 9:16 (1080×1920) · 30 fps**
 Voix off darija (à enregistrer) · Sous-titres français brûlés · 100 % motion design
 
 ---
@@ -26,8 +26,8 @@ Typo : **Jost 600** (titres, chiffres) · **Inter 400/600** (sous-titres, mentio
 *Wach bghiti tkhdem f majal s-se77a, bla ma teqra t-tebb ?*
 
 **Sous-titre FR à l'écran**
-> Un métier dans la santé.
-> **Sans faire médecine.**
+> Devenez **Prothésiste Dentaire**
+> **reconnu à l'international**
 
 **Animation** — Fond `#1C1C1C`. « Sans faire médecine » arrive en orange `#F4380F`,
 lettre par lettre, avec un léger scale-in. Un trait bleu `#0C0CC4` balaie l'écran
@@ -44,8 +44,8 @@ servent uniquement à arrêter le scroll.
 *Welli tekni motakhassis f tarkib l-esnan.*
 
 **Sous-titre FR**
-> Devenez **Technicien Spécialisé
-> en Prothèse Dentaire**
+> UN MÉTIER DANS LA SANTÉ
+> **Sans faire médecine.**
 
 **Animation** — Transition par volet bleu `#0C0CC4` qui monte du bas. La silhouette de
 dent du logo se dessine en tracé (stroke-dashoffset animé) derrière le texte, blanche
@@ -131,44 +131,51 @@ sortent ces chiffres.
 
 ---
 
-### Plan 6 — INTERNATIONAL · 0:19 → 0:23
+### Plan 6 — SALAIRES À L'ÉTRANGER · 0:18 → 0:23
 
 **Darija (à lire)**
-> الديبلوم معترف بيه ف بلجيكا، فرنسا، ألمانيا وكندا.
-> وففرنسا الخدمة كتبدا من 1800 حتى 3500 أورو فالشهر.
+> الديبلوم معترف بيه فبلجيكا، فرنسا، ألمانيا وكندا.
+> ومتوسط الأجرة كيوصل ل32 ألف درهم فالشهر.
 
 *D-diplôme mo3taraf bih f Beljika, Fransa, Almanya w Kanada.
-W f-Fransa l-khedma katbda men 1800 hetta 3500 euro f-shhar.*
+W motawassit l-ojra kaywsel l-32 alf derham f-shhar.*
 
 **Traduction** — « Le diplôme est reconnu en Belgique, France, Allemagne et Canada.
-Et en France le travail commence de 1 800 à 3 500 euros par mois. »
+Et le salaire moyen atteint 32 000 dirhams par mois. »
 
-**Sous-titre FR**
-> ET À L'ÉTRANGER
-> Un diplôme marocain reconnu en
-> **Belgique · France · Allemagne · Canada**
-> En France : **1 800 – 3 500 € / mois**
-> soit 19 000 à 37 000 DH
+**Sous-titre FR** — tableau à quatre lignes, drapeau + pays + montant local + montant en dirhams
 
-**Animation** — Fond sombre. Les quatre pays arrivent en grille 2×2, décalés de
-6 frames, chacun précédé d'une pastille orange. Le montant monte ensuite, suivi de
-la conversion en dirhams.
+| | Pays | Local | En dirhams |
+|---|---|---|---|
+| 🇧🇪 | Belgique | ≈ 3 000 € | **32 000 DH** |
+| 🇫🇷 | France | ≈ 2 500 € | **27 000 DH** |
+| 🇩🇪 | Allemagne | ≈ 2 400 € | **26 000 DH** |
+| 🇨🇦 | Canada | ≈ 3 500 $CA | **25 000 DH** |
 
-**Pourquoi la conversion en dirhams** — 3 500 € ne parle pas à un jeune de Fès.
-37 000 DH, si. C'est la conversion qui fait le travail, pas le montant en euros.
+*salaires bruts moyens, convertis en dirhams*
 
-#### Sources
+**Animation** — Fond sombre. Les quatre lignes arrivent l'une après l'autre, séparées
+par un filet. Le montant local reste discret en gris : c'est la colonne en dirhams,
+en orange, qui porte l'argument.
 
-| Donnée | Source | Statut |
+**Pourquoi la conversion** — 3 000 € ne parle pas à un jeune de Fès, 32 000 DH si.
+Le montant en devise locale n'est là que pour la crédibilité, pas pour être lu.
+
+#### Sources des salaires étrangers
+
+| Pays | Source | Détail |
 |---|---|---|
-| Reconnaissance Belgique, France, Allemagne, Canada | Direction ISTD | Métiers en tension dans ces pays |
-| France : 1 800 – 3 500 € / mois | Grille publiée sur istd.ma/debouches | Seul pays pour lequel un montant est sourcé |
-| Conversion en dirhams | Taux ~10,8 DH/€, arrondi à la baisse | 1 800 € → 19 000 DH, 3 500 € → 37 000 DH |
+| Belgique | Indeed Belgique, Trajektoire | Indeed : 3 379 € moyenne ; débutant 2 300–2 700 €, expérimenté 2 800–3 800 €. Retenu : 3 000 € |
+| France | Grille istd.ma/debouches | 1 800 – 3 500 €. Retenu : 2 500 € |
+| Allemagne | Sources sectorielles | 28 000 – 30 000 € brut/an, soit ~2 400 €/mois |
+| Canada | Indeed Canada, Talent.com | 41 496 $CA/an, soit ~3 460 $CA/mois. Retenu : 3 500 $CA |
 
-**Manquant** : aucun montant pour la Belgique, l'Allemagne et le Canada. La page
-Débouchés donne aussi les Émirats (2 500 – 5 000 USD), pays non retenu ici.
-Si la direction fournit des fourchettes pour les trois autres, le plan peut les
-afficher à la place du seul exemple français.
+**Taux de conversion** : 1 € ≈ 10,8 DH, 1 $CA ≈ 7,2 DH. Montants arrondis à la baisse.
+
+**Précautions** : ce sont des salaires **bruts**, mentionné à l'écran. Le coût de la
+vie n'est pas comparé — un candidat qui ne le sait pas peut se faire une idée
+optimiste. La mention « salaires bruts moyens » est le minimum ; si la direction veut
+être plus prudente, on peut passer à des fourchettes plutôt qu'à des moyennes.
 
 ---
 

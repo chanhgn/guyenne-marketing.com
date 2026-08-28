@@ -22,7 +22,9 @@ export const Hook: React.FC = () => {
             position: 'absolute',
             [rtl ? 'right' : 'left']: -SAFE.side,
             top: -22,
-            height: rtl ? 320 : 296,
+            // La bande suit le nombre de lignes : une hauteur fixe laissait
+            // la dernière ligne en dehors du bleu.
+            height: c.hook.white.length * (rtl ? 112 * 0.9 * 1.35 : 112 * 1.06) + 42,
             width: `${sweep * 120}%`,
             background: istd.blue,
           }}
@@ -297,63 +299,74 @@ export const International: React.FC = () => {
   const { fps } = useVideoConfig();
   const { c, body, rtl } = useLang();
   const i = c.intl;
-  const riseLead = useRise(6);
-  const riseSalary = useRise(52);
-  const riseConvert = useRise(60);
+  const riseLead = useRise(4);
+  const riseFoot = useRise(78);
 
   return (
     <Stage background={istd.bgDark} center>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
         <Kicker delay={0}>{i.kicker}</Kicker>
         <div style={riseLead}>
-          <span style={{ fontSize: rtl ? 52 : 56, fontWeight: 600, color: istd.white, lineHeight: 1.25 }}>{i.lead}</span>
+          <span style={{ fontSize: rtl ? 50 : 54, fontWeight: 600, color: istd.white, lineHeight: 1.25 }}>{i.lead}</span>
         </div>
 
-        <div style={{ height: 48 }} />
+        <div style={{ height: 54 }} />
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            columnGap: 34,
-            rowGap: 26,
-            justifyItems: rtl ? 'end' : 'start',
-          }}
-        >
-          {i.countries.map((country, k) => {
-            const s = spring({ frame, fps, delay: 16 + k * 6, config: { damping: 200, mass: 0.5 } });
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 30 }}>
+          {i.rows.map((row, k) => {
+            const s = spring({ frame, fps, delay: 16 + k * 11, config: { damping: 200, mass: 0.5 } });
             return (
               <div
-                key={country}
+                key={row.country}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 18,
+                  gap: 26,
                   opacity: s,
                   transform: `translateY(${interpolate(s, [0, 1], [26, 0])}px)`,
+                  borderBottom: `2px solid rgba(233,191,179,0.22)`,
+                  paddingBottom: 24,
                 }}
               >
-                <span style={{ width: 16, height: 16, borderRadius: 16, background: istd.orange, flexShrink: 0 }} />
-                <span style={{ fontSize: rtl ? 62 : 66, fontWeight: 700, color: istd.white, letterSpacing: '-0.01em' }}>
-                  {country}
+                <span style={{ fontSize: 62, lineHeight: 1, flexShrink: 0 }}>{row.flag}</span>
+                <span
+                  style={{
+                    fontSize: rtl ? 50 : 52,
+                    fontWeight: 700,
+                    color: istd.white,
+                    letterSpacing: '-0.01em',
+                    flexShrink: 0,
+                  }}
+                >
+                  {row.country}
+                </span>
+                {/* Le montant local reste discret : c'est la conversion qui parle. */}
+                <span style={{ fontFamily: body, fontSize: 32, fontWeight: 400, color: istd.warm2, flexShrink: 0 }}>
+                  {row.local}
+                </span>
+                <span style={{ flex: 1 }} />
+                <span
+                  dir="ltr"
+                  style={{
+                    fontSize: rtl ? 50 : 54,
+                    fontWeight: 700,
+                    color: istd.orange,
+                    letterSpacing: '-0.02em',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {row.mad}
                 </span>
               </div>
             );
           })}
         </div>
 
-        <div style={{ height: 66 }} />
-
-        <div style={riseSalary}>
-          <span style={{ fontFamily: body, fontSize: 38, fontWeight: 600, color: istd.warm2 }}>{i.salaryLabel}</span>
-          <div style={{ height: 10 }} />
-          <span dir="ltr" style={{ fontSize: rtl ? 62 : 66, fontWeight: 700, color: istd.orange, letterSpacing: '-0.02em' }}>
-            {i.salary}
+        <div style={{ height: 30 }} />
+        <div style={riseFoot}>
+          <span style={{ fontFamily: body, fontSize: rtl ? 30 : 28, fontWeight: 400, color: istd.warm2, opacity: 0.85 }}>
+            {i.footnote}
           </span>
-        </div>
-        <div style={{ height: 16 }} />
-        <div style={riseConvert}>
-          <span style={{ fontFamily: body, fontSize: rtl ? 42 : 40, fontWeight: 600, color: istd.warm1 }}>{i.convert}</span>
         </div>
       </div>
     </Stage>
