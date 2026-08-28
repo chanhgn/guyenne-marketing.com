@@ -12,6 +12,15 @@ export type ReelCopy = {
   hook: { white: string[]; orange: string[] };
   promise: { kicker: string; lines: string[] };
   number: { lines: string[] };
+  money: {
+    kicker: string;
+    from: string;
+    to: string;
+    unit: string;
+    scale: string;
+    market: string;
+    marketLabel: string;
+  };
   proofs: { kicker: string; rows: Array<[string, string]> };
   authority: { name: string; sub: string };
   cta: {
@@ -34,6 +43,15 @@ export const COPY: Record<Lang, ReelCopy> = {
       lines: ['Devenez', 'Technicien Spécialisé', 'en Prothèse Dentaire'],
     },
     number: { lines: ['de nos diplômés trouvent', 'un emploi dans l’année'] },
+    money: {
+      kicker: 'Ce que ça rapporte',
+      from: '4 500',
+      to: '12 000',
+      unit: 'DH / mois',
+      scale: 'de débutant à 5 ans d’expérience',
+      market: '3 643',
+      marketLabel: 'cabinets dentaires au Maroc',
+    },
     proofs: {
       kicker: 'Ce que vous obtenez',
       rows: [
@@ -62,6 +80,15 @@ export const COPY: Record<Lang, ReelCopy> = {
       lines: ['ولّي', 'تقني متخصص', 'فتركيب الأسنان'],
     },
     number: { lines: ['من الخريجين ديالنا', 'كيلقاو الخدمة ف عام'] },
+    money: {
+      kicker: 'شحال كتربح',
+      from: '4 500',
+      to: '12 000',
+      unit: 'درهم / الشهر',
+      scale: 'من البداية حتى 5 سنين ديال الخبرة',
+      market: '3 643',
+      marketLabel: 'كابيني ديال الأسنان فالمغرب',
+    },
     proofs: {
       kicker: 'شنو غادي تاخد',
       rows: [

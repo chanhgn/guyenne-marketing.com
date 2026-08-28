@@ -1,5 +1,5 @@
 # SCRIPT & STORYBOARD — Reel sponsorisé ISTD Fès
-**Version 1 · Durée cible 22 s · Format 9:16 (1080×1920) · 30 fps**
+**Version 2 · Durée 26 s · Format 9:16 (1080×1920) · 30 fps**
 Voix off darija (à enregistrer) · Sous-titres français brûlés · 100 % motion design
 
 ---
@@ -88,7 +88,47 @@ calé sur la voix.
 
 ---
 
-### Plan 5 — AUTORITÉ · 0:15 → 0:18
+### Plan 5 — SALAIRE ET MARCHÉ · 0:15 → 0:19
+
+**Darija (à lire)**
+> الخدمة كتبدا من 4500 درهم فالشهر، وكتوصل ل12000 من بعد 5 سنين.
+> وفالمغرب كاين 3643 كابيني ديال الأسنان.
+
+*L-khedma katbda men 4500 derham f-shhar, w katwsel l-12000 men be3d 5 snin.
+W f-lmghrib kayn 3643 kabini dyal l-esnan.*
+
+**Traduction** — « Le travail commence à 4 500 DH par mois et atteint 12 000 après
+5 ans. Et au Maroc il y a 3 643 cabinets dentaires. »
+
+**Sous-titre FR**
+> **4 500 → 12 000 DH / mois**
+> de débutant à 5 ans d'expérience
+> —
+> **3 643** cabinets dentaires au Maroc
+
+**Animation** — Fond bleu `#0C0CC4`. Le premier montant apparaît en accent chaud, une
+flèche se trace vers la droite, le second arrive en blanc plein. Un filet se dessine,
+puis le nombre de cabinets monte en dessous.
+
+**Contrainte de couleur** — sur ce bleu, l'orange `#F4380F` ne contraste qu'à 2,4:1 :
+tout est en blanc (11:1) et en accent chaud `#E9BFB3` (6,5:1).
+
+#### Sources des chiffres
+
+| Donnée | Source | Remarque |
+|---|---|---|
+| 4 500 – 6 000 DH débutant | Grille publiée sur istd.ma/debouches | Sources externes marocaines : 3 500 – 5 500 DH. ISTD est dans le haut de la fourchette. |
+| 8 000 – 12 000 DH après 5 ans | Grille publiée sur istd.ma/debouches | |
+| 3 643 cabinets dentaires privés | Carte sanitaire, ministère de la Santé | Taille du marché, **pas** un nombre de postes ouverts |
+
+**Ce qui n'est volontairement pas affiché** : un nombre d'entreprises qui recrutent.
+Aucune source marocaine ne le publie. Le ministère de l'Intérieur recense 3 300
+prothésistes en exercice, les chirurgiens-dentistes les estiment à 10 000 : l'écart
+est trop grand pour qu'un chiffre soit défendable dans une publicité.
+
+---
+
+### Plan 6 — AUTORITÉ · 0:19 → 0:22
 
 **Darija**
 > ISTD فاس. من 2006، أكثر من 500 طالب تخرجو.
@@ -106,7 +146,7 @@ tracé bleu. Sous le logo, la baseline en Inter :
 
 ---
 
-### Plan 6 — URGENCE + CTA · 0:18 → 0:22
+### Plan 7 — URGENCE + CTA · 0:22 → 0:26
 
 **Darija**
 > التسجيل محلول. الدخول فسبعة شتنبر، والأماكن محدودة. صيفط لينا رسالة دابا فواتساب.

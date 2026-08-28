@@ -194,6 +194,98 @@ export const Proofs: React.FC = () => {
 };
 
 /* ------------------------------------------------------------------ *
+ * Plan 5 — SALAIRE ET MARCHÉ · 0:15 → 0:19
+ *
+ * Fond bleu : sur cette couleur, l'orange tombe à 2,4:1. Tout est donc
+ * en blanc (11:1) et en accent chaud (6,5:1).
+ * Les montants viennent de la grille publiée sur istd.ma/debouches.
+ * Le nombre de cabinets vient de la carte sanitaire du ministère de la
+ * Santé : c'est la taille du marché, pas un nombre de postes ouverts,
+ * qu'aucune source marocaine ne publie.
+ * ------------------------------------------------------------------ */
+export const Money: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { c, body, rtl } = useLang();
+  const m = c.money;
+
+  const a = spring({ frame, fps, delay: 6, config: { damping: 200, mass: 0.6 } });
+  const arrow = interpolate(frame, [18, 30], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const b = spring({ frame, fps, delay: 28, config: { damping: 200, mass: 0.6 } });
+  const riseScale = useRise(38);
+  const rule = interpolate(frame, [48, 62], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const riseMarket = useRise(58);
+
+  const amount = (value: string, s: number, dim: boolean) => (
+    <span
+      dir="ltr"
+      style={{
+        fontSize: 118,
+        fontWeight: 700,
+        color: dim ? istd.warm1 : istd.white,
+        lineHeight: 1,
+        letterSpacing: '-0.03em',
+        opacity: s,
+        transform: `translateY(${interpolate(s, [0, 1], [28, 0])}px)`,
+        display: 'inline-block',
+      }}
+    >
+      {value}
+    </span>
+  );
+
+  return (
+    <Stage background={istd.blue} center>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <Kicker delay={0} color={istd.warm1}>
+          {m.kicker}
+        </Kicker>
+
+        <div dir="ltr" style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
+          {amount(m.from, a, true)}
+          <svg width={92} height={44} viewBox="0 0 92 44" style={{ opacity: arrow }}>
+            <path
+              d="M6 22 H78 M60 6 L80 22 L60 38"
+              fill="none"
+              stroke={istd.white}
+              strokeWidth={8}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray={140}
+              strokeDashoffset={140 * (1 - arrow)}
+            />
+          </svg>
+          {amount(m.to, b, false)}
+        </div>
+
+        <div style={{ height: 16 }} />
+        <span style={{ fontFamily: body, fontSize: 52, fontWeight: 700, color: istd.white }}>{m.unit}</span>
+        <div style={{ height: 14 }} />
+        <div style={riseScale}>
+          <span style={{ fontFamily: body, fontSize: rtl ? 38 : 36, fontWeight: 400, color: istd.warm1 }}>
+            {m.scale}
+          </span>
+        </div>
+
+        <div style={{ height: 62 }} />
+        <div style={{ width: 460 * rule, height: 3, background: istd.warm1, opacity: 0.55 }} />
+        <div style={{ height: 62 }} />
+
+        <div style={{ ...riseMarket, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <span dir="ltr" style={{ fontSize: 146, fontWeight: 700, color: istd.white, lineHeight: 1, letterSpacing: '-0.03em' }}>
+            {m.market}
+          </span>
+          <div style={{ height: 14 }} />
+          <span style={{ fontFamily: body, fontSize: rtl ? 46 : 44, fontWeight: 600, color: istd.warm1 }}>
+            {m.marketLabel}
+          </span>
+        </div>
+      </div>
+    </Stage>
+  );
+};
+
+/* ------------------------------------------------------------------ *
  * Plan 5 — AUTORITÉ · 0:15 → 0:18
  * Fond clair imposé : le bleu du logo tombe à 1,5:1 sur fond sombre.
  * ------------------------------------------------------------------ */
