@@ -80,43 +80,69 @@ export const BigNumber: React.FC = () => {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
-  const R = 300;
+
+  // Boîte de taille fixe : l'anneau ne peut pas déborder sur le texte du dessous.
+  const BOX = 660;
+  const R = 292;
   const C = 2 * Math.PI * R;
+
   return (
     <Stage background={istd.bgLight} align="center">
-      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <svg width={720} height={720} style={{ position: 'absolute', top: -132 }}>
-          <circle cx={360} cy={360} r={R} fill="none" stroke={istd.warm2} strokeWidth={16} opacity={0.55} />
-          <circle
-            cx={360}
-            cy={360}
-            r={R}
-            fill="none"
-            stroke={istd.orange}
-            strokeWidth={16}
-            strokeLinecap="round"
-            strokeDasharray={C}
-            strokeDashoffset={C * (1 - ring)}
-            transform="rotate(-90 360 360)"
-          />
-        </svg>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            transform: `scale(${interpolate(pop, [0, 1], [0.82, 1])})`,
-            opacity: pop,
-          }}
-        >
-          <span style={{ fontSize: 340, fontWeight: 700, color: istd.orange, lineHeight: 1, letterSpacing: '-0.04em' }}>
-            {count}
-          </span>
-          <span style={{ fontSize: 170, fontWeight: 700, color: istd.blue, lineHeight: 1 }}>%</span>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ position: 'relative', width: BOX, height: BOX, flexShrink: 0 }}>
+          <svg width={BOX} height={BOX} style={{ position: 'absolute', inset: 0 }}>
+            <circle cx={BOX / 2} cy={BOX / 2} r={R} fill="none" stroke={istd.warm2} strokeWidth={16} opacity={0.55} />
+            <circle
+              cx={BOX / 2}
+              cy={BOX / 2}
+              r={R}
+              fill="none"
+              stroke={istd.orange}
+              strokeWidth={16}
+              strokeLinecap="round"
+              strokeDasharray={C}
+              strokeDashoffset={C * (1 - ring)}
+              transform={`rotate(-90 ${BOX / 2} ${BOX / 2})`}
+            />
+          </svg>
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                transform: `scale(${interpolate(pop, [0, 1], [0.82, 1])})`,
+                opacity: pop,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 276,
+                  fontWeight: 700,
+                  color: istd.orange,
+                  lineHeight: 1,
+                  letterSpacing: '-0.04em',
+                }}
+              >
+                {count}
+              </span>
+              <span style={{ fontSize: 138, fontWeight: 700, color: istd.blue, lineHeight: 1 }}>%</span>
+            </div>
+          </div>
         </div>
-        <div style={{ height: 70 }} />
+
+        <div style={{ height: 76 }} />
+
         <div style={{ textAlign: 'center' }}>
-          <Words text="de nos diplômés" color={istd.heading} delay={38} size={72} />
-          <Words text="en poste dans l'année" color={istd.heading} delay={44} size={72} />
+          <Words text="de nos diplômés" color={istd.heading} delay={38} size={70} />
+          <Words text="en poste dans l’année" color={istd.heading} delay={44} size={70} />
         </div>
       </div>
     </Stage>
