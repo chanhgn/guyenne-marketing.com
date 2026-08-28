@@ -1,13 +1,13 @@
+
+!previews/*.mp4
+!public/*.jpeg
+!public/*.jpg
+!public/*.png
+# But we DO commit the small images (logo + before/after photos).
+# public/ holds rushes (~700 MB of .mp4) which stay out of git.
+*.log
+.DS_Store
 node_modules/
 out/
-.DS_Store
-*.log
-
-# public/ holds rushes (~700 MB of .mp4) which stay out of git.
-# But we DO commit the small images (logo + before/after photos).
-public/*
-!public/*.jpg
-!public/*.jpeg
-!public/*.png
 previews/*
-!previews/*.mp4
+public/*
