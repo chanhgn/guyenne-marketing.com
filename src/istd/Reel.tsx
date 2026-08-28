@@ -24,9 +24,10 @@ export const PLANS = [
   { id: 'Plan3Preuve', from: 195, duration: 105, component: localized(BigNumber) },
   { id: 'Plan4Preuves', from: 300, duration: 120, component: localized(Proofs) },
   { id: 'Plan5Salaire', from: 420, duration: 120, component: localized(Money) },
-  { id: 'Plan6International', from: 540, duration: 150, component: localized(International) },
-  { id: 'Plan7Autorite', from: 690, duration: 90, component: localized(Authority) },
-  { id: 'Plan8Cta', from: 780, duration: 120, component: localized(Cta) },
+  { id: 'Plan6International', from: 540, duration: 165, component: localized(International) },
+    { id: 'Plan7Cta', from: 705, duration: 120, component: localized(Cta) },
+  // Carte de fin : la signature de marque ferme la vidéo.
+  { id: 'Plan8Logo', from: 825, duration: 75, component: localized(Authority) },
 ] as const;
 
 export const REEL_FRAMES = 900; // 30 s à 30 fps

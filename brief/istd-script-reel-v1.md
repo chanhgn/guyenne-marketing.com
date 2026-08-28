@@ -1,5 +1,5 @@
 # SCRIPT & STORYBOARD — Reel sponsorisé ISTD Fès
-**Version 5 · Durée 30 s · 8 plans · Format 9:16 (1080×1920) · 30 fps**
+**Version 6 · Durée 30 s · 8 plans, logo en carte de fin · Format 9:16 (1080×1920) · 30 fps**
 Voix off darija (à enregistrer) · Sous-titres français brûlés · 100 % motion design
 
 ---
@@ -131,7 +131,7 @@ sortent ces chiffres.
 
 ---
 
-### Plan 6 — SALAIRES À L'ÉTRANGER · 0:18 → 0:23
+### Plan 6 — MÉTIER EN TENSION ET SALAIRES À L'ÉTRANGER · 0:18 → 0:23,5
 
 **Darija (à lire)**
 > الديبلوم معترف بيه فبلجيكا، فرنسا، ألمانيا وكندا.
@@ -143,7 +143,12 @@ W motawassit l-ojra kaywsel l-32 alf derham f-shhar.*
 **Traduction** — « Le diplôme est reconnu en Belgique, France, Allemagne et Canada.
 Et le salaire moyen atteint 32 000 dirhams par mois. »
 
-**Sous-titre FR** — tableau à quatre lignes, drapeau + pays + montant local + montant en dirhams
+**Sous-titre FR**
+> MÉTIER EN TENSION
+> Ces pays manquent de prothésistes et recrutent
+> *Salaire moyen du métier*
+
+puis un tableau à quatre lignes — drapeau, pays, montant local, montant en dirhams
 
 | | Pays | Local | En dirhams |
 |---|---|---|---|
@@ -152,7 +157,7 @@ Et le salaire moyen atteint 32 000 dirhams par mois. »
 | 🇩🇪 | Allemagne | ≈ 2 400 € | **26 000 DH** |
 | 🇨🇦 | Canada | ≈ 3 500 $CA | **25 000 DH** |
 
-*salaires bruts moyens, convertis en dirhams*
+*moyennes brutes, toutes expériences confondues*
 
 **Animation** — Fond sombre. Les quatre lignes arrivent l'une après l'autre, séparées
 par un filet. Le montant local reste discret en gris : c'est la colonne en dirhams,
@@ -172,14 +177,33 @@ Le montant en devise locale n'est là que pour la crédibilité, pas pour être 
 
 **Taux de conversion** : 1 € ≈ 10,8 DH, 1 $CA ≈ 7,2 DH. Montants arrondis à la baisse.
 
-**Précautions** : ce sont des salaires **bruts**, mentionné à l'écran. Le coût de la
-vie n'est pas comparé — un candidat qui ne le sait pas peut se faire une idée
-optimiste. La mention « salaires bruts moyens » est le minimum ; si la direction veut
-être plus prudente, on peut passer à des fourchettes plutôt qu'à des moyennes.
+**Ce ne sont pas des salaires de début de carrière.** Ce sont des moyennes toutes
+expériences confondues. Un débutant démarre plus bas : 2 300 – 2 700 € en Belgique,
+1 800 € en France. La mention « Salaire moyen du métier » au-dessus du tableau et
+« moyennes brutes, toutes expériences confondues » en dessous lèvent l'ambiguïté.
+
+**Salaires bruts** : le coût de la vie n'est pas comparé. Un candidat qui l'ignore
+peut se faire une idée optimiste du net disponible.
+
+#### Pénurie : ce qui est affiché et ce qui ne l'est pas
+
+**Affiché** — « Métier en tension. Ces pays manquent de prothésistes et recrutent. »
+Documenté : en Belgique les départs en retraite dépassent largement les entrées en
+formation, des laboratoires cessent leur activité faute de personnel (La Libre) ;
+en France la tension est forte en Île-de-France, Lyon, Toulouse, Marseille.
+
+**Non affiché — facilité d'obtention des visas.** Aucune source ne confirme que ce
+métier précis ouvre des procédures accélérées dans ces quatre pays. Promettre un
+visa à un candidat qui va engager 20 000 DH de scolarité est le registre des
+filières frauduleuses, et l'école porterait la responsabilité d'une promesse non
+tenue. **Alternative recommandée** : si des lauréats ISTD travaillent réellement à
+l'étranger, une phrase comme « nos lauréats travaillent déjà en France et en
+Belgique » est first-party, vérifiable, et bien plus convaincante qu'une promesse
+administrative.
 
 ---
 
-### Plan 7 — AUTORITÉ · 0:23 → 0:26
+### Plan 7 — URGENCE + CTA · 0:23,5 → 0:27,5
 
 **Darija**
 > ISTD فاس. من 2006، أكثر من 500 طالب تخرجو.
@@ -197,7 +221,7 @@ tracé bleu. Sous le logo, la baseline en Inter :
 
 ---
 
-### Plan 8 — URGENCE + CTA · 0:26 → 0:30
+### Plan 8 — CARTE DE FIN · 0:27,5 → 0:30
 
 **Darija**
 > التسجيل محلول. الدخول فسبعة شتنبر، والأماكن محدودة. صيفط لينا رسالة دابا فواتساب.

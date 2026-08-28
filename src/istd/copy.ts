@@ -25,6 +25,7 @@ export type ReelCopy = {
   intl: {
     kicker: string;
     lead: string;
+    subLabel: string;
     rows: Array<{ flag: string; country: string; local: string; mad: string }>;
     footnote: string;
   };
@@ -67,15 +68,16 @@ export const COPY: Record<Lang, ReelCopy> = {
       ],
     },
     intl: {
-      kicker: 'Et à l’étranger',
-      lead: 'Salaire moyen avec ce diplôme',
+      kicker: 'Métier en tension',
+      lead: 'Ces pays manquent de prothésistes\net recrutent',
+      subLabel: 'Salaire moyen du métier',
       rows: [
         { flag: '🇧🇪', country: 'Belgique', local: '≈ 3 000 €', mad: '32 000 DH' },
         { flag: '🇫🇷', country: 'France', local: '≈ 2 500 €', mad: '27 000 DH' },
         { flag: '🇩🇪', country: 'Allemagne', local: '≈ 2 400 €', mad: '26 000 DH' },
         { flag: '🇨🇦', country: 'Canada', local: '≈ 3 500 $CA', mad: '25 000 DH' },
       ],
-      footnote: 'salaires bruts moyens, convertis en dirhams',
+      footnote: 'moyennes brutes, toutes expériences confondues',
     },
     authority: { name: 'ISTD Fès', sub: 'Depuis 2006 · plus de 500 diplômés' },
     cta: {
@@ -115,15 +117,16 @@ export const COPY: Record<Lang, ReelCopy> = {
       ],
     },
     intl: {
-      kicker: 'وفالخارج',
-      lead: 'متوسط الأجرة بهاد الديبلوم',
+      kicker: 'خصاص فالمهنة',
+      lead: 'هاد الدول خاصهم تقنيين\nوكيوظفو بزاف',
+      subLabel: 'متوسط الأجرة فالمهنة',
       rows: [
         { flag: '🇧🇪', country: 'بلجيكا', local: '≈ 3 000 €', mad: '32 000 درهم' },
         { flag: '🇫🇷', country: 'فرنسا', local: '≈ 2 500 €', mad: '27 000 درهم' },
         { flag: '🇩🇪', country: 'ألمانيا', local: '≈ 2 400 €', mad: '26 000 درهم' },
         { flag: '🇨🇦', country: 'كندا', local: '≈ 3 500 $CA', mad: '25 000 درهم' },
       ],
-      footnote: 'أجور خام متوسطة، محولة للدرهم',
+      footnote: 'متوسطات خام، لكل مستويات الخبرة',
     },
     authority: { name: 'ISTD فاس', sub: 'من 2006 · أكثر من 500 خريج' },
     cta: {

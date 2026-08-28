@@ -306,11 +306,25 @@ export const International: React.FC = () => {
     <Stage background={istd.bgDark} center>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
         <Kicker delay={0}>{i.kicker}</Kicker>
-        <div style={riseLead}>
+        <div style={{ ...riseLead, whiteSpace: 'pre-line' }}>
           <span style={{ fontSize: rtl ? 50 : 54, fontWeight: 600, color: istd.white, lineHeight: 1.25 }}>{i.lead}</span>
         </div>
 
-        <div style={{ height: 54 }} />
+        <div style={{ height: 34 }} />
+        <div style={{ ...useRise(12) }}>
+          <span
+            style={{
+              fontFamily: body,
+              fontSize: rtl ? 34 : 32,
+              fontWeight: 600,
+              color: istd.warm2,
+              letterSpacing: rtl ? 'normal' : '0.06em',
+            }}
+          >
+            {i.subLabel}
+          </span>
+        </div>
+        <div style={{ height: 30 }} />
 
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 30 }}>
           {i.rows.map((row, k) => {
@@ -397,6 +411,20 @@ export const Authority: React.FC = () => {
           </span>
           <div style={{ height: 18 }} />
           <span style={{ fontFamily: body, fontSize: 42, fontWeight: 400, color: istd.body }}>{c.authority.sub}</span>
+          <div style={{ height: 40 }} />
+          {/* Le logo ferme la vidéo : la dernière image doit rester actionnable. */}
+          <div
+            style={{
+              display: 'inline-block',
+              background: istd.orange,
+              borderRadius: 14,
+              padding: '18px 40px',
+            }}
+          >
+            <span dir="ltr" style={{ fontSize: 46, fontWeight: 700, color: istd.white, letterSpacing: '0.04em' }}>
+              istd.ma
+            </span>
+          </div>
         </div>
       </div>
     </Stage>
