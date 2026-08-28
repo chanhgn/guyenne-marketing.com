@@ -15,15 +15,15 @@ import { istd, istdFonts } from './theme';
 const VB = { w: 768, h: 709 };
 
 // Couronne : deux arcs qui se croisent au centre pour former l'encoche.
-const CROWN_LEFT = 'M 74,250 C 58,138 102,44 166,44 C 220,44 248,98 258,136';
-const CROWN_RIGHT = 'M 246,140 C 258,94 294,44 352,46 C 416,50 452,148 466,244';
+const CROWN_LEFT = 'M 32,246 C 26,120 66,34 124,33 C 186,32 232,74 264,128';
+const CROWN_RIGHT = 'M 231,128 C 262,74 300,32 356,33 C 420,34 460,122 466,246';
 
 // Racines : deux paires d'arcs qui convergent vers une pointe.
 const ROOTS = [
-  'M 120,448 C 116,542 132,628 150,674',
-  'M 210,448 C 208,540 192,618 176,666',
-  'M 310,448 C 306,542 322,628 340,672',
-  'M 398,448 C 396,540 380,618 364,664',
+  'M 109,445 C 110,530 122,600 137,650',
+  'M 183,445 C 182,528 158,600 143,648',
+  'M 305,445 C 306,530 318,600 333,650',
+  'M 397,445 C 396,528 356,600 340,648',
 ];
 
 // Longueurs approximatives pour le stroke-dash (pas besoin d'être exactes,
@@ -65,8 +65,8 @@ export const IstdLogo: React.FC<Props> = ({ draw = 1, flags = 1, style }) => {
           transformBox: 'fill-box',
         }}
       >
-        <path d="M 556,6 L 598,6 L 638,692 L 572,470 Z" fill={istd.orange} />
-        <path d="M 646,6 L 684,6 L 766,142 L 528,694 L 566,520 Z" fill={istd.blue} />
+        <path d="M 555,7 L 582,7 L 643,692 L 573,478 Z" fill={istd.orange} />
+        <path d="M 646,7 L 689,7 L 761,145 L 527,692 Z" fill={istd.blue} />
       </g>
 
       {/* ---- Dent : couronne puis racines ---- */}
@@ -99,9 +99,9 @@ export const IstdLogo: React.FC<Props> = ({ draw = 1, flags = 1, style }) => {
 
       {/* ---- Logotype ISTD ---- */}
       <text
-        x={26}
+        x={14}
         y={412}
-        textLength={496}
+        textLength={500}
         lengthAdjust="spacingAndGlyphs"
         fill={istd.orange}
         style={{
