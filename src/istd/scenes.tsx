@@ -1,14 +1,14 @@
 import React from 'react';
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
-import { istd, istdFonts } from './theme';
-import { Kicker, SAFE, Stage, Underline, Words, useRise } from './anim';
+import { istd } from './theme';
+import { DownArrow, Kicker, SAFE, Stage, Underline, Words, useLang, useRise } from './anim';
 
 /* ------------------------------------------------------------------ *
  * Plan 1 — HOOK · 0:00 → 0:03
- * Darija : « Wach bghiti tkhdem f majal s-se77a, bla ma teqra t-tebb ? »
  * ------------------------------------------------------------------ */
 export const Hook: React.FC = () => {
   const frame = useCurrentFrame();
+  const { c, rtl } = useLang();
   const sweep = interpolate(frame, [26, 44], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
@@ -16,24 +16,26 @@ export const Hook: React.FC = () => {
   return (
     <Stage background={istd.bgDark}>
       <div style={{ position: 'relative' }}>
-        {/* Bande bleue pleine largeur, portée sous les lignes blanches */}
+        {/* Bande bleue pleine largeur, portée sous les lignes blanches (contraste 11:1) */}
         <div
           style={{
             position: 'absolute',
-            left: -SAFE.side,
+            [rtl ? 'right' : 'left']: -SAFE.side,
             top: -22,
-            height: 296,
+            height: rtl ? 320 : 296,
             width: `${sweep * 120}%`,
             background: istd.blue,
           }}
         />
         <div style={{ position: 'relative' }}>
-          <Words text="Un métier" color={istd.white} delay={0} size={112} />
-          <Words text="de la santé." color={istd.white} delay={6} size={112} />
+          {c.hook.white.map((line, i) => (
+            <Words key={line} text={line} color={istd.white} delay={i * 6} size={112} />
+          ))}
         </div>
         <div style={{ height: 56 }} />
-        <Words text="Sans faire" color={istd.orange} delay={30} size={112} />
-        <Words text="médecine." color={istd.orange} delay={36} size={112} />
+        {c.hook.orange.map((line, i) => (
+          <Words key={line} text={line} color={istd.orange} delay={30 + i * 6} size={112} />
+        ))}
       </div>
     </Stage>
   );
@@ -41,10 +43,10 @@ export const Hook: React.FC = () => {
 
 /* ------------------------------------------------------------------ *
  * Plan 2 — PROMESSE · 0:03 → 0:07
- * Darija : « Welli tekni motakhassis f tarkib l-esnan. »
  * ------------------------------------------------------------------ */
 export const Promise: React.FC = () => {
   const frame = useCurrentFrame();
+  const { c } = useLang();
   const veil = interpolate(frame, [0, 16], [0, -100], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
@@ -54,11 +56,11 @@ export const Promise: React.FC = () => {
       <div style={{ position: 'absolute', inset: 0, background: istd.bgDark, transform: `translateY(${veil}%)` }} />
       <div style={{ position: 'relative' }}>
         <Kicker delay={14} color={istd.warm1}>
-          Formation diplômante
+          {c.promise.kicker}
         </Kicker>
-        <Words text="Devenez" color={istd.white} delay={18} size={104} />
-        <Words text="Technicien Spécialisé" color={istd.white} delay={24} size={104} />
-        <Words text="en Prothèse Dentaire" color={istd.white} delay={32} size={104} />
+        {c.promise.lines.map((line, i) => (
+          <Words key={line} text={line} color={istd.white} delay={18 + i * 7} size={104} />
+        ))}
         <Underline delay={48} width={420} color={istd.orange} />
       </div>
     </Stage>
@@ -67,27 +69,25 @@ export const Promise: React.FC = () => {
 
 /* ------------------------------------------------------------------ *
  * Plan 3 — PREUVE CHOC · 0:07 → 0:11
- * Le chiffre est compté à l'écran : c'est lui qui doit rester en tête.
+ * L'anneau vit dans une boîte de taille fixe : il ne peut pas déborder
+ * sur le texte placé en dessous.
  * ------------------------------------------------------------------ */
 export const BigNumber: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const { c } = useLang();
   const count = Math.round(
     interpolate(frame, [6, 34], [0, 90], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }),
   );
   const pop = spring({ frame, fps, delay: 4, config: { damping: 200, mass: 0.7 } });
-  const ring = interpolate(frame, [6, 40], [0, 0.9], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  const ring = interpolate(frame, [6, 40], [0, 0.9], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
 
-  // Boîte de taille fixe : l'anneau ne peut pas déborder sur le texte du dessous.
   const BOX = 660;
   const R = 292;
   const C = 2 * Math.PI * R;
 
   return (
-    <Stage background={istd.bgLight} align="center">
+    <Stage background={istd.bgLight} center>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ position: 'relative', width: BOX, height: BOX, flexShrink: 0 }}>
           <svg width={BOX} height={BOX} style={{ position: 'absolute', inset: 0 }}>
@@ -105,16 +105,9 @@ export const BigNumber: React.FC = () => {
               transform={`rotate(-90 ${BOX / 2} ${BOX / 2})`}
             />
           </svg>
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div
+              dir="ltr"
               style={{
                 display: 'flex',
                 alignItems: 'baseline',
@@ -122,15 +115,7 @@ export const BigNumber: React.FC = () => {
                 opacity: pop,
               }}
             >
-              <span
-                style={{
-                  fontSize: 276,
-                  fontWeight: 700,
-                  color: istd.orange,
-                  lineHeight: 1,
-                  letterSpacing: '-0.04em',
-                }}
-              >
+              <span style={{ fontSize: 276, fontWeight: 700, color: istd.orange, lineHeight: 1, letterSpacing: '-0.04em' }}>
                 {count}
               </span>
               <span style={{ fontSize: 138, fontWeight: 700, color: istd.blue, lineHeight: 1 }}>%</span>
@@ -141,8 +126,9 @@ export const BigNumber: React.FC = () => {
         <div style={{ height: 76 }} />
 
         <div style={{ textAlign: 'center' }}>
-          <Words text="de nos diplômés trouvent" color={istd.heading} delay={38} size={70} />
-          <Words text="un emploi dans l’année" color={istd.heading} delay={44} size={70} />
+          {c.number.lines.map((line, i) => (
+            <Words key={line} text={line} color={istd.heading} delay={38 + i * 6} size={70} />
+          ))}
         </div>
       </div>
     </Stage>
@@ -152,15 +138,10 @@ export const BigNumber: React.FC = () => {
 /* ------------------------------------------------------------------ *
  * Plan 4 — PREUVES EMPILÉES · 0:11 → 0:15
  * ------------------------------------------------------------------ */
-const PROOFS: Array<[string, string]> = [
-  ['Diplôme Bac+3', 'reconnu par l’État'],
-  ['3 ans', '2 808 heures de formation'],
-  ['68 %', 'de pratique en laboratoire'],
-];
-
 const ProofRow: React.FC<{ strong: string; rest: string; delay: number }> = ({ strong, rest, delay }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const { rtl, body } = useLang();
   const s = spring({ frame, fps, delay, config: { damping: 200, mass: 0.6 } });
   const draw = interpolate(frame, [delay + 4, delay + 16], [0, 1], {
     extrapolateLeft: 'clamp',
@@ -173,7 +154,7 @@ const ProofRow: React.FC<{ strong: string; rest: string; delay: number }> = ({ s
         alignItems: 'center',
         gap: 34,
         opacity: s,
-        transform: `translateX(${interpolate(s, [0, 1], [-60, 0])}px)`,
+        transform: `translateX(${interpolate(s, [0, 1], [rtl ? 60 : -60, 0])}px)`,
         marginBottom: 58,
       }}
     >
@@ -190,59 +171,52 @@ const ProofRow: React.FC<{ strong: string; rest: string; delay: number }> = ({ s
           strokeDashoffset={60 * (1 - draw)}
         />
       </svg>
-      <span style={{ fontSize: 62, fontWeight: 600, color: istd.white, lineHeight: 1.15 }}>
+      <span style={{ fontSize: rtl ? 56 : 62, fontWeight: 600, color: istd.white, lineHeight: rtl ? 1.35 : 1.15 }}>
         <strong style={{ color: istd.orange, fontWeight: 700 }}>{strong}</strong>
         <br />
-        <span style={{ fontSize: 48, fontWeight: 400, color: istd.warm2, fontFamily: istdFonts.body }}>{rest}</span>
+        <span style={{ fontSize: rtl ? 44 : 48, fontWeight: 400, color: istd.warm2, fontFamily: body }}>{rest}</span>
       </span>
     </div>
   );
 };
 
-export const Proofs: React.FC = () => (
-  <Stage background={istd.bgDark}>
-    <Kicker delay={0}>Ce que vous obtenez</Kicker>
-    <div style={{ height: 30 }} />
-    {PROOFS.map(([strong, rest], i) => (
-      <ProofRow key={strong} strong={strong} rest={rest} delay={8 + i * 24} />
-    ))}
-  </Stage>
-);
+export const Proofs: React.FC = () => {
+  const { c } = useLang();
+  return (
+    <Stage background={istd.bgDark}>
+      <Kicker delay={0}>{c.proofs.kicker}</Kicker>
+      <div style={{ height: 30 }} />
+      {c.proofs.rows.map(([strong, rest], i) => (
+        <ProofRow key={strong} strong={strong} rest={rest} delay={8 + i * 24} />
+      ))}
+    </Stage>
+  );
+};
 
 /* ------------------------------------------------------------------ *
  * Plan 5 — AUTORITÉ · 0:15 → 0:18
- * Fond clair imposé : le bleu du logo ne contraste pas sur fond sombre.
+ * Fond clair imposé : le bleu du logo tombe à 1,5:1 sur fond sombre.
  * ------------------------------------------------------------------ */
 export const Authority: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const { c, body } = useLang();
+  const rise = useRise(30);
   const s = spring({ frame, fps, config: { damping: 200, mass: 0.8 } });
-  const reveal = interpolate(frame, [0, 26], [100, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  const reveal = interpolate(frame, [0, 26], [100, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   return (
-    <Stage background={istd.bgLight} align="center">
+    <Stage background={istd.bgLight} center>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <div style={{ clipPath: `inset(0 0 ${reveal}% 0)`, transform: `scale(${interpolate(s, [0, 1], [0.9, 1])})` }}>
           <Img src={staticFile('istd/logo-istd.png')} style={{ width: 680 }} />
         </div>
         <div style={{ height: 64 }} />
-        <div style={{ ...useRise(30) }}>
+        <div style={rise}>
           <span style={{ fontSize: 60, fontWeight: 700, color: istd.heading, letterSpacing: '-0.01em' }}>
-            ISTD Fès
+            {c.authority.name}
           </span>
           <div style={{ height: 18 }} />
-          <span
-            style={{
-              fontFamily: istdFonts.body,
-              fontSize: 42,
-              fontWeight: 400,
-              color: istd.body,
-            }}
-          >
-            Depuis 2006 · plus de 500 diplômés
-          </span>
+          <span style={{ fontFamily: body, fontSize: 42, fontWeight: 400, color: istd.body }}>{c.authority.sub}</span>
         </div>
       </div>
     </Stage>
@@ -251,6 +225,8 @@ export const Authority: React.FC = () => {
 
 /* ------------------------------------------------------------------ *
  * Plan 6 — URGENCE + CTA · 0:18 → 0:22
+ * Pas de numéro à recopier : sur une pub Instagram le bouton d'action
+ * est fourni par la plateforme, c'est lui qu'il faut désigner.
  * ------------------------------------------------------------------ */
 const WHATSAPP_GLYPH =
   'M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 ' +
@@ -265,84 +241,84 @@ const WHATSAPP_GLYPH =
 export const Cta: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const btn = spring({ frame, fps, delay: 26, config: { damping: 200, mass: 0.7 } });
-  // Pulsation lente du bouton, figée sur la fin pour une dernière frame nette.
+  const { c, rtl, body } = useLang();
+  const riseSub = useRise(16);
+  const riseSite = useRise(46);
+  const card = spring({ frame, fps, delay: 26, config: { damping: 200, mass: 0.7 } });
+  // Pulsation lente, figée sur la fin pour une dernière frame parfaitement nette.
   const pulse = frame > 26 && frame < 100 ? 1 + Math.sin((frame - 26) / 7) * 0.014 : 1;
+
   return (
-    <Stage background={istd.orange} align="center">
+    <Stage background={istd.orange} center>
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Kicker delay={0} color={istd.warm1}>
-          Inscriptions 2026 / 2027
+          {c.cta.kicker}
         </Kicker>
-        <Words text="Rentrée le 7 septembre" color={istd.white} delay={4} size={78} />
+        <Words text={c.cta.title} color={istd.white} delay={4} size={78} />
         <div style={{ height: 22 }} />
-        <div style={{ ...useRise(16) }}>
-          <span style={{ fontFamily: istdFonts.body, fontSize: 44, fontWeight: 600, color: istd.warm1 }}>
-            Places limitées
-          </span>
+        <div style={riseSub}>
+          <span style={{ fontFamily: body, fontSize: 44, fontWeight: 600, color: istd.warm1 }}>{c.cta.sub}</span>
         </div>
 
-        <div style={{ height: 86 }} />
+        <div style={{ height: 78 }} />
 
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 30,
             background: istd.white,
-            borderRadius: 24,
-            padding: '38px 62px',
-            opacity: btn,
-            transform: `scale(${interpolate(btn, [0, 1], [0.86, 1]) * pulse})`,
+            borderRadius: 26,
+            padding: '40px 60px',
+            opacity: card,
+            transform: `scale(${interpolate(card, [0, 1], [0.86, 1]) * pulse})`,
             boxShadow: '0 26px 60px rgba(0,0,0,0.22)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 18,
           }}
         >
-          <svg width={66} height={66} viewBox="0 0 448 512" style={{ flexShrink: 0 }}>
-            <path d={WHATSAPP_GLYPH} fill="#25D366" />
-          </svg>
-          <div style={{ textAlign: 'left' }}>
-            <div
+          <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+            <svg width={46} height={46} viewBox="0 0 448 512" style={{ flexShrink: 0 }}>
+              <path d={WHATSAPP_GLYPH} fill="#25D366" />
+            </svg>
+            <span
               style={{
-                fontFamily: istdFonts.body,
-                fontSize: 28,
+                fontFamily: body,
+                fontSize: rtl ? 34 : 28,
                 fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
+                letterSpacing: rtl ? 'normal' : '0.12em',
+                textTransform: rtl ? 'none' : 'uppercase',
                 color: istd.body,
               }}
             >
-              Écrivez-nous
-            </div>
-            <div style={{ fontSize: 54, fontWeight: 700, color: istd.heading, letterSpacing: '-0.01em' }}>
-              06 61 25 69 65
-            </div>
+              {c.cta.small}
+            </span>
           </div>
+          {c.cta.big.map((line) => (
+            <span
+              key={line}
+              style={{
+                fontSize: rtl ? 50 : 54,
+                fontWeight: 700,
+                color: istd.heading,
+                lineHeight: 1.15,
+                letterSpacing: rtl ? 'normal' : '-0.01em',
+              }}
+            >
+              {line}
+            </span>
+          ))}
         </div>
 
-        <div style={{ height: 54 }} />
-        {/* Le site en appel secondaire : il ne doit pas concurrencer le bouton WhatsApp. */}
-        <div style={{ ...useRise(44), textAlign: 'center' }}>
-          <div
-            style={{
-              fontFamily: istdFonts.body,
-              fontSize: 30,
-              fontWeight: 600,
-              color: istd.warm1,
-              letterSpacing: '0.06em',
-              marginBottom: 10,
-            }}
-          >
-            En savoir plus sur
+        <div style={{ height: 26 }} />
+        <DownArrow delay={40} />
+
+        <div style={{ height: 30 }} />
+        <div style={{ ...riseSite, textAlign: 'center' }}>
+          <div style={{ fontFamily: body, fontSize: 30, fontWeight: 600, color: istd.warm1, marginBottom: 8 }}>
+            {c.cta.more}
           </div>
-          <span
-            style={{
-              fontSize: 54,
-              fontWeight: 700,
-              color: istd.white,
-              letterSpacing: '0.04em',
-            }}
-          >
-            istd.ma
+          <span dir="ltr" style={{ fontSize: 52, fontWeight: 700, color: istd.white, letterSpacing: '0.04em' }}>
+            {c.cta.site}
           </span>
         </div>
       </div>

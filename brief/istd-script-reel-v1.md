@@ -118,10 +118,32 @@ tracé bleu. Sous le logo, la baseline en Inter :
 > Rentrée le **7 septembre** · Places limitées
 
 **Bandeau CTA final (reste 2,5 s à l'écran)**
-> 📱 **Écrivez-nous sur WhatsApp**
-> 06 61 25 69 65
+> 📱 ÉCRIVEZ-NOUS SUR WHATSAPP
+> **Cliquez sur le bouton**
+> **en bas de la page**
+> ↓ *(chevron animé pointant vers le bouton d'action Instagram)*
 >
 > En savoir plus sur **istd.ma**
+
+Pas de numéro affiché : sur une publicité Instagram, le bouton d'action est fourni
+par la plateforme. Faire recopier un numéro ajoute une friction pour un résultat
+identique — la vidéo désigne le bouton, et le chevron animé indique où regarder.
+
+### Version darija
+
+La vidéo existe en deux versions qui partagent le même montage et les mêmes
+animations : seul le texte change (`src/istd/copy.ts`). Une correction de rythme
+profite donc aux deux. La version arabe passe en police Cairo, en sens de lecture
+droite-à-gauche.
+
+| | Français | Darija |
+|---|---|---|
+| Plan 1 | Un métier de la santé. / Sans faire médecine. | خدمة فمجال الصحة. / بلا ما تقرا الطب. |
+| Plan 2 | Devenez Technicien Spécialisé en Prothèse Dentaire | ولّي تقني متخصص فتركيب الأسنان |
+| Plan 3 | de nos diplômés trouvent un emploi dans l'année | من الخريجين ديالنا كيلقاو الخدمة ف عام |
+| Plan 4 | Diplôme Bac+3 · 3 ans · 68 % de pratique | ديبلوم باك+3 · 3 سنين · 68٪ تطبيق فاللابو |
+| Plan 5 | ISTD Fès — Depuis 2006, plus de 500 diplômés | ISTD فاس — من 2006، أكثر من 500 خريج |
+| Plan 6 | Cliquez sur le bouton en bas de la page | دير كليك على الزر لي تحت الفيديو |
 
 **Animation** — Fond orange plein `#F4380F`. Bouton blanc arrondi (rayon 10 px, comme le
 site) avec pulsation lente. Le pictogramme WhatsApp entre en pop. Logo ISTD en petit,

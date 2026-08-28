@@ -8,7 +8,8 @@
     "render-preview": "remotion render src/index.ts WaitingRoom out/preview.mp4 --frames=0-300",
     "istd": "remotion studio src/istd/index.ts",
     "istd:logo": "remotion still src/istd/index.ts IstdLogoPreview out/istd-logo-preview.png --overwrite --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
-    "istd:reel": "remotion render src/istd/index.ts IstdReel out/istd-reel-9x16.mp4 --overwrite --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
+    "istd:reel": "remotion render src/istd/index.ts IstdReel out/istd-reel-fr-9x16.mp4 --overwrite --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+    "istd:reel-ar": "remotion render src/istd/index.ts IstdReelAr out/istd-reel-darija-9x16.mp4 --overwrite --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell"
   },
   "dependencies": {
     "@remotion/google-fonts": "4.0.380",
