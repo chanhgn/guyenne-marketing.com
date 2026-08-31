@@ -355,7 +355,10 @@ export const International: React.FC = () => {
                   {row.country}
                 </span>
                 {/* Le montant local reste discret : c'est la conversion qui parle. */}
-                <span style={{ fontFamily: body, fontSize: 32, fontWeight: 400, color: istd.warm2, flexShrink: 0 }}>
+                <span
+                  dir="ltr"
+                  style={{ fontFamily: body, fontSize: 32, fontWeight: 400, color: istd.warm2, flexShrink: 0 }}
+                >
                   {row.local}
                 </span>
                 <span style={{ flex: 1 }} />

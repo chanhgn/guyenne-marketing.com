@@ -58,7 +58,7 @@ sur bleu. Le texte se cale en Jost 600.
 **Darija**
 > تسعين فالمية من الطلبة ديالنا كيلقاو الخدمة فعام من بعد التخرج.
 
-*Tes3in fel-miya men t-tolba dyalna kaylqaw l-khedma f 3am men be3d t-takharoj.*
+*Tes3in fel-miya men t-tolba dyalna kaylqaw l-khedma f-l3am li men be3d t-takharoj.*
 
 **Sous-titre FR**
 > **90 %** de nos diplômés trouvent
@@ -255,7 +255,7 @@ droite-à-gauche.
 |---|---|---|
 | Plan 1 | Un métier dans la santé. / Sans faire médecine. | خدمة فمجال الصحة. / بلا ما تقرا الطب. |
 | Plan 2 | Devenez Technicien Spécialisé en Prothèse Dentaire | ولّي تقني متخصص فتركيب الأسنان |
-| Plan 3 | de nos diplômés trouvent un emploi dans l'année | من الخريجين ديالنا كيلقاو الخدمة ف عام |
+| Plan 3 | de nos diplômés trouvent un emploi dans l'année | من الخريجين ديالنا كيلقاو الخدمة فالعام لي من بعد التخرج |
 | Plan 4 | Diplôme Bac+3 · 3 ans · 68 % de pratique | ديبلوم باك+3 · 3 سنين · 68٪ تطبيق فاللابو |
 | Plan 5 | ISTD Fès — Depuis 2006, plus de 500 diplômés | ISTD فاس — من 2006، أكثر من 500 خريج |
 | Plan 6 | Cliquez sur le bouton en bas de la page | دير كليك على الزر لي تحت الفيديو |
@@ -322,3 +322,21 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 2. **Rareté** : faute de nombre de places communiqué, la vidéo reprend la formulation
    déjà publiée par l'école (« Places limitées »), pas une affirmation invérifiable.
 3. Validation du script darija par la direction avant enregistrement.
+
+
+---
+
+## Note technique — nombres en arabe
+
+Les séparateurs de milliers utilisent une **espace insécable** (U+00A0) et non une
+espace normale. L'algorithme bidirectionnel classe l'espace normale comme caractère
+neutre : il coupait « 3 000 » en deux blocs, « 3 » et « 000 », qu'il réordonnait de
+droite à gauche. À l'écran, « 3 000 € » s'affichait « 000 3 ». L'espace insécable est
+classée séparateur numérique, le nombre reste d'un seul tenant.
+
+Les deux colonnes chiffrées du tableau des pays et la progression salariale sont en
+outre forcées en `dir="ltr"` : les chiffres se lisent de gauche à droite dans les
+deux langues, à l'identique.
+
+« 2026/2027 » est écrit sans espace autour de la barre, pour la même raison : avec
+des espaces, les deux années étaient affichées dans l'ordre inverse.
