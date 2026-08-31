@@ -1,6 +1,7 @@
 # Script voix off — darija et français
 
-**8 prises par langue · 30 secondes au total · une prise par phrase, dans l'ordre**
+**8 prises par langue · une prise par phrase, dans l'ordre**
+**Darija : 36,5 s · Français : 30,0 s**
 
 Deux enregistrements distincts, donc deux créas complètes à tester l'une contre
 l'autre : darija avec sous-titres français, et français avec sous-titres français.
@@ -20,7 +21,7 @@ l'autre : darija avec sous-titres français, et français avec sous-titres fran�
 
 ---
 
-## Prise 1 — Accroche · 3,0 s
+## Prise 1 — Accroche · 3,5 s
 
 > ولّي تقني ديال الأسنان، معترف بيك فالخارج.
 
@@ -28,7 +29,7 @@ l'autre : darija avec sous-titres français, et français avec sous-titres fran�
 
 FR — Deviens technicien dentaire, reconnu à l'étranger.
 
-## Prise 2 — La différence · 3,5 s
+## Prise 2 — La différence · 4,0 s
 
 > خدمة فمجال الصحة، بلا ما تقرا الطب.
 
@@ -37,7 +38,7 @@ FR — Deviens technicien dentaire, reconnu à l'étranger.
 FR — Un métier dans la santé, sans faire médecine.
 **Marquer la virgule** : c'est la pause qui crée la surprise.
 
-## Prise 3 — Insertion · 3,5 s
+## Prise 3 — Insertion · 4,5 s
 
 > تسعين فالمية من الخريجين ديالنا كيلقاو الخدمة فالعام اللي من بعد التخرج.
 
@@ -46,7 +47,7 @@ FR — Un métier dans la santé, sans faire médecine.
 FR — 90 % de nos diplômés trouvent un emploi dans l'année qui suit le diplôme.
 **Prise la plus dense** : débit régulier, ne pas accélérer à la fin.
 
-## Prise 4 — Les preuves · 4,0 s
+## Prise 4 — Les preuves · 5,0 s
 
 > ديبلوم باك+3 معترف بيه من الدولة. تلات سنين، وتمنية وستين فالمية تطبيق فاللابو.
 
@@ -55,7 +56,7 @@ FR — 90 % de nos diplômés trouvent un emploi dans l'année qui suit le dipl�
 FR — Diplôme Bac+3 reconnu par l'État. Trois ans, dont 68 % de pratique en laboratoire.
 « Diplôme », « Bac+3 » et « labo » se disent en français — c'est volontaire.
 
-## Prise 5 — Salaire au Maroc · 4,0 s
+## Prise 5 — Salaire au Maroc · 5,0 s
 
 > الأجرة كتبدا من 4500 وكتوصل ل15000 درهم فالشهر. و1200 شركة كتوظف فالمغرب.
 
@@ -65,7 +66,7 @@ FR — Le salaire commence à 4 500 et atteint 15 000 dirhams par mois. Et 1 200
 recrutent au Maroc.
 **Appuyer les chiffres**, ce sont eux qu'on doit retenir.
 
-## Prise 6 — L'international · 5,5 s
+## Prise 6 — L'international · 6,5 s
 
 > هاد المهنة فيها خصاص فالخارج. بلجيكا، فرنسا، ألمانيا وكندا كيوظفو. ومتوسط الأجرة كيوصل ل32 ألف درهم فالشهر.
 
@@ -76,7 +77,7 @@ FR — Ce métier est en pénurie à l'étranger. Belgique, France, Allemagne et
 Et le salaire moyen atteint 32 000 dirhams par mois.
 **La plus longue** : détacher les quatre pays, respirer avant « w motawassit l-ojra ».
 
-## Prise 7 — Appel à l'action · 4,0 s
+## Prise 7 — Appel à l'action · 5,0 s
 
 > التسجيل محلول. الدخول ف7 شتنبر، والأماكن محدودة. دير كليك على الزر لي تحت الفيديو.
 
@@ -86,7 +87,7 @@ FR — Les inscriptions sont ouvertes. La rentrée est le 7 septembre, et les pl
 limitées. Clique sur le bouton sous la vidéo.
 **Ton plus direct et chaleureux**, sans forcer.
 
-## Prise 8 — Signature · 2,5 s
+## Prise 8 — Signature · 3,0 s
 
 > ISTD فاس. من 2006، أكثر من 500 خريج.
 
@@ -131,3 +132,38 @@ Prise 8 : posé, l'école ne vend rien à ce moment-là.
 
 Fichiers nommés `darija-1` à `darija-8` et `fr-1` à `fr-8`, déposés sur le Google Drive.
 Plusieurs versions d'une même phrase : `darija-3a`, `darija-3b`, etc.
+
+
+---
+
+## Minutage par langue
+
+La darija est plus longue à dire que le français à contenu égal : elle accumule les
+mots-outils et étire les nombres. À durée identique, la comédienne devait débiter à
+plus de 3,5 mots par seconde — un rythme qui s'entend et qui fatigue.
+
+Les plans arabes sont donc allongés de 0,5 à 1 seconde chacun, ce qui ramène le débit
+autour de 2,5 mots par seconde.
+
+| Plan | Français | Darija |
+|---|---|---|
+| 1 · Accroche | 3,0 s | 3,5 s |
+| 2 · La différence | 3,5 s | 4,0 s |
+| 3 · Insertion | 3,5 s | 4,5 s |
+| 4 · Les preuves | 4,0 s | 5,0 s |
+| 5 · Salaire au Maroc | 4,0 s | 5,0 s |
+| 6 · L'international | 5,5 s | 6,5 s |
+| 7 · Appel à l'action | 4,0 s | 5,0 s |
+| 8 · Signature | 2,5 s | 3,0 s |
+| **Total** | **30,0 s** | **36,5 s** |
+
+**Ce que ça coûte** : six secondes de plus sur la version darija, donc un taux de
+complétion plus bas et un coût de diffusion un peu supérieur. C'est un arbitrage
+assumé — une phrase débitée trop vite coûte plus cher qu'une vidéo plus longue.
+
+**Si les 36,5 s posent problème à la diffusion**, la piste est de raccourcir le texte
+darija plutôt que de réaccélérer le débit : les prises 4, 6 et 7 peuvent perdre un
+membre de phrase chacune sans rien perdre de l'argument.
+
+Techniquement, les durées sont désormais déclarées par langue dans
+`src/istd/Reel.tsx` (table `DURATIONS`), et les débuts de plans s'en déduisent.

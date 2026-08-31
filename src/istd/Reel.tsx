@@ -17,24 +17,49 @@ const localized = (Scene: React.FC): React.FC<LangProps> => {
   return Wrapped;
 };
 
-/** Découpage minuté du Reel, en frames à 30 fps. */
-export const PLANS = [
-  { id: 'Plan1Hook', from: 0, duration: 90, component: localized(Hook) },
-  { id: 'Plan2Promesse', from: 90, duration: 105, component: localized(Promise) },
-  { id: 'Plan3Preuve', from: 195, duration: 105, component: localized(BigNumber) },
-  { id: 'Plan4Preuves', from: 300, duration: 120, component: localized(Proofs) },
-  { id: 'Plan5Salaire', from: 420, duration: 120, component: localized(Money) },
-  { id: 'Plan6International', from: 540, duration: 165, component: localized(International) },
-    { id: 'Plan7Cta', from: 705, duration: 120, component: localized(Cta) },
-  // Carte de fin : la signature de marque ferme la vidéo.
-  { id: 'Plan8Logo', from: 825, duration: 75, component: localized(Authority) },
+/** L'ordre des plans, identique dans les deux langues. */
+export const SCENES = [
+  { id: 'Plan1Hook', component: localized(Hook) },
+  { id: 'Plan2Promesse', component: localized(Promise) },
+  { id: 'Plan3Preuve', component: localized(BigNumber) },
+  { id: 'Plan4Preuves', component: localized(Proofs) },
+  { id: 'Plan5Salaire', component: localized(Money) },
+  { id: 'Plan6International', component: localized(International) },
+  { id: 'Plan7Cta', component: localized(Cta) },
+  { id: 'Plan8Logo', component: localized(Authority) },
 ] as const;
 
-export const REEL_FRAMES = 900; // 30 s à 30 fps
+/**
+ * Durées par langue, en frames à 30 fps.
+ *
+ * La darija est plus longue à dire que le français à contenu égal : elle
+ * accumule les mots-outils, et les nombres y sont plus étirés. À durée
+ * identique, la comédienne devait débiter à plus de 3,5 mots/seconde.
+ * Les plans arabes sont donc allongés pour retomber autour de 2,5.
+ */
+export const DURATIONS: Record<Lang, readonly number[]> = {
+  fr: [90, 105, 105, 120, 120, 165, 120, 75], //  900 frames — 30,0 s
+  ar: [105, 120, 135, 150, 150, 195, 150, 90], // 1095 frames — 36,5 s
+} as const;
+
+export type Plan = { id: string; from: number; duration: number; component: React.FC<LangProps> };
+
+/** Découpage minuté d'une langue : les débuts se déduisent des durées. */
+export const plansFor = (lang: Lang): Plan[] => {
+  let from = 0;
+  return SCENES.map((scene, i) => {
+    const duration = DURATIONS[lang][i];
+    const plan = { id: scene.id, from, duration, component: scene.component };
+    from += duration;
+    return plan;
+  });
+};
+
+export const framesFor = (lang: Lang): number => DURATIONS[lang].reduce((a, b) => a + b, 0);
 
 export const Reel: React.FC<LangProps> = ({ lang }) => (
   <AbsoluteFill style={{ background: istd.bgDark }}>
-    {PLANS.map(({ id, from, duration, component: Scene }) => (
+    {plansFor(lang).map(({ id, from, duration, component: Scene }) => (
       <Sequence key={id} from={from} durationInFrames={duration}>
         <Scene lang={lang} />
       </Sequence>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Composition } from 'remotion';
 import { LogoPreview } from './LogoPreview';
-import { PLANS, REEL_FRAMES, Reel } from './Reel';
+import { framesFor, plansFor, Reel } from './Reel';
 import { Lang } from './copy';
 import { REEL as F } from './theme';
 
-/** Les deux versions partagent le montage : seul le module `copy` change. */
+/** Les deux versions partagent le montage ; seuls le texte et le minutage changent. */
 const VERSIONS: Array<{ suffix: string; lang: Lang }> = [
   { suffix: '', lang: 'fr' },
   { suffix: 'Ar', lang: 'ar' },
@@ -19,13 +19,13 @@ export const IstdRoot: React.FC = () => (
           id={`IstdReel${suffix}`}
           component={Reel}
           defaultProps={{ lang }}
-          durationInFrames={REEL_FRAMES}
+          durationInFrames={framesFor(lang)}
           fps={F.FPS}
           width={F.WIDTH}
           height={F.HEIGHT}
         />
-        {/* Chaque plan isolé, pour itérer sans re-rendre les 22 s. */}
-        {PLANS.map(({ id, duration, component }) => (
+        {/* Chaque plan isolé, à la durée de sa langue. */}
+        {plansFor(lang).map(({ id, duration, component }) => (
           <Composition
             key={`${id}${suffix}`}
             id={`${id}${suffix}`}
