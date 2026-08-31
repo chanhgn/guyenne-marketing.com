@@ -340,3 +340,38 @@ deux langues, à l'identique.
 
 « 2026/2027 » est écrit sans espace autour de la barre, pour la même raison : avec
 des espaces, les deux années étaient affichées dans l'ordre inverse.
+
+---
+
+## Mise à jour du site — page Débouchés
+
+**Correction** : « Après 5 ans : 8 000 – 12 000 DH/mois » → « 8 000 – **15 000** DH/mois »,
+pour que la page ne contredise plus la publicité.
+
+**Ajout** : une section « Salaires à l'étranger avec ce diplôme » sur les deux versions
+de la page (FR `istd.ma/debouches`, AR `istd.ma/ar/الآفاق-المهنية`), avec dix pays.
+
+| Pays | Salaire moyen local | ≈ DH / mois | Source |
+|---|---|---|---|
+| 🇨🇭 Suisse | ≈ 6 500 CHF | 74 000 | Glassdoor CH, Lohncheck |
+| 🇦🇪 Émirats | ≈ 3 500 $US | 35 000 | Grille istd.ma/debouches (2 500 – 5 000 $US) |
+| 🇳🇱 Pays-Bas | ≈ 3 050 € | 32 000 | SalaryExpert, ERI |
+| 🇧🇪 Belgique | ≈ 3 000 € | 32 000 | Indeed BE, Trajektoire |
+| 🇫🇷 France | ≈ 2 500 € | 27 000 | Grille istd.ma, CMA Île-de-France |
+| 🇬🇧 Royaume-Uni | ≈ 2 080 £ | 26 000 | Payscale UK (24 955 £/an) |
+| 🇩🇪 Allemagne | ≈ 2 400 € | 26 000 | Sources sectorielles (28–30 k€/an) |
+| 🇨🇦 Canada | ≈ 3 460 $CA | 25 000 | Indeed CA, Talent.com (41 496 $CA/an) |
+| 🇮🇹 Italie | ≈ 2 030 € | 21 000 | Payscale IT (24 348 €/an) |
+| 🇸🇦 Arabie saoudite | ≈ 5 650 SAR | 15 000 | Payscale SA (67 740 SAR/an) |
+
+**Taux retenus** : 1 € ≈ 10,8 DH · 1 CHF ≈ 11,5 DH · 1 $CA ≈ 7,2 DH · 1 £ ≈ 12,6 DH ·
+1 $US ≈ 10 DH · 1 SAR ≈ 2,66 DH. Montants arrondis à la baisse.
+
+**Mentions obligatoires affichées sur la page** : moyennes brutes toutes expériences
+confondues, un débutant démarre en dessous, coût de la vie local non comparé, sources
+citées. Ce sont des salaires que l'école affiche publiquement : elle doit pouvoir les
+justifier si un candidat les conteste.
+
+**Nombres en arabe** : les séparateurs de milliers utilisent `&nbsp;` et les cellules
+chiffrées portent `dir='ltr'`, pour la même raison que dans la vidéo — une espace
+normale est un caractère neutre que l'algorithme bidirectionnel réordonne.
