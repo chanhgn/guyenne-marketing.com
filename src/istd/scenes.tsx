@@ -245,9 +245,16 @@ export const Money: React.FC = () => {
 
         {/* En arabe la progression se lit de droite a gauche : le montant de
             depart doit etre a droite et la fleche pointer vers la gauche.
+
+            Le conteneur <Stage> porte dir="rtl", et `flex-direction: row` suit
+            deja le sens d'ecriture : en RTL il place donc le premier enfant
+            (m.from) a droite. Ajouter `row-reverse` annulerait ce retournement
+            et remettrait la progression a l'envers -- c'est le piege. Seule la
+            fleche doit etre miroitee.
+
             Les montants gardent dir="ltr" pour que les chiffres restent
             ecrits de gauche a droite. */}
-        <div style={{ display: 'flex', flexDirection: rtl ? 'row-reverse' : 'row', alignItems: 'center', gap: 30 }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 30 }}>
           {amount(m.from, a, true)}
           <svg
             width={92}

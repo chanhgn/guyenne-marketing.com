@@ -33,13 +33,18 @@ export const SCENES = [
  * Durées par langue, en frames à 30 fps.
  *
  * La darija est plus longue à dire que le français à contenu égal : elle
- * accumule les mots-outils, et les nombres y sont plus étirés. À durée
- * identique, la comédienne devait débiter à plus de 3,5 mots/seconde.
- * Les plans arabes sont donc allongés pour retomber autour de 2,5.
+ * accumule les mots-outils, et les nombres y sont plus étirés. Elle garde
+ * donc 1095 frames là où le français en tient 900.
+ *
+ * Le total darija ne bouge plus : c'est sa répartition qui a changé. Les
+ * plans 1 et 2 tiennent une phrase courte et rendent une seconde chacun aux
+ * plans 3 et 5, qui portent les phrases longues et les nombres. Le texte dit
+ * ayant été allégé de son côté (brief/istd-script-voix.md), le débit tombe
+ * autour de 2 mots/seconde partout au lieu de culminer à 2,7.
  */
 export const DURATIONS: Record<Lang, readonly number[]> = {
   fr: [90, 105, 105, 120, 120, 165, 120, 75], //  900 frames — 30,0 s
-  ar: [105, 120, 135, 150, 150, 195, 150, 90], // 1095 frames — 36,5 s
+  ar: [90, 105, 150, 150, 165, 195, 150, 90], // 1095 frames — 36,5 s
 } as const;
 
 export type Plan = { id: string; from: number; duration: number; component: React.FC<LangProps> };

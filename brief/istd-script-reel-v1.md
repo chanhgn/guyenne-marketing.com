@@ -251,14 +251,24 @@ animations : seul le texte change (`src/istd/copy.ts`). Une correction de rythme
 profite donc aux deux. La version arabe passe en police Cairo, en sens de lecture
 droite-à-gauche.
 
+Texte affiché, plan par plan :
+
 | | Français | Darija |
 |---|---|---|
-| Plan 1 | Un métier dans la santé. / Sans faire médecine. | خدمة فمجال الصحة. / بلا ما تقرا الطب. |
-| Plan 2 | Devenez Technicien Spécialisé en Prothèse Dentaire | ولّي تقني متخصص فتركيب الأسنان |
-| Plan 3 | de nos diplômés trouvent un emploi dans l'année | من الخريجين ديالنا كيلقاو الخدمة فالعام لي من بعد التخرج |
+| Plan 1 | Devenez Prothésiste Dentaire / reconnu à l'international | ولّي تقني ديال الأسنان / معترف بيك فالخارج |
+| Plan 2 | Un métier dans la santé — Sans faire médecine. | خدمة فمجال الصحة — بلا ما تقرا الطب. |
+| Plan 3 | 90 % de nos diplômés trouvent un emploi dans l'année | 90٪ من الخريجين ديالنا كيلقاو الخدمة فالعام لي من بعد التخرج |
 | Plan 4 | Diplôme Bac+3 · 3 ans · 68 % de pratique | ديبلوم باك+3 · 3 سنين · 68٪ تطبيق فاللابو |
-| Plan 5 | ISTD Fès — Depuis 2006, plus de 500 diplômés | ISTD فاس — من 2006، أكثر من 500 خريج |
-| Plan 6 | Cliquez sur le bouton en bas de la page | دير كليك على الزر لي تحت الفيديو |
+| Plan 5 | 4 500 → 15 000 DH/mois · 1 200 entreprises | من 4 500 حتى 15 000 درهم/الشهر · 1 200 شركة |
+| Plan 6 | Métier en tension — Belgique, France, Allemagne, Canada | خصاص فالمهنة — بلجيكا، فرنسا، ألمانيا، كندا |
+| Plan 7 | Cliquez sur le bouton en bas de la page | دير كليك على الزر لي تحت الفيديو |
+| Plan 8 | ISTD Fès — Depuis 2006, plus de 500 diplômés | ISTD فاس — من 2006، أكثر من 500 خريج |
+
+**Minutage.** Les deux versions ne durent pas la même chose : la darija accumule les
+mots-outils et étire les nombres. Les durées sont déclarées par langue dans
+`src/istd/Reel.tsx` (table `DURATIONS`) — 900 frames pour le français (30,0 s),
+1095 pour la darija (36,5 s) — et les débuts de plans s'en déduisent. Les
+timecodes indiqués plus haut sont ceux de la version française.
 
 **Animation** — Fond orange plein `#F4380F`. Bouton blanc arrondi (rayon 10 px, comme le
 site) avec pulsation lente. Le pictogramme WhatsApp entre en pop. Logo ISTD en petit,
@@ -278,12 +288,25 @@ coin supérieur. Dernière frame tenue 0,5 s sans mouvement pour la lisibilité 
 
 ## Consignes d'enregistrement de la voix
 
+Le script à lire est dans `brief/istd-script-voix.md` (huit prises par langue,
+avec translittération et indications de jeu). Il est aussi publié en page web
+pour la comédienne.
+
 - Un locuteur darija natif, ton direct et chaleureux, pas de ton « annonce publicitaire »
-- Débit : environ 3,2 mots/seconde — le script est calibré pour 22 s
 - Enregistrer en pièce calme (pas de salle carrelée), téléphone à 20 cm, en mode Dictaphone
 - **Une prise par plan**, avec 1 s de silence avant et après chaque plan
 - Format : envoyer les fichiers bruts (m4a ou wav), sans filtre ni compression
 - Je m'occupe du nettoyage, de l'égalisation et du calage sur l'image
+
+**Le débit est la contrainte, pas la durée.** La v1 du script demandait 2,5 à
+2,7 mots/seconde sur les prises 3, 4, 6 et 7 : injouable proprement en darija.
+Le texte dit a donc été raccourci (v2) et le minutage darija redistribué, pour
+retomber autour de 2 mots/seconde. **Viser 2, ne jamais dépasser 2,5.**
+
+**Ce qui rend l'allègement possible** : le texte dit et le texte affiché ne sont
+pas le même texte. L'écran porte les chiffres exacts et les mentions ; la voix ne
+garde que ce qui doit être entendu. Tout ce qui a été retiré du script reste
+affiché — donc rien ne se perd, et la voix cesse de doubler l'image mot pour mot.
 
 ---
 
@@ -388,12 +411,39 @@ Affichée dans l'ordre latin, la ligne se lit à l'envers pour un arabophone —
 d'abord 15 000, puis 4 500, donc un salaire qui **baisse** — et contredit la légende
 « من البداية حتى 5 سنين ديال الخبرة » placée juste en dessous.
 
-Implémentation : `flexDirection: row-reverse` sur le conteneur et `scaleX(-1)` sur la
+Implémentation : **`flexDirection: 'row'`, sans condition**, et `scaleX(-1)` sur la
 flèche quand la langue est l'arabe. Les montants eux-mêmes conservent `dir="ltr"` :
 **les chiffres restent écrits de gauche à droite, c'est leur ordre dans la phrase qui
-s'inverse.** Ce sont deux problèmes distincts, à ne pas confondre :
+s'inverse.**
+
+### Le piège : ne jamais mettre `row-reverse`
+
+Le conteneur `<Stage>` porte `dir="rtl"`, et en CSS `flex-direction: row` suit le sens
+d'écriture : en RTL, il place déjà le **premier** enfant à **droite**. La progression
+est donc correcte sans rien faire de plus.
+
+Ajouter `row-reverse` par-dessus annule ce retournement et remet la ligne à l'endroit
+latin — c'est-à-dire à l'envers pour un arabophone. C'est exactement l'erreur qui a été
+signalée deux fois. Le raisonnement « l'arabe se lit à l'envers, donc il faut inverser »
+est faux : le navigateur l'a déjà fait.
+
+Seule la **flèche** doit être miroitée, parce qu'un glyphe n'est pas retourné par la
+direction d'écriture — seule la disposition des boîtes l'est.
+
+| | Français (LTR) | Darija (RTL) |
+|---|---|---|
+| Ordre visuel attendu | 4 500 → 15 000 | 15 000 ← 4 500 |
+| `flex-direction` | `row` | `row` (identique) |
+| Flèche | telle quelle | `scaleX(-1)` |
+
+Trois problèmes distincts, à ne pas confondre :
 
 | Problème | Symptôme | Correctif |
 |---|---|---|
 | Nombre coupé par le bidi | « 3 000 » s'affiche « 000 3 » | espace insécable comme séparateur de milliers |
-| Séquence inversée | « 4 500 → 15 000 » se lit « 15 000 → 4 500 » | `row-reverse` + flèche miroir en RTL |
+| Séquence inversée | « 4 500 → 15 000 » se lit « 15 000 → 4 500 » | flèche miroir en RTL, `flex-direction: row` inchangé |
+| Séquence sur-inversée | même symptôme, causé par le correctif | retirer le `row-reverse` : il double le retournement |
+
+**Vérification** : rendre un still de `Plan5SalaireAr` et vérifier que le montant
+**peach** (le départ, `m.from`) est à **droite**. S'il est à gauche, la progression est
+inversée, quelle que soit l'apparence de la flèche.
