@@ -375,3 +375,25 @@ justifier si un candidat les conteste.
 **Nombres en arabe** : les séparateurs de milliers utilisent `&nbsp;` et les cellules
 chiffrées portent `dir='ltr'`, pour la même raison que dans la vidéo — une espace
 normale est un caractère neutre que l'algorithme bidirectionnel réordonne.
+
+---
+
+## Note technique — sens de lecture des progressions en arabe
+
+Le plan 5 affiche une progression salariale « 4 500 → 15 000 ». En arabe, cette
+progression doit se lire **de droite à gauche** : le montant de départ à droite, la
+flèche pointant vers la gauche, le montant d'arrivée à gauche.
+
+Affichée dans l'ordre latin, la ligne se lit à l'envers pour un arabophone — il voit
+d'abord 15 000, puis 4 500, donc un salaire qui **baisse** — et contredit la légende
+« من البداية حتى 5 سنين ديال الخبرة » placée juste en dessous.
+
+Implémentation : `flexDirection: row-reverse` sur le conteneur et `scaleX(-1)` sur la
+flèche quand la langue est l'arabe. Les montants eux-mêmes conservent `dir="ltr"` :
+**les chiffres restent écrits de gauche à droite, c'est leur ordre dans la phrase qui
+s'inverse.** Ce sont deux problèmes distincts, à ne pas confondre :
+
+| Problème | Symptôme | Correctif |
+|---|---|---|
+| Nombre coupé par le bidi | « 3 000 » s'affiche « 000 3 » | espace insécable comme séparateur de milliers |
+| Séquence inversée | « 4 500 → 15 000 » se lit « 15 000 → 4 500 » | `row-reverse` + flèche miroir en RTL |

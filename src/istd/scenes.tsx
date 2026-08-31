@@ -243,9 +243,18 @@ export const Money: React.FC = () => {
           {m.kicker}
         </Kicker>
 
-        <div dir="ltr" style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
+        {/* En arabe la progression se lit de droite a gauche : le montant de
+            depart doit etre a droite et la fleche pointer vers la gauche.
+            Les montants gardent dir="ltr" pour que les chiffres restent
+            ecrits de gauche a droite. */}
+        <div style={{ display: 'flex', flexDirection: rtl ? 'row-reverse' : 'row', alignItems: 'center', gap: 30 }}>
           {amount(m.from, a, true)}
-          <svg width={92} height={44} viewBox="0 0 92 44" style={{ opacity: arrow }}>
+          <svg
+            width={92}
+            height={44}
+            viewBox="0 0 92 44"
+            style={{ opacity: arrow, transform: rtl ? 'scaleX(-1)' : 'none' }}
+          >
             <path
               d="M6 22 H78 M60 6 L80 22 L60 38"
               fill="none"
