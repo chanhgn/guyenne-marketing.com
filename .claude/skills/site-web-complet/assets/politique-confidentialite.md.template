@@ -1,0 +1,91 @@
+# Politique de confidentialité
+
+*Dernière mise à jour : [DATE]*
+
+> Modèle à compléter. **Aucun `[…]` ne doit rester** dans la version publiée.
+> Nécessite une page **Mentions légales** distincte (voir la fin de ce fichier).
+
+## 1. Responsable du traitement
+
+[RAISON SOCIALE], [forme juridique] au capital de [X] €, immatriculée au RCS de [VILLE] sous le
+numéro [SIREN], dont le siège est situé [ADRESSE COMPLÈTE].
+Contact : [EMAIL] — [TÉLÉPHONE].
+[Le cas échéant : délégué à la protection des données : [NOM / EMAIL].]
+
+## 2. Données collectées
+
+- **Formulaire de contact / devis** : nom, prénom, email, téléphone, description du besoin, [autres champs].
+- **Navigation** : adresse IP, type de navigateur, pages consultées, source de visite (via les cookies de mesure, après consentement).
+- **Journaux serveur** : conservés par l'hébergeur à des fins de sécurité.
+
+Aucune donnée sensible n'est collectée. [Adapter si secteur santé.]
+
+## 3. Finalités et bases légales
+
+| Traitement | Finalité | Base légale | Durée de conservation |
+|---|---|---|---|
+| Formulaire de contact | Répondre à votre demande, établir un devis | Mesures précontractuelles / intérêt légitime | 3 ans à compter du dernier contact |
+| Clients | Exécution du contrat, facturation | Contrat / obligation légale | 10 ans (obligations comptables) |
+| Mesure d'audience (Google Analytics 4) | Comprendre l'usage du site | Consentement | 14 mois (données), 13 mois (cookies) |
+| [Newsletter] | Envoi d'informations | Consentement | Jusqu'au désabonnement |
+
+## 4. Destinataires et sous-traitants
+
+- **Hébergeur** : [NOM, PAYS].
+- **Mesure d'audience** : Google Ireland Limited (Google Analytics 4, Google Tag Manager).
+- [**Formulaire / CRM** : NOM.]
+- [**Emailing** : NOM.]
+
+[Transferts hors UE : préciser le pays et l'encadrement, par exemple le Data Privacy Framework
+pour les prestataires américains.] Aucune donnée n'est vendue ni cédée à des tiers à des fins
+commerciales.
+
+## 5. Cookies
+
+Aucun cookie non essentiel n'est déposé avant votre consentement.
+
+| Cookie | Finalité | Durée |
+|---|---|---|
+| [nom du cookie de consentement] | Mémoriser votre choix | 6 mois |
+| `_ga`, `_ga_*` | Mesure d'audience (Google Analytics 4) | 13 mois |
+| [autres] | | |
+
+Vous pouvez modifier votre choix à tout moment via le lien **« Gérer mes cookies »** présent en bas
+de chaque page, ou via les réglages de votre navigateur.
+
+## 6. Vos droits
+
+Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits d'accès, de
+rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi
+que du droit de définir des directives relatives à leur sort après votre décès.
+
+Pour les exercer : [EMAIL] ou par courrier à [ADRESSE]. Une réponse vous sera apportée sous un mois.
+Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès
+de la CNIL — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — www.cnil.fr.
+
+## 7. Sécurité
+
+[Décrire : HTTPS, accès restreints, sauvegardes, mises à jour.]
+
+## 8. Modifications
+
+Cette politique peut être mise à jour. La date en tête de page indique la dernière version.
+
+---
+
+# Mentions légales (page distincte — obligation LCEN)
+
+**Éditeur du site** : [RAISON SOCIALE], [forme juridique] au capital de [X] €.
+Siège : [ADRESSE]. Téléphone : [TÉLÉPHONE]. Email : [EMAIL].
+RCS [VILLE] [SIREN] — SIRET [SIRET] — TVA intracommunautaire [FR XX XXX XXX XXX].
+**Directeur de la publication** : [NOM].
+
+**Hébergeur** : [RAISON SOCIALE DE L'HÉBERGEUR], [ADRESSE], [TÉLÉPHONE].
+
+[**Assurance professionnelle** : [ASSUREUR], [adresse], couverture géographique : [zone].
+Obligatoire pour les artisans du bâtiment (RC pro / décennale).]
+
+[**Profession réglementée** : ordre/organisme, numéro d'inscription, règles professionnelles applicables.]
+
+**Propriété intellectuelle** : l'ensemble des contenus de ce site est protégé. Toute reproduction
+sans autorisation est interdite.

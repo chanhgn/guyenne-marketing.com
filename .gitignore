@@ -11,3 +11,7 @@ public/*
 !public/*.png
 previews/*
 !previews/*.mp4
+
+# Bytecode Python des scripts de skills
+__pycache__/
+*.pyc

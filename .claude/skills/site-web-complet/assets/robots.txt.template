@@ -1,0 +1,27 @@
+# robots.txt — https://DOMAINE.FR
+# Remplacer DOMAINE.FR. Vérifier après chaque mise en ligne qu'il ne reste pas de "Disallow: /".
+
+User-agent: *
+Allow: /
+
+# Pages sans intérêt pour l'index (la page de remerciement est aussi en noindex)
+Disallow: /merci
+Disallow: /merci/
+Disallow: /*?s=
+Disallow: /*?orderby=
+Disallow: /panier
+Disallow: /commande
+
+# WordPress uniquement — décommenter si le site est sous WP
+# Disallow: /wp-admin/
+# Allow: /wp-admin/admin-ajax.php
+
+# Ne JAMAIS bloquer les ressources : Google en a besoin pour rendre les pages
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+
+Sitemap: https://DOMAINE.FR/sitemap.xml

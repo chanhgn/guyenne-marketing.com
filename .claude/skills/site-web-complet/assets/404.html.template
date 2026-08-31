@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable | MARQUE</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <!-- Reprendre le header du site -->
+
+  <main class="page-404">
+    <p class="eyebrow">Erreur 404</p>
+    <h1>Cette page n'existe plus</h1>
+    <p>
+      Elle a peut-être été renommée ou déplacée. Voici les pages les plus utiles —
+      ou appelez-nous directement, on vous oriente en deux minutes.
+    </p>
+
+    <ul class="liens-utiles">
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/prestations/">Nos prestations</a></li>
+      <li><a href="/realisations/">Nos réalisations</a></li>
+      <li><a href="/contact/">Nous contacter</a></li>
+    </ul>
+
+    <p>
+      <a class="btn btn--primary" href="/contact/">Demander mon devis — réponse sous PROMESSE_DELAI</a>
+    </p>
+    <p>
+      Une urgence&nbsp;? <a href="tel:+33XXXXXXXXX">TELEPHONE_AFFICHE</a>
+    </p>
+  </main>
+
+  <!-- Reprendre le footer du site (liens légaux inclus) -->
+</body>
+</html>
+
+<!--
+  RAPPEL CRITIQUE : le fichier ne suffit pas, le serveur doit renvoyer le STATUT HTTP 404.
+    Apache  : ErrorDocument 404 /404.html
+    Nginx   : error_page 404 /404.html;
+    Netlify / Vercel / Cloudflare Pages : un 404.html à la racine suffit.
+  Vérifier : curl -o /dev/null -s -w "%{http_code}\n" https://DOMAINE.FR/page-inexistante  →  404
+-->

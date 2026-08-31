@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merci — votre demande est bien reçue | MARQUE</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <!-- Header du site -->
+
+  <main class="page-merci">
+    <h1>Merci, votre demande est bien arrivée</h1>
+
+    <p class="lead">
+      Nous revenons vers vous <strong>sous PROMESSE_DELAI</strong>. Vous recevrez un email de
+      confirmation à l'adresse indiquée.
+    </p>
+
+    <h2>Ce qui se passe maintenant</h2>
+    <ol>
+      <li><strong>Sous PROMESSE_DELAI</strong> — nous vous appelons pour cadrer le besoin (15 min).</li>
+      <li><strong>ÉTAPE_2</strong> — DÉCRIRE.</li>
+      <li><strong>ÉTAPE_3</strong> — DÉCRIRE.</li>
+    </ol>
+
+    <h2>En attendant</h2>
+    <ul>
+      <li><a href="/realisations/">Voir nos réalisations récentes</a></li>
+      <li><a href="/prestations/#faq">Les questions qu'on nous pose le plus souvent</a></li>
+    </ul>
+
+    <p>
+      C'est urgent&nbsp;? Appelez-nous directement au
+      <a href="tel:+33XXXXXXXXX">TELEPHONE_AFFICHE</a>.
+    </p>
+  </main>
+
+  <!-- Footer du site -->
+
+  <!-- Conversion GA4 (le conteneur GTM est chargé dans le layout) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ event: 'generate_lead', form_name: 'devis' });
+  </script>
+</body>
+</html>
