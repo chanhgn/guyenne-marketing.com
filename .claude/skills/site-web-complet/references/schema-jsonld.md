@@ -6,6 +6,8 @@ Règles générales :
 - URLs **absolues** partout.
 - Un `@id` stable par entité, pour que les autres schemas s'y rattachent sans dupliquer.
 - Valider sur `https://search.google.com/test/rich-results` et `https://validator.schema.org`.
+- 🌍 `addressCountry` au code ISO du pays (`FR`, `MA`, `BE`, `CH`, `CA`), `priceRange` dans la devise
+  locale, et `inLanguage` sur chaque version d'un site multilingue.
 
 ---
 
@@ -55,6 +57,36 @@ Choisir le sous-type le plus précis : `Plumber`, `Electrician`, `RoofingContrac
 
 Le NAP doit être **au caractère près** celui de la fiche Google Business Profile.
 
+### Variante Maroc + horaires de Ramadan
+
+```json
+{
+  "@type": "Dermatologist",
+  "@id": "https://exemple.ma/#cabinet",
+  "name": "Cabinet du Dr …",
+  "telephone": "+212661234567",
+  "priceRange": "MAD",
+  "inLanguage": ["fr", "ar"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Immeuble X, 3e étage, avenue …",
+    "addressLocality": "Fès",
+    "postalCode": "30000",
+    "addressCountry": "MA"
+  },
+  "specialOpeningHoursSpecification": [
+    { "@type": "OpeningHoursSpecification",
+      "opens": "09:00", "closes": "15:00",
+      "validFrom": "2027-02-08", "validThrough": "2027-03-09" }
+  ]
+}
+```
+Les horaires du Ramadan changent chaque année : mettre `validFrom`/`validThrough` à jour, sur le
+site **et** sur la fiche Google.
+
+🌍 Pour un professionnel de santé, utiliser `Physician`, `Dermatologist`, `Dentist` ou
+`MedicalClinic`, **sans `aggregateRating` ni `review`** — voir `juridique-pays.md` §6.
+
 ---
 
 ## 5. BreadcrumbList (toutes les pages sauf l'accueil)
@@ -97,7 +129,8 @@ le balisage reste utile pour la compréhension machine, mais ne le vends pas com
 
 ## 14. Review / AggregateRating
 
-**À n'utiliser que si les avis réels sont affichés sur la page.** Voir `juridique-fr.md`.
+**À n'utiliser que si les avis réels sont affichés sur la page.** Voir `juridique-pays.md`.
+🌍 À ne pas utiliser du tout pour une profession de santé.
 
 ```json
 {

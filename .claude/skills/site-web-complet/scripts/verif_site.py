@@ -193,6 +193,9 @@ def main():
     types_globaux = set()
     gtm = ga4 = False
     tel_present = False
+    wa_present = False
+    hreflang = 0
+    pages_sans_lang = []
     analysees = 0
 
     for url in pages:
@@ -226,6 +229,12 @@ def main():
 
         if "tel:" in html:
             tel_present = True
+        if "wa.me/" in html or "api.whatsapp.com" in html:
+            wa_present = True
+        hreflang += len(re.findall(r'hreflang\s*=\s*["\']', html, re.I))
+        mhtml = re.search(r"<html\b[^>]*>", html, re.I)
+        if not mhtml or not attr(mhtml.group(0), "lang"):
+            pages_sans_lang.append(url)
         if "googletagmanager.com/gtm.js" in html or re.search(r"GTM-[A-Z0-9]+", html):
             gtm = True
         if "googletagmanager.com/gtag/js" in html or re.search(r"[\"']G-[A-Z0-9]{6,}[\"']", html):
@@ -300,19 +309,37 @@ def main():
         if {"Review", "AggregateRating"} & types_globaux else "aucun balisage d'avis")
 
     # --- Point 9 : tel: -----------------------------------------------------
-    out(OK if tel_present else WARN, "9. CTA mobile (lien tel:)",
-        "lien tel: détecté — vérifier la barre sticky sur mobile" if tel_present
-        else "aucun lien tel: trouvé")
+    canaux = []
+    if tel_present:
+        canaux.append("tel:")
+    if wa_present:
+        canaux.append("WhatsApp")
+    out(OK if canaux else WARN, "9. CTA mobile (canaux)",
+        "%s détecté(s) — vérifier la barre sticky sur mobile" % " + ".join(canaux) if canaux
+        else "ni lien tel: ni lien WhatsApp trouvé")
 
     # --- Point 18 : tracking ------------------------------------------------
     out(OK if (gtm or ga4) else BAD, "18. Google Analytics",
         "GTM=%s GA4=%s — vérifier à la main qu'aucun tag ne part avant le consentement"
         % ("oui" if gtm else "non", "oui" if ga4 else "non"))
 
-    # --- Point 17 : pages légales ------------------------------------------
+    # --- International : lang et hreflang -----------------------------------
+    out(BAD if pages_sans_lang else OK, "i18n. Attribut <html lang>",
+        "%d page(s) sans attribut lang" % len(pages_sans_lang) if pages_sans_lang
+        else "présent sur toutes les pages analysées")
+    out(OK if hreflang else NA, "i18n. hreflang",
+        "%d balise(s) hreflang détectée(s)" % hreflang if hreflang
+        else "aucun hreflang — normal si le site est monolingue")
+
+    # --- Point 17 : pages légales (slugs FR / EN / AR) ----------------------
     legal = []
-    for path in ("/politique-de-confidentialite", "/politique-de-confidentialite/",
-                 "/politique-confidentialite", "/mentions-legales", "/mentions-legales/"):
+    chemins = ("/politique-de-confidentialite", "/politique-de-confidentialite/",
+               "/politique-confidentialite", "/politique-de-confidentialite.html",
+               "/mentions-legales", "/mentions-legales/", "/mentions-legales.html",
+               "/privacy-policy", "/privacy", "/legal", "/legal-notice",
+               "/fr/politique-de-confidentialite", "/fr/mentions-legales",
+               "/ar/privacy", "/ar/legal")
+    for path in chemins:
         st, _, _ = fetch(base + path)
         if st == 200:
             legal.append(path)
@@ -330,7 +357,13 @@ def main():
   14. Avis — réels, datés, sourcés (jamais inventés)
   18. Consentement — aucun tag avant clic, refus aussi simple que l'accord
   19. Carte — chargée au clic, bouton itinéraire fonctionnel
-  20. Photos d'équipe — vraies personnes, pas de banque d'images""")
+  20. Photos d'équipe — vraies personnes, pas de banque d'images
+
+Selon le pays (voir references/juridique-pays.md et international.md) :
+  17. Mentions légales — RC/ICE/IF au Maroc, SIREN/RCS/TVA en France, BCE/IDE/NEQ ailleurs
+  18. Déclaration CNDP du traitement au Maroc (loi 09-08)
+  14. Professions de santé — aucun avis patient affiché sur le site
+  ar. Version arabe — dir=\"rtl\", police adaptée, hreflang réciproques""")
 
 
 if __name__ == "__main__":

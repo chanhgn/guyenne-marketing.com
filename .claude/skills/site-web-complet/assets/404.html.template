@@ -1,3 +1,5 @@
+<!-- 🌍 Site multilingue : une page 404 par langue, avec le bon lang/dir et des liens
+     vers les pages de la même langue. Voir references/international.md. -->
 <!doctype html>
 <html lang="fr">
 <head>

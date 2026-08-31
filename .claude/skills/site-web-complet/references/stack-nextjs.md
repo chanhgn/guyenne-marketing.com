@@ -137,6 +137,23 @@ Le hero passe en `priority` (pas de `lazy`).
 Même CSS que la version statique (`stack-html-statique.md`). En Next, ajouter la classe utilitaire
 `pb-[88px] md:pb-0` sur le `<body>` du layout pour ne rien masquer.
 
+## 🌍 Site multilingue
+
+Routing `app/[locale]/…` + `next-intl`. Dans `generateMetadata` :
+
+```ts
+alternates: {
+  canonical: `/${locale}/prestations/${slug}`,
+  languages: {
+    fr: `/fr/prestations/${slug}`,
+    ar: `/ar/prestations/${slug}`,
+    'x-default': `/fr/prestations/${slug}`,
+  },
+}
+```
+Et dans le layout : `<html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>`.
+Le sitemap liste une entrée par locale. Détail dans `international.md`.
+
 ## Point 18 — GTM
 
 Utiliser `@next/third-parties/google` (`<GoogleTagManager gtmId="GTM-XXXX" />`) dans `layout.tsx`,

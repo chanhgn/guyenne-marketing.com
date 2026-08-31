@@ -4,6 +4,14 @@
 
 > Modèle à compléter. **Aucun `[…]` ne doit rester** dans la version publiée.
 > Nécessite une page **Mentions légales** distincte (voir la fin de ce fichier).
+>
+> 🌍 Ce modèle est calibré **France / UE (RGPD + LCEN)**. Pour un autre pays, adapter avant usage
+> avec `references/juridique-pays.md` :
+> - **Maroc** : loi 09-08 au lieu du RGPD, droits d'accès/rectification/opposition, mention de la
+>   déclaration CNDP, et mentions RC + ICE + IF + patente au lieu de SIREN/RCS/TVA intracom.
+> - **Suisse** : nLPD, autorité PFPDT. **Québec** : Loi 25 + responsable des renseignements
+>   personnels nommé. **Belgique** : RGPD, autorité APD, numéro BCE.
+> Un modèle recopié sans adaptation au pays est une non-conformité, pas un gain de temps.
 
 ## 1. Responsable du traitement
 

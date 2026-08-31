@@ -156,6 +156,18 @@ document.getElementById('map-load').addEventListener('click', function () {
 `sitemap.xml` : lister uniquement les pages indexables (donc **sans** `/merci.html` ni `/404.html`),
 avec `<lastmod>` réel.
 
+## 🌍 Site multilingue
+
+```
+/
+├── fr/index.html
+├── ar/index.html          (avec <html lang="ar" dir="rtl">)
+├── index.html             → redirection ou page de choix de langue
+├── sitemap.xml            → une entrée par version, avec les alternates
+```
+Chaque page porte ses `hreflang` réciproques plus `x-default`. Une page 404 et une page de
+remerciement **par langue**. Détail dans `international.md`.
+
 ## Contrôles avant livraison
 
 ```bash

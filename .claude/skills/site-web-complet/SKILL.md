@@ -7,9 +7,11 @@ description: >
   images Open Graph, vrais avis clients, textes alternatifs, schema LocalBusiness, politique de confidentialité,
   Google Analytics 4 via GTM, carte itinéraire, photos d'équipe). Utiliser CE SKILL SYSTÉMATIQUEMENT dès qu'il
   s'agit de créer, construire, refondre, lancer, livrer ou auditer un site web / site internet / site vitrine /
-  landing page / page de site, quelle que soit la techno (WordPress + Elementor, HTML/CSS statique, Next.js/React).
+  landing page / page de site, quelle que soit la techno (WordPress + Elementor, HTML/CSS statique, Next.js/React)
+  et quel que soit le pays du client (France, Maroc, Belgique, Suisse, Canada, Afrique francophone, international).
   Se déclenche aussi sur "faire un site", "nouveau site client", "refonte de site", "mettre le site en ligne",
-  "il manque quoi sur mon site", "checklist site web", "site pas conforme", "livrer le site".
+  "il manque quoi sur mon site", "checklist site web", "site pas conforme", "livrer le site",
+  "site pour un client marocain", "site multilingue", "site en arabe", "site français-arabe".
 ---
 
 # Site web complet — standard 20 points
@@ -44,7 +46,7 @@ Règles :
 - Regroupe 5 à 8 questions par message, avec des exemples de réponse attendue.
 - Si l'utilisateur ne sait pas, propose un défaut explicite et note-le comme **hypothèse à valider**.
 - Trois choses ne peuvent **jamais** être inventées ni "plausibilisées" :
-  **les avis clients, les études de cas et les photos d'équipe**. Voir `references/juridique-fr.md`.
+  **les avis clients, les études de cas et les photos d'équipe**. Voir `references/juridique-pays.md`.
 - Termine la phase 1 par un récapitulatif en tableau que l'utilisateur valide avant de coder.
 
 ### Déterminer la stack (première question, toujours)
@@ -58,6 +60,25 @@ Règles :
 Si l'utilisateur ne sait pas : proposer **WordPress + Elementor** pour un client qui doit pouvoir
 éditer seul, **HTML statique** pour un one-pager rapide et durable, **Next.js** pour un site
 qui va grossir ou qui a besoin de pages programmatiques.
+
+### Déterminer le marché et la langue
+
+Deuxième question obligatoire, juste après la stack : **dans quel pays est le client, et pour quel
+public ?** Ça change le droit applicable, les mentions légales, les formats et les canaux de contact.
+
+| Marché | Pages légales | Spécificités à prévoir |
+|---|---|---|
+| France / UE | Politique de confidentialité RGPD + mentions légales (LCEN) | Bandeau cookies CNIL, SIREN/RCS, hébergeur |
+| Maroc | Politique de confidentialité loi 09-08 + mentions | Déclaration CNDP, RC/ICE/IF, WhatsApp, horaires Ramadan, bilingue fr/ar |
+| Belgique / Suisse | RGPD / nLPD | Bilinguisme, numéro BCE ou IDE |
+| Canada / Québec | Loi 25 | Version française obligatoire (loi 96), responsable des renseignements personnels nommé |
+| Autre / international | Socle RGPD + validation locale | Ne jamais annoncer « conforme » sans vérification locale |
+
+Lire `references/international.md` (langues, RTL, formats, canaux, cartes, saisonnalité) et
+`references/juridique-pays.md` (droit applicable) dès que le pays est connu.
+
+Si le client exerce une **profession réglementée** (santé, droit, immobilier, courtage), lire
+la section 6 de `juridique-pays.md` **avant de rédiger** : les points 2, 6, 8, 14 et 16 changent.
 
 ### Déterminer le profil de contenu
 
@@ -76,6 +97,8 @@ qui va grossir ou qui a besoin de pages programmatiques.
 3. Lis `references/contenus-types.md` pour rédiger CTA, FAQ, études de cas, promesse de délai.
 4. Lis `references/schema-jsonld.md` pour les données structurées (points 5, 7, 14, 16).
 5. Lis `references/tracking-ga4-gtm.md` pour GA4 + GTM + Consent Mode v2 (points 4, 18).
+6. Lis `references/international.md` si le site n'est pas franco-français ou s'il est multilingue.
+7. Lis `references/juridique-pays.md` pour les pages légales du pays concerné (point 17).
 
 Templates prêts à adapter dans `assets/` : `robots.txt.template`, `404.html.template`,
 `merci.html.template`, `politique-confidentialite.md.template`.
@@ -141,18 +164,21 @@ mettre le site en ligne sans la fonctionnalité concernée plutôt que de la fal
 | 6 | Études de cas | 3 minimum, structure Contexte → Contrainte → Solution → Résultat chiffré → verbatim, données réelles |
 | 7 | 5 FAQ | 5 vraies questions clients (prix, délai, zone, process, garantie), 40-80 mots, `FAQPage` JSON-LD |
 | 8 | Promesse de délai | Chiffrée, tenable, identique partout, affichée à côté de chaque CTA |
-| 9 | CTA mobile | Barre sticky en bas, cible tactile ≥ 48px, `tel:` cliquable, sans masquer le contenu |
+| 9 | CTA mobile | Barre sticky en bas, cible tactile ≥ 48px, `tel:` cliquable (+ WhatsApp selon le marché), sans masquer le contenu 🌍 |
 | 10 | robots.txt | À la racine, CSS/JS autorisés, `/merci` bloqué, `Sitemap:` en URL absolue |
 | 11 | Titres uniques | 50-60 caractères, uniques sur tout le site, mot-clé + différenciateur + marque |
 | 12 | Meta description | 140-160 caractères, uniques, bénéfice + preuve + CTA, contiennent la promesse de délai |
 | 13 | Images sociales | `og:` + `twitter:card` complets, image 1200×630 en URL absolue, < 300 Ko, spécifique aux pages clés |
-| 14 | Vrais avis | Prénom + date + source vérifiable ; jamais inventés ; `AggregateRating` seulement si avis réels affichés |
+| 14 | Vrais avis | Prénom + date + source vérifiable ; jamais inventés ; `AggregateRating` seulement si avis réels affichés · 🌍 interdits sur le site pour les professions de santé |
 | 15 | Textes alternatifs | Toute image informative décrite (≤125 car.), `alt=""` sur les décoratives, zéro bourrage de mots-clés |
-| 16 | Schema LocalBusiness | Type précis, NAP strictement identique à la fiche Google, horaires, `areaServed`, `sameAs` |
-| 17 | Politique de confidentialité | Page dédiée RGPD complète + mentions légales (LCEN), liées depuis le footer et les formulaires |
-| 18 | Google Analytics | GA4 via GTM, Consent Mode v2, refus aussi simple que l'accord, événements de conversion configurés |
-| 19 | Carte itinéraire | Carte chargée au clic (RGPD + perf) + bouton « Itinéraire » vers Google/Apple Maps |
+| 16 | Schema LocalBusiness | Type précis, NAP strictement identique à la fiche Google, horaires, `areaServed`, `addressCountry`, `sameAs` |
+| 17 | Politique de confidentialité | Page dédiée complète **selon le droit du pays** + page mentions légales / identification de l'éditeur, liées depuis le footer et les formulaires 🌍 |
+| 18 | Google Analytics | GA4 via GTM, Consent Mode v2, refus aussi simple que l'accord, événements de conversion configurés (dont `click_whatsapp` là où c'est le canal principal) |
+| 19 | Carte itinéraire | Carte chargée au clic (conformité + perf) + bouton « Itinéraire » vers Google/Apple Maps (+ Waze au Maroc) 🌍 |
 | 20 | Photos d'équipe | Vraies photos (jamais de banque d'images), alt avec prénom + rôle, optimisées |
+
+🌍 = le critère dépend du pays, de la langue ou du secteur : voir `references/international.md`
+et `references/juridique-pays.md`.
 
 Détail complet, pièges et méthode de vérification de chaque point : `references/checklist-20.md`.
 
@@ -166,6 +192,8 @@ Détail complet, pièges et méthode de vérification de chaque point : `referen
 - **`page-cro`** : à charger pour optimiser une page existante qui convertit mal.
 - **`frontend-design`** / **`ui-ux-pro-max`** : direction artistique et composants.
 - **`wordpress-elementor`** / **`elementor-mcp`** / **WPVibeAi** : exécution sur WordPress.
+- **`gbp-dermatologue-fes-lakhssassi`** : SEO local marocain et gestion des avis Google — c'est là
+  que vivent les avis d'un praticien, pas sur son site.
 - **`humanizer`** : passer les textes rédigés avant livraison.
 
 Ce skill reste maître sur les 20 points : si un autre skill produit une page, elle repasse par la

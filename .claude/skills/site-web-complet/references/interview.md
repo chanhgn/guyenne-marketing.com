@@ -12,6 +12,12 @@ Convention : ✱ = information sans laquelle un des 20 points ne peut pas être 
 1. ✱ **Stack** : WordPress + Elementor, HTML/CSS statique, ou Next.js/React ? (accès admin / repo / hébergeur)
 2. ✱ **Nature du projet** : création from scratch, refonte, ou finition d'un site existant ? URL actuelle ?
 3. ✱ **Profil** : artisan/TPE locale, B2B services, ou e-commerce ?
+3bis. ✱ **Pays du client et pays visés** : France, Maroc, Belgique, Suisse, Canada, autre ?
+   (détermine le droit applicable, les mentions légales, la devise et les formats)
+3ter. ✱ **Langue(s) du site** : une seule, ou bilingue (fr/ar, fr/nl, fr/en) ? Laquelle est la
+   langue principale ? Le public lit-il l'arabe à l'écrit, ou le français suffit-il ?
+3quater. **Profession réglementée** (santé, droit, immobilier, courtage) ? Si oui, laquelle et
+   sous quel ordre professionnel ? → lire la section 6 de `juridique-pays.md` avant de rédiger.
 4. ✱ **Nom de domaine** définitif (il conditionne les URLs absolues : OG, sitemap, JSON-LD).
 5. **Deadline** de mise en ligne et qui valide le contenu.
 6. **Qui édite le site ensuite** (le client seul ? toi ?) — ça tranche WordPress vs statique.
@@ -26,9 +32,14 @@ affaiblir le SEO local.
 
 7. ✱ Raison sociale exacte + nom commercial affiché.
 8. ✱ Adresse postale complète telle qu'elle apparaît sur la fiche Google (rue, code postal, ville, pays).
-9. ✱ Téléphone au format affiché (`01 23 45 67 89`) **et** au format international (`+33123456789`) pour le `tel:`.
+9. ✱ Téléphone au format affiché localement (`01 23 45 67 89` en France, `06 61 23 45 67` au Maroc)
+   **et** au format E.164 (`+33123456789`, `+212661234567`) pour le `tel:`.
+9bis. ✱ Numéro WhatsApp professionnel (indispensable au Maroc et en Afrique, souvent le canal n°1).
+9ter. Devise et régime de TVA à afficher (EUR/MAD/CHF/CAD, HT ou TTC).
 10. ✱ Email de contact public.
 11. ✱ Horaires d'ouverture réels, jour par jour + fermetures exceptionnelles.
+11bis. Horaires spéciaux récurrents : **Ramadan et Aïd** au Maroc, fermeture d'août en France,
+   pause du vendredi selon l'activité (→ `specialOpeningHoursSpecification`).
 12. Lien de la fiche Google Business Profile + réseaux sociaux (pour `sameAs`).
 13. ✱ Logo (SVG ou PNG ≥ 512 px) et charte : couleurs, typos.
 14. Type d'activité précis (sert à choisir le sous-type schema : `Plumber`, `RoofingContractor`,
@@ -98,7 +109,14 @@ affaiblir le SEO local.
 
 ## Bloc 6 — Juridique
 
-43. ✱ Forme juridique, capital, SIREN/SIRET, RCS, numéro de TVA intracommunautaire.
+43. ✱ Identifiants légaux **selon le pays** :
+   - France : forme juridique, capital, SIREN/SIRET, RCS + ville, TVA intracommunautaire.
+   - Maroc : forme juridique, capital, **RC** + ville, **ICE**, **IF**, patente / taxe
+     professionnelle, CNSS le cas échéant.
+   - Belgique : numéro BCE. Suisse : IDE. Canada : NEQ.
+43bis. Maroc : le traitement a-t-il été **déclaré à la CNDP** (loi 09-08) ? Numéro de récépissé ?
+   Si non, le prévoir avant la mise en ligne du formulaire.
+43ter. Profession réglementée : numéro d'inscription à l'ordre et règles de communication applicables.
 44. ✱ Nom du directeur de la publication.
 45. ✱ Hébergeur : raison sociale, adresse, téléphone (obligation LCEN pour les mentions légales).
 46. Assurance professionnelle (RC pro / décennale) : assureur et zone de couverture.

@@ -5,6 +5,10 @@ Sans preuve, la phrase est du remplissage : la couper.
 
 Passer les textes finaux par le skill **`humanizer`** avant livraison.
 
+🌍 Ces gabarits sont écrits en français de France. Pour un autre marché, adapter la devise, le
+canal de contact et le registre — voir `international.md`. Pour une profession réglementée
+(santé notamment), les points 2, 6, 8 et 14 changent : voir `juridique-pays.md` §6.
+
 ---
 
 ## Point 2 — CTA
@@ -36,6 +40,11 @@ Gabarits selon l'activité :
 | Artisan / chantier | « Visite technique sous 5 jours ouvrés · devis chiffré sous 48 h après visite » |
 | B2B services | « Devis chiffré sous 48 h ouvrées · livraison de la maquette sous 10 jours » |
 | Cabinet / santé | « Réponse à votre demande de RDV sous 24 h ouvrées » |
+| Maroc / WhatsApp | « Réponse sur WhatsApp sous 2 h, du lundi au samedi » |
+| Maroc / chantier | « Visite sur site sous 3 jours · devis sous 48 h » |
+
+Au Maroc et en Afrique, la promesse porte souvent sur **WhatsApp** plutôt que sur l'email : c'est
+là que le prospect attend la réponse. Annoncer le canal en même temps que le délai.
 
 Écrire ensuite **la même chaîne exacte** partout. Vérifier avec un `grep` avant livraison.
 Ajouter la condition (jours ouvrés) et, si possible, l'engagement en cas de retard :
@@ -117,7 +126,11 @@ Bonnes pratiques :
 
 Si le client n'a pas encore d'avis : mettre en place la collecte (lien court Google Business Profile
 envoyé après chaque prestation) et afficher `[À FOURNIR]` en attendant. **Jamais d'avis inventé** —
-voir `juridique-fr.md`.
+voir `juridique-pays.md`.
+
+🌍 **Profession de santé** : pas d'avis patients sur le site, ni en France ni au Maroc. Remplacer ce
+bloc de preuve par des éléments autorisés : diplômes et titres, appartenance à une société savante,
+équipements, protocoles, informations de prévention.
 
 ---
 

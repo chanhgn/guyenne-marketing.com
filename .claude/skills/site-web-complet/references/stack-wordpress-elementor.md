@@ -90,6 +90,16 @@ Détail : `tracking-ga4-gtm.md`.
 Utiliser le blocage de service de Complianz (placeholder + clic pour charger), ou une image statique
 avec un bouton « Itinéraire ».
 
+## 🌍 Site multilingue
+
+**Polylang** (suffisant pour un vitrine) ou **WPML**. À vérifier ensuite :
+- un sitemap par langue et des `hreflang` réciproques générés par Rank Math ;
+- les titres et meta descriptions traduits, pas dupliqués d'une langue à l'autre ;
+- une page 404 et une page `/merci` **par langue** ;
+- pour l'arabe : `dir="rtl"` sur le `<html>` (Elementor a un mode RTL à activer dans
+  Réglages > Général > Langue du site, ou via `is_rtl()` dans le thème enfant) ;
+- les pages légales traduites, avec les mentions du **pays du client** (voir `juridique-pays.md`).
+
 ## Refonte : redirections
 
 Avant de changer les URLs, exporter la liste des pages qui reçoivent du trafic (Search Console),

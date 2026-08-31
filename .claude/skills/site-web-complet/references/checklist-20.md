@@ -3,6 +3,10 @@
 Pour chaque point : **Critères** (ce qui doit être vrai), **Pièges** (erreurs fréquentes),
 **Vérification** (comment le prouver, pas le supposer).
 
+🌍 signale un critère qui **dépend du pays, de la langue ou du secteur**. Le détail est dans
+`international.md` (langues, formats, canaux, cartes, saisonnalité) et `juridique-pays.md`
+(droit applicable, professions réglementées). Le reste est universel.
+
 ---
 
 ## 1. Page 404 claire et personnalisée
@@ -153,10 +157,12 @@ impossible à tenir en haute saison, qui génère des avis négatifs.
 
 ---
 
-## 9. CTA mobile
+## 9. CTA mobile 🌍
 
 **Critères**
-- **Barre sticky** en bas de l'écran sur mobile, avec 1 ou 2 actions max : « Appeler » + « Devis ».
+- **Barre sticky** en bas de l'écran sur mobile, avec 1 ou 2 actions max : « Appeler » + « Devis »
+  en France ; **« WhatsApp » + « Appeler »** au Maroc, en Afrique et au Moyen-Orient, où WhatsApp
+  est le canal de contact dominant (`https://wa.me/212XXXXXXXXX?text=<message pré-rempli>`).
 - Cibles tactiles **≥ 48 × 48 px**, espacées d'au moins 8 px.
 - Numéro en `<a href="tel:+33...">` (format international, sans espace).
 - `padding-bottom` ajouté au `<body>` équivalent à la hauteur de la barre, pour ne rien masquer,
@@ -237,7 +243,7 @@ pas dans l'aperçu ; oublier de purger le cache des partages après correction.
 
 ---
 
-## 14. Vrais avis clients
+## 14. Vrais avis clients 🌍
 
 **Critères**
 - Avis **réellement reçus**, avec prénom + initiale, ville, **date**, et source (Google, Pages Jaunes, email).
@@ -249,8 +255,12 @@ pas dans l'aperçu ; oublier de purger le cache des partages après correction.
 - Autorisation d'affichage obtenue.
 
 **Interdit** — inventer, embellir, traduire un avis en changeant le sens, ou générer des avis
-« à titre d'illustration ». Voir `juridique-fr.md` : c'est une pratique commerciale trompeuse
-sanctionnée en France. Si les avis manquent : `[À FOURNIR : 3 avis Google avec lien et date]`
+« à titre d'illustration ». Voir `juridique-pays.md` : c'est une pratique commerciale trompeuse
+sanctionnée à peu près partout (UE : directive Omnibus ; Maroc : loi 31-08 ; États-Unis : FTC).
+
+🌍 **Professions de santé** : ne pas afficher d'avis patients sur le site, ni en France
+(témoignages interdits par le code de déontologie) ni au Maroc (publicité proscrite). La fiche
+Google reste un canal distinct — voir `juridique-pays.md` §6. Si les avis manquent : `[À FOURNIR : 3 avis Google avec lien et date]`
 et point ⛔ dans la validation.
 
 **Vérification** — chaque avis affiché est traçable à une source fournie par le client.
@@ -273,7 +283,7 @@ et point ⛔ dans la validation.
 
 ---
 
-## 16. Schema LocalBusiness
+## 16. Schema LocalBusiness 🌍
 
 **Critères**
 - Sous-type le plus précis possible (`Plumber`, `RoofingContractor`, `Dermatologist`,
@@ -281,6 +291,9 @@ et point ⛔ dans la validation.
 - Champs : `name`, `image`, `logo`, `url`, `telephone`, `email`, `address` (`PostalAddress` complet),
   `geo` (`latitude`/`longitude`), `openingHoursSpecification`, `areaServed`, `priceRange`, `sameAs`.
 - **NAP strictement identique** à la fiche Google Business Profile (ponctuation comprise).
+- `addressCountry` au bon code ISO (`FR`, `MA`, `BE`, `CH`, `CA`), `priceRange` dans la devise locale,
+  et `specialOpeningHoursSpecification` pour le Ramadan ou les fermetures saisonnières.
+- Site multilingue : un bloc par version de page, avec `inLanguage`.
 - Placé sur l'accueil et la page contact ; `@id` stable pour être référencé par les autres schemas.
 - Cohérent avec ce qui est visible sur la page (Google sanctionne le balisage d'infos absentes).
 
@@ -289,7 +302,10 @@ Modèles complets : `schema-jsonld.md`.
 
 ---
 
-## 17. Politique de confidentialité
+## 17. Politique de confidentialité et pages légales 🌍
+
+> Ce qui suit est le socle **France / UE**. Pour le Maroc (loi 09-08, CNDP, RC/ICE/IF), la Suisse,
+> la Belgique ou le Québec (Loi 25), lire `juridique-pays.md` — les mentions obligatoires changent.
 
 **Critères** (RGPD, art. 13-14)
 - Page dédiée `/politique-de-confidentialite`, liée depuis le **footer de toutes les pages** et depuis
@@ -311,7 +327,7 @@ Modèle : `assets/politique-confidentialite.md.template`.
 
 ---
 
-## 18. Google Analytics
+## 18. Google Analytics 🌍
 
 **Critères**
 - GA4 déployé **via Google Tag Manager** (un seul conteneur, pas de gtag en double).
@@ -331,14 +347,17 @@ Implémentation : `tracking-ga4-gtm.md`.
 
 ---
 
-## 19. Carte et itinéraire
+## 19. Carte et itinéraire 🌍
 
 **Critères**
 - Sur la page contact (et le footer si pertinent) : carte **chargée au clic** (placeholder image +
   bouton « Afficher la carte »), pour éviter de déposer des cookies Google avant consentement et
   d'alourdir la page.
 - Bouton **« Itinéraire »** en lien direct : `https://www.google.com/maps/dir/?api=1&destination=<adresse+encodée>`
-  (et lien Apple Plans si clientèle iPhone : `https://maps.apple.com/?daddr=...`).
+  (et lien Apple Plans si clientèle iPhone : `https://maps.apple.com/?daddr=...`, plus
+  `https://waze.com/ul?q=...` au Maroc où Waze est très utilisé).
+- Adresse sans numéro de rue exploitable (fréquent au Maroc) : ajouter un repère utile
+  (« immeuble X, 3ᵉ étage, en face de … ») en plus des coordonnées.
 - Adresse en texte **sélectionnable** à côté de la carte (jamais uniquement dans l'image).
 - `title` sur l'iframe, `loading="lazy"`, dimensions fixées.
 - Infos d'accès utiles : parking, transports, étage, code.

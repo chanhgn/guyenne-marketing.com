@@ -86,6 +86,24 @@ Exemple d'envoi manuel depuis la page de remerciement :
 4. GA4 > DebugView : vérifier `page_view`, `generate_lead`, `click_phone`.
 5. Cliquer « Refuser » dans une autre session → toujours aucune collecte.
 
+## 🌍 Selon le pays
+
+Le montage technique (GTM + Consent Mode v2 + bandeau) est le même partout ; c'est le **niveau
+d'exigence** qui change.
+
+| Marché | Bandeau de consentement | Points d'attention |
+|---|---|---|
+| France / UE | Obligatoire, refus au premier niveau | Contrôles CNIL, sanctions réelles |
+| Maroc | Pas d'équivalent strict du bandeau CNIL, mais la loi 09-08 impose information et consentement pour les données personnelles | Déclaration CNDP du traitement ; garder le bandeau standard, surtout si une partie de l'audience est européenne |
+| Suisse | nLPD plus souple sur les cookies | RGPD dès qu'on cible l'UE |
+| Québec | Loi 25 : consentement clair | Interface en français |
+
+Par défaut, monter le dispositif au niveau UE : c'est le plus strict, ça marche partout, et ça évite
+de refaire le travail quand le client se met à viser l'Europe.
+
+Événement à ajouter sur les marchés WhatsApp (Maroc, Afrique) : `click_whatsapp`, sur les liens
+`wa.me` — souvent la conversion principale, devant le formulaire.
+
 ## Autres tags (Meta Pixel, Google Ads, Clarity)
 
 Même règle : dans GTM, conditionnés au consentement, et **listés dans la politique de confidentialité**
