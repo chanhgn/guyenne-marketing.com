@@ -1,9 +1,9 @@
-# Script voix off darija — Salma
+# Script voix off — darija et français
 
-**8 prises · 30 secondes au total · une prise par phrase, dans l'ordre**
+**8 prises par langue · 30 secondes au total · une prise par phrase, dans l'ordre**
 
-La même voix sert aux deux versions de la vidéo. Le script parlé est en darija dans
-les deux cas — seuls les sous-titres à l'écran changent.
+Deux enregistrements distincts, donc deux créas complètes à tester l'une contre
+l'autre : darija avec sous-titres français, et français avec sous-titres français.
 
 ---
 
@@ -97,7 +97,37 @@ FR — ISTD Fès. Depuis 2006, plus de 500 diplômés.
 
 ---
 
+---
+
+# Version française
+
+Texte écrit pour l'oreille, pas repris des sous-titres : le sous-titre est condensé,
+la voix doit rester une phrase que quelqu'un dirait.
+
+| # | Plan | Durée | Texte à lire |
+|---|---|---|---|
+| 1 | Accroche | 3,0 s | Devenez prothésiste dentaire, avec un diplôme reconnu à l'étranger. |
+| 2 | La différence | 3,5 s | Un vrai métier dans la santé, sans passer par médecine. |
+| 3 | Insertion | 3,5 s | 90 % de nos diplômés trouvent un emploi dans l'année qui suit. |
+| 4 | Les preuves | 4,0 s | Un Bac+3 reconnu par l'État. Trois ans, dont 68 % de pratique en laboratoire. |
+| 5 | Salaire au Maroc | 4,0 s | De 4 500 à 15 000 dirhams par mois. Et 1 200 entreprises qui recrutent au Maroc. |
+| 6 | L'international | 5,5 s | Ce métier est en pénurie à l'étranger. Belgique, France, Allemagne, Canada. Un salaire moyen jusqu'à 32 000 dirhams par mois. |
+| 7 | Appel à l'action | 4,0 s | Inscriptions ouvertes. Rentrée le 7 septembre, places limitées. Cliquez sur le bouton en bas. |
+| 8 | Signature | 2,5 s | ISTD Fès. Depuis 2006, plus de 500 diplômés. |
+
+**Indications de jeu** — prise 1 : poser « reconnu à l'étranger », c'est la promesse.
+Prise 3 : dire « quatre-vingt-dix pour cent » en entier, sans précipiter. Prise 4 : un
+point net après « par l'État », ce sont deux arguments distincts. Prise 5 : la plus
+dense en français, les nombres prononcés sont longs. Prise 6 : les quatre pays comme
+une liste, puis une respiration avant le montant. Prise 7 : plus direct et chaleureux.
+Prise 8 : posé, l'école ne vend rien à ce moment-là.
+
+**L'accent** : un accent marocain francophone est un atout, pas un défaut. La cible est
+à Fès — une voix de doublage parisienne sonnerait importée.
+
+---
+
 ## Livraison
 
-Fichiers nommés `prise-1` à `prise-8`, déposés sur le Google Drive.
-Plusieurs versions d'une même phrase : `prise-3a`, `prise-3b`, etc.
+Fichiers nommés `darija-1` à `darija-8` et `fr-1` à `fr-8`, déposés sur le Google Drive.
+Plusieurs versions d'une même phrase : `darija-3a`, `darija-3b`, etc.
