@@ -13,6 +13,30 @@
 Le nœud `Config` porte `DRY_RUN`. Tant qu'il vaut `true`, le workflow n'écrit rien,
 à l'exception de la sonde.
 
+## Contrats REST vérifiés sur le code source du plugin
+
+Source : `rankmath/seo-by-rank-math`, `includes/rest/class-shared.php` (commit 5c3983f).
+
+`updateRedirection` — ma première version du payload était fausse et n'aurait rien produit.
+
+```json
+{ "objectID": 3550, "objectType": "post", "hasRedirect": true,
+  "redirectionUrl": "https://kobo-alu.fr/<slug-cible>/", "redirectionType": "301" }
+```
+
+`redirectionType` est un enum strict : `301`, `302`, `307`, `410`, `451`.
+`permission_callback` exige que le **module Redirections soit actif** et que le compte porte
+la capacité `rank_math_redirections` — vérifiée présente sur le compte utilisé.
+
+`updateMeta` :
+
+```json
+{ "objectID": 1605, "objectType": "post", "meta": { "rank_math_robots": ["noindex"] } }
+```
+
+Le callback n'accepte que les clés commençant par `rank_math_` (filtre `only_this_plugin`)
+et écrit chaque valeur non vide. Sonde exécutée : HTTP 200, réponse `{"slug":true,"schemas":[]}`.
+
 ## La sonde
 
 Un seul appel en écriture est effectué même en simulation : pose de `rank_math_robots:
