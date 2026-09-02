@@ -75,10 +75,18 @@ Champs spécifiques par réseau : `facebookData: { type: "POST" }`, `instagramDa
 Fallback gratuit disponible et déjà utilisé sur un autre workflow :
 `GET https://image.pollinations.ai/prompt/{prompt}?width=…&height=…&model=flux&nologo=true`
 
-### WordPress
+### WordPress — vérifié par l'audit du 2026-09-02
 - REST API `https://kobo-alu.fr/wp-json/wp/v2/…`
-- Auth : `httpBasicAuth` avec un **application password** (pattern déjà utilisé pour guyenne-etudes.fr)
-- ⚠️ **La credential pour kobo-alu.fr reste à créer / confirmer** — point bloquant n°1
+- Credential n8n : `WordPress kobo-alu.fr`, type Basic Auth — **fonctionnelle** (HTTP 200)
+- Compte : rôle `administrator`, `publish_posts` ✅, `upload_files` ✅
+- Plugin SEO : **Rank Math** confirmé (namespaces `rankmath/v1`)
+- Hébergement : Hostinger, LiteSpeed, PHP 8.2.30
+- Autres extensions actives : Elementor + Elementor Pro + ElementsKit, Site Reviews, Trustindex,
+  LiteSpeed Cache, et l'adaptateur MCP WordPress (`mcp`, `wp-abilities/v1`)
+- Catégorie unique : **`Article Kobo`** (id `1`, slug `article-kobo`) — 44 articles
+- Médiathèque : 524 fichiers
+- ⚠️ Le rattachement de la credential aux nœuds doit se faire **dans l'interface n8n** :
+  `newCredential()` du SDK ne lie pas la credential existante à la création via MCP
 
 ### Telegram
 - Credential Telegram présente sur l'instance
@@ -159,7 +167,7 @@ Un seul article, quatre textes distincts — pas de copier-coller multi-réseaux
 
 | Risque | Parade |
 |---|---|
-| Doublon d'article | Vérification du slug dans WordPress avant toute écriture (étape 4) |
+| Doublon d'article | Double garde-fou : vérification du slug **et** contrôle sémantique sur les titres existants (voir §10 — le slug seul ne suffit pas, c'est le bug de l'automatisation précédente) |
 | Claude renvoie du texte hors JSON | Extraction par regex `\{[\s\S]*\}` + `JSON.parse` en try/catch + 1 retry |
 | Article de mauvaise qualité publié | Validation programmatique (longueur, structure, metas) avant publication |
 | Génération d'image en échec | Fallback Pollinations, puis dégradation contrôlée (IG et GBP sautés) |
@@ -224,3 +232,62 @@ Les sujets B2B, sans saisonnalité forte, sont répartis régulièrement sur l'a
    l'audit du contenu existant et la déduplication du plan éditorial.
 3. **Catégorie WordPress cible et plugin SEO** — à relever une fois l'accès rétabli
    (Rank Math attendu, à confirmer).
+
+
+---
+
+## 10. État des lieux du site — audit du 2026-09-02
+
+L'audit a révélé qu'**une automatisation de contenu a déjà tourné sur kobo-alu.fr**, entre
+juillet 2025 et mai 2026, puis s'est arrêtée. Elle a produit 46 articles (44 publiés, 2 brouillons)
+dont la qualité pose trois problèmes mesurés :
+
+### Duplication massive
+20 paires de titres quasi identiques sur 44 articles, dont **12 paires strictement identiques**.
+Exemples :
+
+| Article récent | Doublon antérieur | Similarité |
+|---|---|---|
+| #3575 (2026-05-18) « fenêtres en arc… façade ensoleillée » | #3325 (2025-12-15) | 100 % |
+| #3573 (2026-05-15) « clôtures en bois avec plantes grimpantes » | #3323 (2025-12-14) | 100 % |
+| #3569 (2026-05-08) « performance acoustique… zones urbaines » | #3319 (2025-12-12) | 100 % |
+| #3560 (2026-04-24) « nettoyer vos stores vénitiens » | #1624 (2025-07-23) | 100 % |
+| #3552 (2026-04-17) « vitrage… rayons UV et chaleur » | #1590 (2025-07-23) | 100 % |
+
+Les slugs diffèrent (WordPress a suffixé `-2`), donc **une déduplication par slug ne les aurait pas
+détectés**. C'est précisément le défaut à ne pas reproduire.
+
+### Sujets hors périmètre
+Kobo pose de la menuiserie **aluminium**. Répartition des matériaux cités dans les titres :
+bois 3, aluminium 3, PVC 2, bambou 1, acier 1. On trouve « clôtures en bambou pour jardin
+tropical », « corrosion marine », « insectes xylophages », « zone chaude ». Ces contenus
+n'amènent aucun prospect qualifié.
+
+### Aucun ancrage local
+**0 article sur 44** mentionne Toulouse, la Haute-Garonne ou l'Occitanie. Pour une entreprise
+locale, c'est la totalité du potentiel SEO qui est laissée de côté.
+
+### Formulation stéréotypée
+37 titres sur 44 sont des questions ; 15 commencent par « Quelles sont les », 22 par « Comment ».
+
+### Conséquence sur l'architecture du workflow
+
+L'étape 4 passe de un à deux contrôles :
+
+1. `GET /wp/v2/posts?slug={slug}&status=any` — collision exacte d'URL
+2. `GET /wp/v2/posts?per_page=100&_fields=id,title,slug` puis contrôle de similarité sur les
+   titres normalisés (accents et ponctuation retirés). Au-delà de 75 % de similarité avec un
+   article existant, l'exécution s'arrête et alerte sur Telegram au lieu de publier.
+
+### Recommandations hors périmètre du workflow
+
+- Fusionner les 20 paires de doublons et poser des redirections 301 vers l'article conservé.
+- Désindexer ou réécrire les articles hors périmètre (bois, PVC, bambou, acier, climat tropical).
+- Créer une vraie taxonomie : l'unique catégorie `Article Kobo` ne structure rien.
+- Le brouillon #3535, « Pourquoi la pergola bioclimatique en aluminium est l'atout confort de
+  votre maison à Toulouse », est le seul contenu au bon registre : aluminium, bénéfice client,
+  ancrage local. C'est le modèle à suivre. Le brouillon #3533 (« Elementor #3533 ») est un déchet.
+- 12 des 52 semaines du plan éditorial recoupent sémantiquement un article existant
+  (brise-soleil, vitrage solaire, acoustique, entretien, garde-corps, portail, pergola, volets,
+  porte de garage, préparation hivernale, Uw). Ces articles doivent soit être réécrits avec
+  l'angle local, soit remplacés au plan.
