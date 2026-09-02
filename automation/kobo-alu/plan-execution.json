@@ -1,6 +1,6 @@
 {
   "_statut": "PLAN VALIDE - NON EXECUTE",
-  "_corrections": "groupe 4 -> conserver 1622 ; groupe 9 -> conserver 3319 ; groupes 3 et 11 reclasses hors perimetre",
+  "_corrections": "groupe 9 -> conserver 3319 (slug propre) ; groupes 3 et 11 reclasses hors perimetre ; groupe 4 -> choix automatique retabli (#3558) car le seuil a 400 mots rendait #1622 incoherent",
   "fusions": [
     {
       "groupe": 1,
@@ -26,14 +26,15 @@
     },
     {
       "groupe": 4,
-      "garder": 1622,
-      "garderSlug": "normes-durabilite-revetements-menuiseries-exterieures",
+      "garder": 3558,
+      "garderSlug": "normes-durabilite-revetements-menuiseries-exterieur",
       "rediriger": [
         {
-          "id": 3558,
-          "slug": "normes-durabilite-revetements-menuiseries-exterieur"
+          "id": 1622,
+          "slug": "normes-durabilite-revetements-menuiseries-exterieures"
         }
-      ]
+      ],
+      "note": "correction annulee : le seuil a 400 mots rendait le choix incoherent"
     },
     {
       "groupe": 5,
@@ -114,16 +115,9 @@
     }
   ],
   "noindex": [
-    1587,
-    1590,
     1605,
-    1610,
     1615,
-    1618,
-    1620,
-    1622,
     1624,
-    3313,
     3319,
     3323,
     3329,
@@ -131,7 +125,6 @@
     3333,
     3359,
     3361,
-    3511,
     3513,
     3515,
     3517,
@@ -155,5 +148,7 @@
     3573
   ],
   "brouillonASupprimer": 3533,
-  "brouillonAFinir": 3535
+  "brouillonAFinir": 3535,
+  "seuilNoindex": 400,
+  "_regleNoindex": "moins de 400 mots, ou hors perimetre aluminium, et non redirige"
 }
