@@ -1,0 +1,570 @@
+{
+  "synthese": {
+    "articles": 46,
+    "groupesDeDoublons": 12,
+    "articlesARediriger": 12,
+    "articlesHorsPerimetre": 9,
+    "articlesMinces": 38,
+    "articlesSansImageALaUne": 0,
+    "moyenneMots": 484
+  },
+  "redirectionsApiRankMath": [
+    "/rankmath/v1/updateRedirection"
+  ],
+  "planDeFusion": [
+    {
+      "groupe": 1,
+      "garder": {
+        "id": 1587,
+        "slug": "installation-fenetres-imposte-ventilation-cuisine",
+        "mots": 433,
+        "date": "2025-07-23",
+        "image": true,
+        "titre": "Comment l'installation de fenêtres à imposte peut-elle améliorer la ventilation dans une cuisine ensoleillée ?"
+      },
+      "rediriger": [
+        {
+          "id": 3550,
+          "slug": "installation-fenetres-imposte-ventilation-cuisine-ensoleillee",
+          "mots": 323,
+          "date": "2026-04-13",
+          "versSlug": "installation-fenetres-imposte-ventilation-cuisine"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 2,
+      "garder": {
+        "id": 1590,
+        "slug": "choisir-vitrage-reduction-uv-chaleur-ete",
+        "mots": 569,
+        "date": "2025-07-23",
+        "image": true,
+        "titre": "Comment choisir le bon type de vitrage pour réduire les rayons UV et la chaleur en été ?"
+      },
+      "rediriger": [
+        {
+          "id": 3552,
+          "slug": "choisir-vitrage-reduire-rayons-uv-chaleur-ete",
+          "mots": 355,
+          "date": "2026-04-17",
+          "versSlug": "choisir-vitrage-reduction-uv-chaleur-ete"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 3,
+      "garder": {
+        "id": 1605,
+        "slug": "normes-resistance-effraction-portes-entree-pvc",
+        "mots": 462,
+        "date": "2025-07-23",
+        "image": true,
+        "titre": "Quelles sont les normes actuelles de résistance aux effractions pour les portes d'entrée en PVC ?"
+      },
+      "rediriger": [
+        {
+          "id": 3544,
+          "slug": "normes-resistance-effractions-portes-entree-pvc",
+          "mots": 359,
+          "date": "2026-04-03",
+          "versSlug": "normes-resistance-effraction-portes-entree-pvc"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 4,
+      "garder": {
+        "id": 3558,
+        "slug": "normes-durabilite-revetements-menuiseries-exterieur",
+        "mots": 422,
+        "date": "2026-04-20",
+        "image": true,
+        "titre": "Quelles sont les normes actuelles de durabilité pour les revêtements de menuiseries en extérieur ?"
+      },
+      "rediriger": [
+        {
+          "id": 1622,
+          "slug": "normes-durabilite-revetements-menuiseries-exterieures",
+          "mots": 399,
+          "date": "2025-07-23",
+          "versSlug": "normes-durabilite-revetements-menuiseries-exterieur"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 5,
+      "garder": {
+        "id": 1624,
+        "slug": "comment-nettoyer-efficacement-stores-venitiens-ete",
+        "mots": 398,
+        "date": "2025-07-23",
+        "image": true,
+        "titre": "Comment nettoyer efficacement vos stores vénitiens sans les endommager en été ?"
+      },
+      "rediriger": [
+        {
+          "id": 3560,
+          "slug": "comment-nettoyer-stores-venitiens-efficacement-ete",
+          "mots": 361,
+          "date": "2026-04-24",
+          "versSlug": "comment-nettoyer-efficacement-stores-venitiens-ete"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 6,
+      "garder": {
+        "id": 3313,
+        "slug": "innovations-brise-soleil-orientables-terrasses-ensoleillees",
+        "mots": 590,
+        "date": "2025-12-09",
+        "image": true,
+        "titre": "Quelles sont les innovations en matière de brise-soleil orientables pour terrasses ensoleillées ?"
+      },
+      "rediriger": [
+        {
+          "id": 3562,
+          "slug": "innovations-brise-soleil-orientables-terrasses",
+          "mots": 331,
+          "date": "2026-04-27",
+          "versSlug": "innovations-brise-soleil-orientables-terrasses-ensoleillees"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 7,
+      "garder": {
+        "id": 3315,
+        "slug": "installation-fenetre-double-battant-ventilation-salle-de-bain-ensoleillee",
+        "mots": 1268,
+        "date": "2025-12-10",
+        "image": true,
+        "titre": "Comment l'installation de fenêtres à double battant peut-elle améliorer la ventilation dans une salle de bain ensoleillée ?"
+      },
+      "rediriger": [
+        {
+          "id": 3564,
+          "slug": "installation-fenetres-double-battant-ventilation-salle-bain-ensoleillee",
+          "mots": 311,
+          "date": "2026-05-01",
+          "versSlug": "installation-fenetre-double-battant-ventilation-salle-de-bain-ensoleillee"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 8,
+      "garder": {
+        "id": 3317,
+        "slug": "porte-coulissante-optimiser-espace-petite-piece-ensoleillee",
+        "mots": 1137,
+        "date": "2025-12-11",
+        "image": true,
+        "titre": "Comment choisir la meilleure porte coulissante pour optimiser l'espace dans une petite pièce ensoleillée"
+      },
+      "rediriger": [
+        {
+          "id": 3566,
+          "slug": "choisir-porte-coulissante-optimiser-espace",
+          "mots": 309,
+          "date": "2026-05-04",
+          "versSlug": "porte-coulissante-optimiser-espace-petite-piece-ensoleillee"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 9,
+      "garder": {
+        "id": 3569,
+        "slug": "normes-performance-acoustique-fenetres-zones-urbaines-ete-2",
+        "mots": 370,
+        "date": "2026-05-08",
+        "image": true,
+        "titre": "Quelles sont les normes actuelles de performance acoustique pour les fenêtres dans les zones urbaines en été ?"
+      },
+      "rediriger": [
+        {
+          "id": 3319,
+          "slug": "normes-performance-acoustique-fenetres-zones-urbaines-ete",
+          "mots": 323,
+          "date": "2025-12-12",
+          "versSlug": "normes-performance-acoustique-fenetres-zones-urbaines-ete-2"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 10,
+      "garder": {
+        "id": 3321,
+        "slug": "entretenir-joints-etancheite-portes-exterieures-fuites-air-ete",
+        "mots": 1060,
+        "date": "2025-12-13",
+        "image": true,
+        "titre": "Comment entretenir les joints d'étanchéité de vos portes extérieures pour éviter les fuites d'air en été ?"
+      },
+      "rediriger": [
+        {
+          "id": 3571,
+          "slug": "entretien-joints-etancheite-portes-exterieures-eviter-fuites-air-ete",
+          "mots": 375,
+          "date": "2026-05-11",
+          "versSlug": "entretenir-joints-etancheite-portes-exterieures-fuites-air-ete"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 11,
+      "garder": {
+        "id": 3573,
+        "slug": "options-innovantes-clotures-bois-plantes-grimpantes-2",
+        "mots": 559,
+        "date": "2026-05-15",
+        "image": true,
+        "titre": "Quelles sont les options innovantes pour les clôtures en bois avec plantes grimpantes ?"
+      },
+      "rediriger": [
+        {
+          "id": 3323,
+          "slug": "options-innovantes-clotures-bois-plantes-grimpantes",
+          "mots": 281,
+          "date": "2025-12-14",
+          "versSlug": "options-innovantes-clotures-bois-plantes-grimpantes-2"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    },
+    {
+      "groupe": 12,
+      "garder": {
+        "id": 3575,
+        "slug": "installation-fenetres-en-arc-facade-ensoleillee",
+        "mots": 1101,
+        "date": "2026-05-18",
+        "image": true,
+        "titre": "Comment l'installation de fenêtres en arc peut-elle transformer votre façade ensoleillée ?"
+      },
+      "rediriger": [
+        {
+          "id": 3325,
+          "slug": "installation-fenetres-arc-transformer-facade-ensoleillee",
+          "mots": 356,
+          "date": "2025-12-15",
+          "versSlug": "installation-fenetres-en-arc-facade-ensoleillee"
+        }
+      ],
+      "motif": "similarite de titre >= 75 pourcent"
+    }
+  ],
+  "horsPerimetre": [
+    {
+      "id": 1605,
+      "slug": "normes-resistance-effraction-portes-entree-pvc",
+      "titre": "Quelles sont les normes actuelles de résistance aux effractions pour les portes d'entrée en PVC ?",
+      "mots": 462
+    },
+    {
+      "id": 1615,
+      "slug": "tendances-pergola-acier-toiture-vegetalisee-2025",
+      "titre": "Quelles sont les dernières tendances en matière de pergolas en acier avec toiture végétalisée ?",
+      "mots": 475
+    },
+    {
+      "id": 3323,
+      "slug": "options-innovantes-clotures-bois-plantes-grimpantes",
+      "titre": "Quelles sont les options innovantes pour les clôtures en bois avec plantes grimpantes ?",
+      "mots": 281
+    },
+    {
+      "id": 3331,
+      "slug": "proteger-menuiseries-bois-insectes-xylophages-ete",
+      "titre": "Comment protéger vos menuiseries contre les dégâts causés par les insectes xylophages en été ?",
+      "mots": 598
+    },
+    {
+      "id": 3361,
+      "slug": "tendance-volets-bois-2026",
+      "titre": "Tendance des volets en bois en ce début 2026",
+      "mots": 330
+    },
+    {
+      "id": 3519,
+      "slug": "innovations-clotures-bambou-jardin-tropical",
+      "titre": "Quelles sont les innovations en matière de clôtures en bambou pour un jardin tropical ?",
+      "mots": 307
+    },
+    {
+      "id": 3544,
+      "slug": "normes-resistance-effractions-portes-entree-pvc",
+      "titre": "Quelles sont les normes actuelles de résistance aux effractions pour les portes d'entrée en PVC ?",
+      "mots": 359
+    },
+    {
+      "id": 3546,
+      "slug": "proteger-amenagements-metalliques-corrosion-marine",
+      "titre": "Protéger vos Aménagements Métalliques du Corrosion Marine en Été",
+      "mots": 313
+    },
+    {
+      "id": 3573,
+      "slug": "options-innovantes-clotures-bois-plantes-grimpantes-2",
+      "titre": "Quelles sont les options innovantes pour les clôtures en bois avec plantes grimpantes ?",
+      "mots": 559
+    }
+  ],
+  "contenuMince": [
+    {
+      "id": 1587,
+      "slug": "installation-fenetres-imposte-ventilation-cuisine",
+      "mots": 433,
+      "titre": "Comment l'installation de fenêtres à imposte peut-elle améliorer la ventilation dans une cuisine ensoleillée ?"
+    },
+    {
+      "id": 1590,
+      "slug": "choisir-vitrage-reduction-uv-chaleur-ete",
+      "mots": 569,
+      "titre": "Comment choisir le bon type de vitrage pour réduire les rayons UV et la chaleur en été ?"
+    },
+    {
+      "id": 1605,
+      "slug": "normes-resistance-effraction-portes-entree-pvc",
+      "mots": 462,
+      "titre": "Quelles sont les normes actuelles de résistance aux effractions pour les portes d'entrée en PVC ?"
+    },
+    {
+      "id": 1610,
+      "slug": "entretien-mecanismes-volets-battants-ete",
+      "mots": 447,
+      "titre": "Comment entretenir les mécanismes de vos volets battants pour assurer leur bon fonctionnement en été ?"
+    },
+    {
+      "id": 1615,
+      "slug": "tendances-pergola-acier-toiture-vegetalisee-2025",
+      "mots": 475,
+      "titre": "Quelles sont les dernières tendances en matière de pergolas en acier avec toiture végétalisée ?"
+    },
+    {
+      "id": 1618,
+      "slug": "installation-fenetre-tabatiere-charme-traditionnel-facade",
+      "mots": 445,
+      "titre": "Comment l'installation de fenêtres à tabatière peut-elle apporter un charme traditionnel à votre façade ensoleillée ?"
+    },
+    {
+      "id": 1620,
+      "slug": "avantages-fenetres-aluminium-renovation-zone-chaude",
+      "mots": 427,
+      "titre": "Quels sont les avantages des fenêtres en aluminium pour une rénovation moderne en zone chaude ?"
+    },
+    {
+      "id": 1622,
+      "slug": "normes-durabilite-revetements-menuiseries-exterieures",
+      "mots": 399,
+      "titre": "Quelles sont les normes actuelles de durabilité pour les revêtements de menuiseries en extérieur ?"
+    },
+    {
+      "id": 1624,
+      "slug": "comment-nettoyer-efficacement-stores-venitiens-ete",
+      "mots": 398,
+      "titre": "Comment nettoyer efficacement vos stores vénitiens sans les endommager en été ?"
+    },
+    {
+      "id": 3313,
+      "slug": "innovations-brise-soleil-orientables-terrasses-ensoleillees",
+      "mots": 590,
+      "titre": "Quelles sont les innovations en matière de brise-soleil orientables pour terrasses ensoleillées ?"
+    },
+    {
+      "id": 3319,
+      "slug": "normes-performance-acoustique-fenetres-zones-urbaines-ete",
+      "mots": 323,
+      "titre": "Quelles sont les normes actuelles de performance acoustique pour les fenêtres dans les zones urbaines en été ?"
+    },
+    {
+      "id": 3323,
+      "slug": "options-innovantes-clotures-bois-plantes-grimpantes",
+      "mots": 281,
+      "titre": "Quelles sont les options innovantes pour les clôtures en bois avec plantes grimpantes ?"
+    },
+    {
+      "id": 3325,
+      "slug": "installation-fenetres-arc-transformer-facade-ensoleillee",
+      "mots": 356,
+      "titre": "Comment l'installation de fenêtres en arc peut-elle transformer votre façade ensoleillée ?"
+    },
+    {
+      "id": 3329,
+      "slug": "normes-securite-fenetres-chambres-enfants-ete",
+      "mots": 373,
+      "titre": "Quelles sont les normes actuelles de sécurité pour les fenêtres dans les chambres d'enfants en été ?"
+    },
+    {
+      "id": 3331,
+      "slug": "proteger-menuiseries-bois-insectes-xylophages-ete",
+      "mots": 598,
+      "titre": "Comment protéger vos menuiseries contre les dégâts causés par les insectes xylophages en été ?"
+    },
+    {
+      "id": 3333,
+      "slug": "nouvelles-normes-securite-garde-corps-batiments-residentiels-2025",
+      "mots": 379,
+      "titre": "Quelles sont les nouvelles normes de sécurité pour les garde-corps dans les bâtiments résidentiels ?"
+    },
+    {
+      "id": 3359,
+      "slug": "tendances-pergolas-aluminium-toiture-vegetalisee",
+      "mots": 396,
+      "titre": "Quelles sont les tendances émergentes en matière de pergolas en aluminium avec toiture végétalisée ?"
+    },
+    {
+      "id": 3361,
+      "slug": "tendance-volets-bois-2026",
+      "mots": 330,
+      "titre": "Tendance des volets en bois en ce début 2026"
+    },
+    {
+      "id": 3511,
+      "slug": "installation-fenetres-saillie-ameliorer-ventilation-interieur-ete",
+      "mots": 439,
+      "titre": "Comment l'installation de fenêtres en saillie peut-elle améliorer la ventilation de votre intérieur en été ?"
+    },
+    {
+      "id": 3513,
+      "slug": "choisir-meilleure-porte-garage-maison-besoins-estivaux",
+      "mots": 352,
+      "titre": "Comment choisir la meilleure porte de garage pour votre maison en fonction de vos besoins estivaux ?"
+    },
+    {
+      "id": 3515,
+      "slug": "normes-performance-energetique-fenetres-2026",
+      "mots": 334,
+      "titre": "Normes de Performance Énergétique pour les Fenêtres dans les Bâtiments Neufs en 2026"
+    },
+    {
+      "id": 3517,
+      "slug": "comment-entretenir-joints-fenetres-eviter-fuites-air-ete",
+      "mots": 320,
+      "titre": "Comment entretenir les joints de vos fenêtres pour éviter les fuites d'air en été ?"
+    },
+    {
+      "id": 3519,
+      "slug": "innovations-clotures-bambou-jardin-tropical",
+      "mots": 307,
+      "titre": "Quelles sont les innovations en matière de clôtures en bambou pour un jardin tropical ?"
+    },
+    {
+      "id": 3521,
+      "slug": "installation-portes-fenetres-coulissantes-espace-vie-exterieur-soleille",
+      "mots": 376,
+      "titre": "Comment l'installation de portes-fenêtres coulissantes peut-elle créer un espace de vie extérieur ensoleillé ?"
+    },
+    {
+      "id": 3542,
+      "slug": "criteres-choisir-fenetres-maison-zone-chaude",
+      "mots": 334,
+      "titre": "Quels critères prendre en compte pour choisir des fenêtres adaptées à une maison en zone chaude ?"
+    },
+    {
+      "id": 3544,
+      "slug": "normes-resistance-effractions-portes-entree-pvc",
+      "mots": 359,
+      "titre": "Quelles sont les normes actuelles de résistance aux effractions pour les portes d'entrée en PVC ?"
+    },
+    {
+      "id": 3546,
+      "slug": "proteger-amenagements-metalliques-corrosion-marine",
+      "mots": 313,
+      "titre": "Protéger vos Aménagements Métalliques du Corrosion Marine en Été"
+    },
+    {
+      "id": 3548,
+      "slug": "options-innovantes-portails-aluminium-ouverture-automatique",
+      "mots": 291,
+      "titre": "Quelles sont les options innovantes pour les portails en aluminium avec système d'ouverture automatique ?"
+    },
+    {
+      "id": 3550,
+      "slug": "installation-fenetres-imposte-ventilation-cuisine-ensoleillee",
+      "mots": 323,
+      "titre": "Comment l'installation de fenêtres à imposte peut-elle améliorer la ventilation dans une cuisine ensoleillée ?"
+    },
+    {
+      "id": 3552,
+      "slug": "choisir-vitrage-reduire-rayons-uv-chaleur-ete",
+      "mots": 355,
+      "titre": "Comment choisir le bon type de vitrage pour réduire les rayons UV et la chaleur en été ?"
+    },
+    {
+      "id": 3558,
+      "slug": "normes-durabilite-revetements-menuiseries-exterieur",
+      "mots": 422,
+      "titre": "Quelles sont les normes actuelles de durabilité pour les revêtements de menuiseries en extérieur ?"
+    },
+    {
+      "id": 3560,
+      "slug": "comment-nettoyer-stores-venitiens-efficacement-ete",
+      "mots": 361,
+      "titre": "Comment nettoyer efficacement vos stores vénitiens sans les endommager en été ?"
+    },
+    {
+      "id": 3562,
+      "slug": "innovations-brise-soleil-orientables-terrasses",
+      "mots": 331,
+      "titre": "Innovations en Brise-Soleil Orientables pour Terrasses Ensoleillées"
+    },
+    {
+      "id": 3564,
+      "slug": "installation-fenetres-double-battant-ventilation-salle-bain-ensoleillee",
+      "mots": 311,
+      "titre": "Comment l'installation de fenêtres à double battant peut-elle améliorer la ventilation dans une salle de bain ensoleillée ?"
+    },
+    {
+      "id": 3566,
+      "slug": "choisir-porte-coulissante-optimiser-espace",
+      "mots": 309,
+      "titre": "Comment choisir la meilleure porte coulissante pour optimiser l'espace dans une petite pièce ensoleillée"
+    },
+    {
+      "id": 3569,
+      "slug": "normes-performance-acoustique-fenetres-zones-urbaines-ete-2",
+      "mots": 370,
+      "titre": "Quelles sont les normes actuelles de performance acoustique pour les fenêtres dans les zones urbaines en été ?"
+    },
+    {
+      "id": 3571,
+      "slug": "entretien-joints-etancheite-portes-exterieures-eviter-fuites-air-ete",
+      "mots": 375,
+      "titre": "Comment entretenir les joints d'étanchéité de vos portes extérieures pour éviter les fuites d'air en été ?"
+    },
+    {
+      "id": 3573,
+      "slug": "options-innovantes-clotures-bois-plantes-grimpantes-2",
+      "mots": 559,
+      "titre": "Quelles sont les options innovantes pour les clôtures en bois avec plantes grimpantes ?"
+    }
+  ],
+  "brouillons": [
+    {
+      "id": 3533,
+      "statut": "draft",
+      "titre": "Elementor #3533",
+      "mots": 0
+    },
+    {
+      "id": 3535,
+      "statut": "draft",
+      "titre": "Pourquoi la pergola bioclimatique en aluminium est l'atout confort de votre maison à Toulouse",
+      "mots": 696
+    }
+  ],
+  "_source": "workflow n8n wYgg7lTDCGV5Cz4G, execution 69789, 2026-09-02",
+  "_statut": "PLAN NON EXECUTE - en attente de validation"
+}
