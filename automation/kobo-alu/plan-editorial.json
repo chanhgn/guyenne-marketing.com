@@ -120,12 +120,12 @@
     {
       "week": 12,
       "target": "B2C",
-      "category": "Vérandas",
+      "category": "Claustras",
       "intent": "transactionnel",
-      "title": "Véranda aluminium : les 6 erreurs qui rendent la pièce inutilisable l'été",
-      "slug": "veranda-aluminium-erreurs",
-      "keyword": "veranda aluminium",
-      "angle": "Orientation, vitrage à contrôle solaire, ventilation, toiture, isolation"
+      "title": "Claustra aluminium : créer de l'intimité sans fermer son jardin",
+      "slug": "claustra-aluminium-intimite-jardin",
+      "keyword": "claustra aluminium",
+      "angle": "Lames fixes ou orientables, hauteur réglementaire, implantation et coordination avec le portail"
     },
     {
       "week": 13,
@@ -200,12 +200,12 @@
     {
       "week": 20,
       "target": "B2C",
-      "category": "Terrasse",
-      "intent": "transactionnel",
-      "title": "Fermer sa terrasse en aluminium : rideaux de verre, véranda ou pergola ?",
-      "slug": "fermer-terrasse-aluminium",
-      "keyword": "fermeture terrasse aluminium",
-      "angle": "Trois solutions comparées sur l'usage, le prix, l'urbanisme et la thermique"
+      "category": "Protection solaire",
+      "intent": "comparatif",
+      "title": "Store banne ou pergola bioclimatique : lequel pour ombrager sa terrasse ?",
+      "slug": "store-banne-ou-pergola-bioclimatique",
+      "keyword": "store banne ou pergola",
+      "angle": "Coût, tenue au vent, usage par temps de pluie, emprise au sol et urbanisme"
     },
     {
       "week": 21,
@@ -527,5 +527,6 @@
       "keyword": "menuiserie aluminium toulouse",
       "angle": "Évolution des aides, des normes et des attentes clients sur le 31"
     }
-  ]
+  ],
+  "_correctionGamme": "Kobo ne commercialise pas de veranda : les 30 pages produit du site listent fenetres, portes, portails, pergolas, carports, claustras, garde-corps, verrieres, volets, brise-soleil, stores, moustiquaires et menuiseries tertiaires. Les semaines 12 et 20 ont ete remplacees en consequence."
 }

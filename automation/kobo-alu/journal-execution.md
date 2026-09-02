@@ -81,3 +81,51 @@ que de supposer que chaque appel passera du premier coup.
 - Finaliser et publier le brouillon `#3535` (pergola bioclimatique à Toulouse)
 - Créer la taxonomie par famille de produit
 - Construire le workflow de publication hebdomadaire
+
+---
+
+## 2026-09-02 · finalisation — taxonomie, article, redirections
+
+### Taxonomie créée
+
+| id | slug |
+|---|---|
+| 13 | portes-portails |
+| 14 | fenetres-baies-vitrees |
+| 15 | pergolas-carports |
+| 16 | claustras-garde-corps |
+| 17 | volets-protection-solaire |
+| 18 | conseils-reglementation |
+
+Nommée d'après la gamme réelle relevée sur les 30 pages produit du site.
+
+### Deux défauts détectés par la vérification, et corrigés
+
+**Elementor écrasait le contenu de l'article 3535.** La mise à jour de `post_content` via
+l'API renvoyait 200, mais la page publiée servait toujours l'ancien texte : le post avait été
+construit avec Elementor, qui stocke sa propre copie. Les 44 autres articles du site, créés
+par l'API, ne sont pas concernés.
+Correction : mise à la corbeille de 3535 et création d'un post neuf, `#3784`, hors Elementor.
+
+**Les 10 redirections n'avaient rien écrit en base.** Le paramètre `redirectionSources`
+n'était pas transmis. Dans `class-redirection.php`, `add_source()` ignore un motif vide et
+`save()` retourne `false` si aucune source valide : les 10 appels ont donc été des
+non-opérations, sans redirection parasite ni risque pour la page d'accueil. Le 200 renvoyé
+signifiait « requête acceptée », pas « redirection créée ».
+Correction : `redirectionSources` transmis avec l'URL complète de la source. Les 10 réponses
+portent désormais `action: new` et un identifiant en base.
+
+### Vérifié sur le site réel
+
+- Page `https://kobo-alu.fr/pergola-bioclimatique-aluminium-toulouse/` : 83 754 octets, sans
+  Elementor, contenu conforme, ancien texte absent.
+- Balises : title et description Rank Math en place, `robots: follow, index`, canonical correcte.
+- 5 liens internes actifs vers les pages produit et la page contact.
+- Schema `BlogPosting` généré automatiquement par Rank Math.
+- Trois redirections testées : **301** avec la bonne destination.
+- Post 3535 : `trash`. Brouillon 3533 : `trash`.
+
+### Correction du plan éditorial
+
+Kobo ne commercialise pas de véranda. Les semaines 12 et 20 portaient sur ce produit ;
+elles sont remplacées par un sujet claustra et un comparatif store banne / pergola.
