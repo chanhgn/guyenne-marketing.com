@@ -1,68 +1,68 @@
 {
-  "client": "Kobo - Menuiserie Aluminium",
+  "client": "Kobo — Menuiserie Aluminium",
   "site": "https://kobo-alu.fr",
   "zone": "Haute-Garonne (31)",
   "mix": "70% B2C / 30% B2B",
   "cta": "devis-gratuit",
   "version": "1.0-draft",
-  "note": "Plan a dedupliquer contre les articles deja publies des que l acces WordPress est retabli.",
+  "note": "Plan à dédupliquer contre les articles déjà publiés dès que l'accès WordPress est rétabli.",
   "semaines": [
     {
       "week": 1,
       "target": "B2C",
       "category": "Aides & budget",
       "intent": "informationnel",
-      "title": "Aides 2027 pour changer ses fenetres en Haute-Garonne : ce a quoi vous avez droit",
+      "title": "Aides 2027 pour changer ses fenêtres en Haute-Garonne : ce à quoi vous avez droit",
       "slug": "aides-changer-fenetres-haute-garonne",
       "keyword": "aide changement fenetre 2027",
-      "angle": "MaPrimeRenov, CEE, TVA 5,5%, eco-PTZ : conditions reelles et montants"
+      "angle": "MaPrimeRénov', CEE, TVA 5,5 %, éco-PTZ : conditions réelles et montants"
     },
     {
       "week": 2,
       "target": "B2C",
-      "category": "Fenetres",
+      "category": "Fenêtres",
       "intent": "comparatif",
-      "title": "Fenetre alu, PVC ou bois : le comparatif honnete pour une maison toulousaine",
+      "title": "Fenêtre alu, PVC ou bois : le comparatif honnête pour une maison toulousaine",
       "slug": "fenetre-alu-pvc-bois-comparatif",
       "keyword": "fenetre alu ou pvc",
-      "angle": "Performance, esthetique, duree de vie, prix - sans caricaturer le PVC"
+      "angle": "Performance, esthétique, durée de vie, prix — sans caricaturer le PVC"
     },
     {
       "week": 3,
       "target": "B2C",
       "category": "Prix",
       "intent": "transactionnel",
-      "title": "Prix d une fenetre aluminium pose comprise en Haute-Garonne",
+      "title": "Prix d'une fenêtre aluminium pose comprise en Haute-Garonne",
       "slug": "prix-fenetre-aluminium-haute-garonne",
       "keyword": "prix fenetre aluminium pose comprise",
-      "angle": "Fourchettes par dimension et par type d ouverture, ce qui fait varier le devis"
+      "angle": "Fourchettes par dimension et par type d'ouverture, ce qui fait varier le devis"
     },
     {
       "week": 4,
       "target": "B2B",
-      "category": "Reglementation",
+      "category": "Réglementation",
       "intent": "informationnel",
-      "title": "RE2020 et menuiseries aluminium : ce que le maitre d oeuvre doit verifier",
+      "title": "RE2020 et menuiseries aluminium : ce que le maître d'œuvre doit vérifier",
       "slug": "re2020-menuiseries-aluminium",
       "keyword": "re2020 menuiserie aluminium",
-      "angle": "Uw, Sw, Bbio, ponts thermiques : les points de controle en phase PRO"
+      "angle": "Uw, Sw, Bbio, ponts thermiques : les points de contrôle en phase PRO"
     },
     {
       "week": 5,
       "target": "B2C",
       "category": "Isolation",
       "intent": "informationnel",
-      "title": "Comprendre le coefficient Uw : comment lire une etiquette de fenetre",
+      "title": "Comprendre le coefficient Uw : comment lire une étiquette de fenêtre",
       "slug": "coefficient-uw-fenetre",
       "keyword": "coefficient uw fenetre",
-      "angle": "Uw, Ug, Sw, TLw expliques simplement, avec les seuils a viser"
+      "angle": "Uw, Ug, Sw, TLw expliqués simplement, avec les seuils à viser"
     },
     {
       "week": 6,
       "target": "B2C",
-      "category": "Portes d entree",
+      "category": "Portes d'entrée",
       "intent": "transactionnel",
-      "title": "Porte d entree aluminium : securite, isolation et design",
+      "title": "Porte d'entrée aluminium : sécurité, isolation et design",
       "slug": "porte-entree-aluminium",
       "keyword": "porte entree aluminium",
       "angle": "Serrures multipoints, A2P, rupture de pont thermique, personnalisation"
@@ -70,29 +70,29 @@
     {
       "week": 7,
       "target": "B2C",
-      "category": "Fenetres",
+      "category": "Fenêtres",
       "intent": "informationnel",
-      "title": "Double ou triple vitrage : lequel a vraiment du sens a Toulouse ?",
+      "title": "Double ou triple vitrage : lequel a vraiment du sens à Toulouse ?",
       "slug": "double-ou-triple-vitrage-toulouse",
       "keyword": "double ou triple vitrage",
-      "angle": "Climat du Sud-Ouest, surchauffe estivale, retour sur investissement reel"
+      "angle": "Climat du Sud-Ouest, surchauffe estivale, retour sur investissement réel"
     },
     {
       "week": 8,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "DTU 36.5 : les regles de pose des menuiseries que tout chantier doit respecter",
+      "title": "DTU 36.5 : les règles de pose des menuiseries que tout chantier doit respecter",
       "slug": "dtu-36-5-pose-menuiseries",
       "keyword": "dtu 36.5 menuiserie",
-      "angle": "Calfeutrement, tolerances, reception de support, points de litige frequents"
+      "angle": "Calfeutrement, tolérances, réception de support, points de litige fréquents"
     },
     {
       "week": 9,
       "target": "B2C",
-      "category": "Baies vitrees",
+      "category": "Baies vitrées",
       "intent": "transactionnel",
-      "title": "Baie vitree coulissante ou a galandage : bien choisir pour son sejour",
+      "title": "Baie vitrée coulissante ou à galandage : bien choisir pour son séjour",
       "slug": "baie-vitree-coulissante-galandage",
       "keyword": "baie vitree galandage",
       "angle": "Contraintes de mur, largeur de passage, budget, entretien"
@@ -105,37 +105,37 @@
       "title": "Pergola bioclimatique : comment bien la dimensionner avant le printemps",
       "slug": "pergola-bioclimatique-dimensionnement",
       "keyword": "pergola bioclimatique prix",
-      "angle": "Orientation, portee, lames orientables, motorisation, budget"
+      "angle": "Orientation, portée, lames orientables, motorisation, budget"
     },
     {
       "week": 11,
       "target": "B2C",
       "category": "Urbanisme",
       "intent": "informationnel",
-      "title": "Pergola, veranda, carport : quelles autorisations d urbanisme en Haute-Garonne ?",
+      "title": "Pergola, véranda, carport : quelles autorisations d'urbanisme en Haute-Garonne ?",
       "slug": "autorisation-urbanisme-pergola-veranda",
       "keyword": "declaration prealable pergola",
-      "angle": "Seuils de surface, declaration prealable, permis, cas des zones ABF"
+      "angle": "Seuils de surface, déclaration préalable, permis, cas des zones ABF"
     },
     {
       "week": 12,
       "target": "B2C",
-      "category": "Verandas",
+      "category": "Vérandas",
       "intent": "transactionnel",
-      "title": "Veranda aluminium : les 6 erreurs qui rendent la piece inutilisable l ete",
+      "title": "Véranda aluminium : les 6 erreurs qui rendent la pièce inutilisable l'été",
       "slug": "veranda-aluminium-erreurs",
       "keyword": "veranda aluminium",
-      "angle": "Orientation, vitrage a controle solaire, ventilation, toiture, isolation"
+      "angle": "Orientation, vitrage à contrôle solaire, ventilation, toiture, isolation"
     },
     {
       "week": 13,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Grandes dimensions en aluminium : jusqu ou peut-on aller sans renfort ?",
+      "title": "Grandes dimensions en aluminium : jusqu'où peut-on aller sans renfort ?",
       "slug": "menuiserie-aluminium-grandes-dimensions",
       "keyword": "menuiserie aluminium grande dimension",
-      "angle": "Limites dimensionnelles, inertie des profiles, charges de vent, calculs"
+      "angle": "Limites dimensionnelles, inertie des profilés, charges de vent, calculs"
     },
     {
       "week": 14,
@@ -145,14 +145,14 @@
       "title": "Portail aluminium coulissant ou battant : le bon choix selon votre terrain",
       "slug": "portail-aluminium-coulissant-battant",
       "keyword": "portail aluminium coulissant",
-      "angle": "Pente, place disponible, motorisation, securite, entretien"
+      "angle": "Pente, place disponible, motorisation, sécurité, entretien"
     },
     {
       "week": 15,
       "target": "B2C",
       "category": "Prix",
       "intent": "transactionnel",
-      "title": "Combien coute une pergola bioclimatique posee en Haute-Garonne ?",
+      "title": "Combien coûte une pergola bioclimatique posée en Haute-Garonne ?",
       "slug": "prix-pergola-bioclimatique-haute-garonne",
       "keyword": "prix pergola bioclimatique",
       "angle": "Fourchettes par surface, options qui font grimper la facture"
@@ -160,22 +160,22 @@
     {
       "week": 16,
       "target": "B2C",
-      "category": "Cloture",
+      "category": "Clôture",
       "intent": "transactionnel",
-      "title": "Cloture et portillon aluminium : allier intimite et esthetique",
+      "title": "Clôture et portillon aluminium : allier intimité et esthétique",
       "slug": "cloture-portillon-aluminium",
       "keyword": "cloture aluminium",
-      "angle": "Lames orientables, occultation, hauteur reglementaire, coordination portail"
+      "angle": "Lames orientables, occultation, hauteur réglementaire, coordination portail"
     },
     {
       "week": 17,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Garde-corps aluminium : la norme NF P01-012 expliquee aux prescripteurs",
+      "title": "Garde-corps aluminium : la norme NF P01-012 expliquée aux prescripteurs",
       "slug": "garde-corps-aluminium-norme",
       "keyword": "norme garde corps nf p01-012",
-      "angle": "Hauteurs, remplissage, resistance, cas des ERP et du collectif"
+      "angle": "Hauteurs, remplissage, résistance, cas des ERP et du collectif"
     },
     {
       "week": 18,
@@ -185,14 +185,14 @@
       "title": "Brise-soleil orientable : la solution contre la surchauffe des baies plein sud",
       "slug": "brise-soleil-orientable",
       "keyword": "brise soleil orientable",
-      "angle": "BSO vs store vs film : efficacite reelle et cout"
+      "angle": "BSO, store ou film : efficacité réelle et coût"
     },
     {
       "week": 19,
       "target": "B2C",
       "category": "Volets",
       "intent": "transactionnel",
-      "title": "Volet roulant aluminium : renovation ou monobloc, que choisir ?",
+      "title": "Volet roulant aluminium : rénovation ou monobloc, que choisir ?",
       "slug": "volet-roulant-aluminium-renovation",
       "keyword": "volet roulant aluminium",
       "angle": "Coffre tunnel, bloc-baie, motorisation solaire, pont thermique"
@@ -202,27 +202,27 @@
       "target": "B2C",
       "category": "Terrasse",
       "intent": "transactionnel",
-      "title": "Fermer sa terrasse en aluminium : rideaux de verre, veranda ou pergola ?",
+      "title": "Fermer sa terrasse en aluminium : rideaux de verre, véranda ou pergola ?",
       "slug": "fermer-terrasse-aluminium",
       "keyword": "fermeture terrasse aluminium",
-      "angle": "Trois solutions comparees sur usage, prix, urbanisme et thermique"
+      "angle": "Trois solutions comparées sur l'usage, le prix, l'urbanisme et la thermique"
     },
     {
       "week": 21,
       "target": "B2B",
       "category": "Chantier",
       "intent": "informationnel",
-      "title": "Menuiserie sur mesure : comment securiser les delais d un chantier neuf",
+      "title": "Menuiserie sur mesure : comment sécuriser les délais d'un chantier neuf",
       "slug": "delais-menuiserie-chantier-neuf",
       "keyword": "delai fabrication menuiserie aluminium",
-      "angle": "Metre definitif, approvisionnement, phasage, penalites de retard"
+      "angle": "Métré définitif, approvisionnement, phasage, pénalités de retard"
     },
     {
       "week": 22,
       "target": "B2C",
-      "category": "Confort ete",
+      "category": "Confort d'été",
       "intent": "informationnel",
-      "title": "Confort d ete : les vitrages a controle solaire valent-ils leur surcout ?",
+      "title": "Confort d'été : les vitrages à contrôle solaire valent-ils leur surcoût ?",
       "slug": "vitrage-controle-solaire",
       "keyword": "vitrage controle solaire",
       "angle": "Facteur solaire, transmission lumineuse, cas concrets en Occitanie"
@@ -232,27 +232,27 @@
       "target": "B2C",
       "category": "Carport",
       "intent": "transactionnel",
-      "title": "Carport aluminium : proteger sa voiture sans defigurer sa facade",
+      "title": "Carport aluminium : protéger sa voiture sans défigurer sa façade",
       "slug": "carport-aluminium",
       "keyword": "carport aluminium",
-      "angle": "Dimensions, ancrage, integration architecturale, urbanisme"
+      "angle": "Dimensions, ancrage, intégration architecturale, urbanisme"
     },
     {
       "week": 24,
       "target": "B2C",
-      "category": "Securite",
+      "category": "Sécurité",
       "intent": "informationnel",
-      "title": "Menuiseries et securite : ce qui dissuade reellement un cambrioleur",
+      "title": "Menuiseries et sécurité : ce qui dissuade réellement un cambrioleur",
       "slug": "menuiserie-securite-cambriolage",
       "keyword": "fenetre anti effraction",
-      "angle": "Vitrage feuillete, quincaillerie renforcee, classes de resistance"
+      "angle": "Vitrage feuilleté, quincaillerie renforcée, classes de résistance"
     },
     {
       "week": 25,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Rupture de pont thermique : comment lire une fiche technique de profile alu",
+      "title": "Rupture de pont thermique : comment lire une fiche technique de profilé alu",
       "slug": "rupture-pont-thermique-aluminium",
       "keyword": "rupture pont thermique aluminium",
       "angle": "Barrettes polyamide, Uf, calculs psi, ce que vaut vraiment une fiche"
@@ -270,72 +270,72 @@
     {
       "week": 27,
       "target": "B2C",
-      "category": "Renovation",
+      "category": "Rénovation",
       "intent": "informationnel",
-      "title": "Renovation ou depose totale : faut-il garder son ancien dormant ?",
+      "title": "Rénovation ou dépose totale : faut-il garder son ancien dormant ?",
       "slug": "renovation-ou-depose-totale-fenetre",
       "keyword": "depose totale fenetre",
-      "angle": "Perte de clair de jour, etancheite, cout, cas ou la depose s impose"
+      "angle": "Perte de clair de jour, étanchéité, coût, cas où la dépose s'impose"
     },
     {
       "week": 28,
       "target": "B2C",
       "category": "Couleurs",
       "intent": "informationnel",
-      "title": "Choisir la couleur de ses menuiseries alu : le guide RAL sans faute de gout",
+      "title": "Choisir la couleur de ses menuiseries alu : le guide RAL sans faute de goût",
       "slug": "couleur-menuiserie-aluminium-ral",
       "keyword": "couleur menuiserie aluminium",
-      "angle": "RAL les plus poses, bicoloration, contraintes de PLU et d ABF"
+      "angle": "RAL les plus posés, bicoloration, contraintes de PLU et d'ABF"
     },
     {
       "week": 29,
       "target": "B2B",
       "category": "Tertiaire",
       "intent": "informationnel",
-      "title": "Menuiseries aluminium en ERP : accessibilite, desenfumage et securite incendie",
+      "title": "Menuiseries aluminium en ERP : accessibilité, désenfumage et sécurité incendie",
       "slug": "menuiserie-aluminium-erp",
       "keyword": "menuiserie aluminium erp",
-      "angle": "Effort d ouverture, largeur de passage, exutoires, classement au feu"
+      "angle": "Effort d'ouverture, largeur de passage, exutoires, classement au feu"
     },
     {
       "week": 30,
       "target": "B2C",
       "category": "Acoustique",
       "intent": "informationnel",
-      "title": "Isolation phonique des fenetres : que faire quand on habite pres du periph",
+      "title": "Isolation phonique des fenêtres : que faire quand on habite près du périph",
       "slug": "isolation-phonique-fenetre",
       "keyword": "fenetre isolation phonique",
-      "angle": "Rw+Ctr, vitrage asymetrique, etancheite, resultats attendus en dB"
+      "angle": "Rw+Ctr, vitrage asymétrique, étanchéité, résultats attendus en dB"
     },
     {
       "week": 31,
       "target": "B2C",
-      "category": "Verriere",
+      "category": "Verrière",
       "intent": "transactionnel",
-      "title": "Verriere aluminium interieure : ouvrir sans casser l isolation",
+      "title": "Verrière aluminium intérieure : ouvrir sans casser l'isolation",
       "slug": "verriere-aluminium-interieure",
       "keyword": "verriere aluminium",
-      "angle": "Atelier, cloisonnement, vitrage feuillete, pose sur muret"
+      "angle": "Atelier, cloisonnement, vitrage feuilleté, pose sur muret"
     },
     {
       "week": 32,
       "target": "B2C",
       "category": "Retour chantier",
       "intent": "local",
-      "title": "Chantier en Haute-Garonne : d une facade fermee a une baie de 4 metres",
+      "title": "Chantier en Haute-Garonne : d'une façade fermée à une baie de 4 mètres",
       "slug": "chantier-baie-vitree-haute-garonne",
       "keyword": "menuiserie aluminium haute-garonne",
-      "angle": "Recit de chantier : contraintes, solution retenue, resultat, delais"
+      "angle": "Récit de chantier : contraintes, solution retenue, résultat, délais"
     },
     {
       "week": 33,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Choisir entre mur-rideau et menuiserie rapportee sur un projet tertiaire",
+      "title": "Choisir entre mur-rideau et menuiserie rapportée sur un projet tertiaire",
       "slug": "mur-rideau-ou-menuiserie-rapportee",
       "keyword": "mur rideau aluminium",
-      "angle": "Trame, poids, etancheite, cout au m2, maintenance"
+      "angle": "Trame, poids, étanchéité, coût au m², maintenance"
     },
     {
       "week": 34,
@@ -345,67 +345,67 @@
       "title": "Thermolaquage QUALICOAT et QUALIMARINE : garantir la tenue des laquages dans le temps",
       "slug": "thermolaquage-qualicoat-qualimarine",
       "keyword": "thermolaquage qualicoat",
-      "angle": "Labels, epaisseurs de couche, garanties constructeur, cas des ambiances agressives"
+      "angle": "Labels, épaisseurs de couche, garanties constructeur, cas des ambiances agressives"
     },
     {
       "week": 35,
       "target": "B2C",
       "category": "Prix",
       "intent": "transactionnel",
-      "title": "Prix d un portail aluminium motorise pose en Haute-Garonne",
+      "title": "Prix d'un portail aluminium motorisé posé en Haute-Garonne",
       "slug": "prix-portail-aluminium-motorise",
       "keyword": "prix portail aluminium motorise",
-      "angle": "Battant vs coulissant, motorisation, alimentation, genie civil"
+      "angle": "Battant ou coulissant, motorisation, alimentation, génie civil"
     },
     {
       "week": 36,
       "target": "B2C",
       "category": "Isolation",
       "intent": "informationnel",
-      "title": "Preparer l hiver : les 5 points a verifier sur ses menuiseries en septembre",
+      "title": "Préparer l'hiver : les 5 points à vérifier sur ses menuiseries en septembre",
       "slug": "verifier-menuiseries-avant-hiver",
       "keyword": "entretien fenetre avant hiver",
-      "angle": "Joints, drainage, reglage, calfeutrement, detection de courants d air"
+      "angle": "Joints, drainage, réglage, calfeutrement, détection de courants d'air"
     },
     {
       "week": 37,
       "target": "B2B",
-      "category": "Renovation",
+      "category": "Rénovation",
       "intent": "informationnel",
-      "title": "Renovation energetique en copropriete : reussir un remplacement de menuiseries",
+      "title": "Rénovation énergétique en copropriété : réussir un remplacement de menuiseries",
       "slug": "remplacement-menuiseries-copropriete",
       "keyword": "changement fenetre copropriete",
-      "angle": "Vote en AG, harmonisation des facades, phasage, financement collectif"
+      "angle": "Vote en AG, harmonisation des façades, phasage, financement collectif"
     },
     {
       "week": 38,
       "target": "B2C",
       "category": "Aides & budget",
       "intent": "informationnel",
-      "title": "Devis menuiserie : les 8 lignes a verifier avant de signer",
+      "title": "Devis menuiserie : les 8 lignes à vérifier avant de signer",
       "slug": "verifier-devis-menuiserie",
       "keyword": "devis fenetre que verifier",
-      "angle": "Mentions obligatoires, Uw annonce, depose, finitions, garanties"
+      "angle": "Mentions obligatoires, Uw annoncé, dépose, finitions, garanties"
     },
     {
       "week": 39,
       "target": "B2C",
-      "category": "Fenetres",
+      "category": "Fenêtres",
       "intent": "comparatif",
-      "title": "Fenetre oscillo-battante, coulissante ou a soufflet : quel ouvrant ou ?",
+      "title": "Fenêtre oscillo-battante, coulissante ou à soufflet : quel ouvrant où ?",
       "slug": "types-ouverture-fenetre",
       "keyword": "oscillo battant ou coulissant",
-      "angle": "Piece par piece : cuisine, chambre, salle de bain, sejour"
+      "angle": "Pièce par pièce : cuisine, chambre, salle de bain, séjour"
     },
     {
       "week": 40,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Etancheite AEV : lire un classement A*E*V* et eviter les mauvaises surprises",
+      "title": "Étanchéité AEV : lire un classement A*E*V* et éviter les mauvaises surprises",
       "slug": "classement-aev-menuiserie",
       "keyword": "classement aev menuiserie",
-      "angle": "Air, eau, vent : quels niveaux exiger selon l exposition du site"
+      "angle": "Air, eau, vent : quels niveaux exiger selon l'exposition du site"
     },
     {
       "week": 41,
@@ -415,57 +415,57 @@
       "title": "Motoriser ses volets : filaire, radio ou solaire, le comparatif",
       "slug": "motorisation-volet-roulant",
       "keyword": "motorisation volet roulant solaire",
-      "angle": "Cout d installation, fiabilite, domotique, cas de la renovation"
+      "angle": "Coût d'installation, fiabilité, domotique, cas de la rénovation"
     },
     {
       "week": 42,
       "target": "B2C",
-      "category": "Renovation",
+      "category": "Rénovation",
       "intent": "informationnel",
-      "title": "Maison des annees 70 a Toulouse : par quelles menuiseries commencer ?",
+      "title": "Maison des années 70 à Toulouse : par quelles menuiseries commencer ?",
       "slug": "renovation-menuiseries-maison-annees-70",
       "keyword": "renovation fenetre maison ancienne",
-      "angle": "Priorisation par deperdition, budget par etape, gains attendus"
+      "angle": "Priorisation par déperdition, budget par étape, gains attendus"
     },
     {
       "week": 43,
       "target": "B2B",
       "category": "Chantier",
       "intent": "informationnel",
-      "title": "Reception de menuiseries : la checklist de controle avant signature du PV",
+      "title": "Réception de menuiseries : la checklist de contrôle avant signature du PV",
       "slug": "reception-chantier-menuiseries",
       "keyword": "reception chantier menuiserie",
-      "angle": "Aplombs, jeux, manoeuvres, etancheite, reserves a formuler"
+      "angle": "Aplombs, jeux, manœuvres, étanchéité, réserves à formuler"
     },
     {
       "week": 44,
       "target": "B2C",
-      "category": "Securite",
+      "category": "Sécurité",
       "intent": "transactionnel",
-      "title": "Porte de garage et portail : securiser les acces avant l hiver",
+      "title": "Porte de garage et portail : sécuriser les accès avant l'hiver",
       "slug": "securiser-acces-portail-garage",
       "keyword": "porte garage aluminium",
-      "angle": "Motorisation, detection d obstacle, controle d acces, eclairage"
+      "angle": "Motorisation, détection d'obstacle, contrôle d'accès, éclairage"
     },
     {
       "week": 45,
       "target": "B2C",
       "category": "Aides & budget",
       "intent": "informationnel",
-      "title": "Financer ses menuiseries : eco-PTZ, CEE et paiement echelonne",
+      "title": "Financer ses menuiseries : éco-PTZ, CEE et paiement échelonné",
       "slug": "financer-ses-menuiseries",
       "keyword": "eco ptz fenetre",
-      "angle": "Cumuls possibles, pieces a fournir, calendrier de versement"
+      "angle": "Cumuls possibles, pièces à fournir, calendrier de versement"
     },
     {
       "week": 46,
       "target": "B2B",
       "category": "Prescription",
       "intent": "informationnel",
-      "title": "Aluminium et bilan carbone : ce que vaut vraiment l alu recycle en RE2020",
+      "title": "Aluminium et bilan carbone : ce que vaut vraiment l'alu recyclé en RE2020",
       "slug": "aluminium-recycle-bilan-carbone",
       "keyword": "aluminium recycle construction",
-      "angle": "FDES, taux de recyclage, impact sur l indicateur carbone du projet"
+      "angle": "FDES, taux de recyclage, impact sur l'indicateur carbone du projet"
     },
     {
       "week": 47,
@@ -475,27 +475,27 @@
       "title": "Menuiseries et pression de vent : dimensionner selon les Eurocodes en Haute-Garonne",
       "slug": "pression-vent-menuiserie-eurocode",
       "keyword": "pression vent menuiserie eurocode",
-      "angle": "Zone de vent du 31, hauteur du batiment, effet de site, choix des renforts"
+      "angle": "Zone de vent du 31, hauteur du bâtiment, effet de site, choix des renforts"
     },
     {
       "week": 48,
       "target": "B2C",
-      "category": "Portes d entree",
+      "category": "Portes d'entrée",
       "intent": "transactionnel",
-      "title": "Porte d entree : les tendances qui vieillissent bien (et celles a eviter)",
+      "title": "Porte d'entrée : les tendances qui vieillissent bien (et celles à éviter)",
       "slug": "tendances-porte-entree-aluminium",
       "keyword": "porte entree design",
-      "angle": "Formats, poignees, vitrages, couleurs : ce qui tient 15 ans"
+      "angle": "Formats, poignées, vitrages, couleurs : ce qui tient 15 ans"
     },
     {
       "week": 49,
       "target": "B2B",
       "category": "Tertiaire",
       "intent": "informationnel",
-      "title": "Marches publics et menuiseries alu : constituer un memoire technique solide",
+      "title": "Marchés publics et menuiseries alu : constituer un mémoire technique solide",
       "slug": "memoire-technique-menuiserie-marche-public",
       "keyword": "memoire technique menuiserie",
-      "angle": "Criteres de notation, references, fiches produits, planning"
+      "angle": "Critères de notation, références, fiches produits, planning"
     },
     {
       "week": 50,
@@ -505,27 +505,27 @@
       "title": "Maintenance des menuiseries aluminium en tertiaire : anticiper le cycle de vie",
       "slug": "maintenance-menuiserie-tertiaire",
       "keyword": "maintenance menuiserie aluminium",
-      "angle": "Plan de maintenance, pieces d usure, contrats, cout global sur 20 ans"
+      "angle": "Plan de maintenance, pièces d'usure, contrats, coût global sur 20 ans"
     },
     {
       "week": 51,
       "target": "B2C",
       "category": "Projet",
       "intent": "informationnel",
-      "title": "Projet menuiseries en 2028 : le retroplanning pour etre pose au printemps",
+      "title": "Projet menuiseries en 2028 : le rétroplanning pour être posé au printemps",
       "slug": "retroplanning-projet-menuiseries",
       "keyword": "delai changement fenetre",
-      "angle": "Devis, urbanisme, metre, fabrication, pose : combien de temps prevoir"
+      "angle": "Devis, urbanisme, métré, fabrication, pose : combien de temps prévoir"
     },
     {
       "week": 52,
       "target": "B2C",
       "category": "Bilan",
       "intent": "local",
-      "title": "Menuiserie aluminium en Haute-Garonne : ce qui a change cette annee",
+      "title": "Menuiserie aluminium en Haute-Garonne : ce qui a changé cette année",
       "slug": "menuiserie-aluminium-haute-garonne-bilan",
       "keyword": "menuiserie aluminium toulouse",
-      "angle": "Evolution des aides, des normes et des attentes clients sur le 31"
+      "angle": "Évolution des aides, des normes et des attentes clients sur le 31"
     }
   ]
 }
