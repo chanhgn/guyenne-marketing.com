@@ -39,3 +39,45 @@ Pour désactiver le module : même route avec `"state":"off"`.
 - Supprimer le brouillon vide `#3533`.
 - Finaliser et publier le brouillon `#3535` (pergola bioclimatique à Toulouse).
 - Créer la taxonomie par famille de produit.
+
+---
+
+## 2026-09-02 · exécutions 69872 et 69874 — nettoyage terminé
+
+**Exécution 69872**
+
+| Action | Résultat |
+|---|---|
+| Activation du module Redirections | ✅ HTTP 200, réponse `true` |
+| 10 redirections 301 | ✅ **appliquées** |
+| 20 noindex | 17 ✅ / 3 ❌ HTTP 500 |
+
+Les 3 échecs — articles `3546`, `3548`, `3573` — renvoyaient
+`Error establishing a database connection`. Défaillance MySQL passagère chez Hostinger
+sous la charge de 30 requêtes rapprochées, sans rapport avec la logique du workflow.
+
+**Exécution 69874 — reprise ciblée**
+
+Plan réduit aux 3 articles concernés, pour ne pas réécrire les redirections déjà posées.
+Résultat : 3/3 en HTTP 200.
+
+### État final
+
+- 10 redirections 301 en place
+- 21 articles en noindex (20 du plan + le brouillon `3533` via la sonde)
+- Module Redirections de Rank Math activé
+- Workflow remis en `DRY_RUN = true`
+
+### Leçon retenue pour le workflow de publication hebdomadaire
+
+L'hébergement mutualisé Hostinger lâche la connexion MySQL sur des rafales de requêtes.
+Le workflow hebdomadaire écrira beaucoup moins (1 article + 2 médias + 4 posts), mais il
+faut prévoir `retryOnFail` avec un intervalle sur les nœuds d'écriture WordPress plutôt
+que de supposer que chaque appel passera du premier coup.
+
+### Reste à faire
+
+- Supprimer le brouillon vide `#3533`
+- Finaliser et publier le brouillon `#3535` (pergola bioclimatique à Toulouse)
+- Créer la taxonomie par famille de produit
+- Construire le workflow de publication hebdomadaire
