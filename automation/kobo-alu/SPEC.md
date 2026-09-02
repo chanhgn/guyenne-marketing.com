@@ -197,11 +197,30 @@ Le workflow Kobo-Alu n'utilisera **que** des credentials.
 
 ---
 
-## 8. Points bloquants à lever
+## 8. Ligne éditoriale validée
 
-1. **Credential WordPress kobo-alu.fr dans n8n** — application password à créer, puis
-   credential `httpBasicAuth` associée.
+| Paramètre | Valeur |
+|---|---|
+| Cible | 70 % B2C (particuliers) / 30 % B2B (architectes, MOE, promoteurs, bureaux d'études) |
+| Zone SEO | Haute-Garonne (31) — Toulouse et agglomération en priorité de citation |
+| CTA | Devis gratuit via le formulaire du site, sur les 4 réseaux et en fin d'article |
+
+Le plan éditorial 52 semaines est dans `plan-editorial.json`, consommé tel quel par le nœud
+Code « Sujet de la semaine ». Chaque entrée porte : `week`, `target`, `category`, `intent`,
+`title`, `slug`, `keyword`, `angle`.
+
+Saisonnalité intégrée : aides et budget en janvier, pergolas/vérandas/portails au printemps,
+protection solaire et confort d'été en mai-juin, entretien et retours de chantier l'été,
+isolation et préparation de l'hiver à la rentrée, sécurité et financement en fin d'année.
+Les sujets B2B, sans saisonnalité forte, sont répartis régulièrement sur l'année.
+
+## 9. Points bloquants à lever
+
+1. **Credential WordPress kobo-alu.fr dans n8n** — l'application password a été généré côté
+   client. Reste à créer la credential `httpBasicAuth` dans n8n (nom attendu :
+   `WordPress kobo-alu.fr (Basic Auth)`) et à confirmer l'identifiant WordPress associé.
+   Le secret n'est stocké ni dans ce dépôt ni dans un nœud du workflow.
 2. **Plugin WPVibe désactivé sur kobo-alu.fr** (`rest_no_route`) — à réactiver pour permettre
-   l'audit du contenu existant et la construction du plan éditorial sans doublon.
-3. **Contexte commercial Kobo** — cible prioritaire, zone d'intervention, gamme de produits,
-   appel à l'action à utiliser dans les posts.
+   l'audit du contenu existant et la déduplication du plan éditorial.
+3. **Catégorie WordPress cible et plugin SEO** — à relever une fois l'accès rétabli
+   (Rank Math attendu, à confirmer).
