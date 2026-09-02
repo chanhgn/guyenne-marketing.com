@@ -1,0 +1,159 @@
+{
+  "_statut": "PLAN VALIDE - NON EXECUTE",
+  "_corrections": "groupe 4 -> conserver 1622 ; groupe 9 -> conserver 3319 ; groupes 3 et 11 reclasses hors perimetre",
+  "fusions": [
+    {
+      "groupe": 1,
+      "garder": 1587,
+      "garderSlug": "installation-fenetres-imposte-ventilation-cuisine",
+      "rediriger": [
+        {
+          "id": 3550,
+          "slug": "installation-fenetres-imposte-ventilation-cuisine-ensoleillee"
+        }
+      ]
+    },
+    {
+      "groupe": 2,
+      "garder": 1590,
+      "garderSlug": "choisir-vitrage-reduction-uv-chaleur-ete",
+      "rediriger": [
+        {
+          "id": 3552,
+          "slug": "choisir-vitrage-reduire-rayons-uv-chaleur-ete"
+        }
+      ]
+    },
+    {
+      "groupe": 4,
+      "garder": 1622,
+      "garderSlug": "normes-durabilite-revetements-menuiseries-exterieures",
+      "rediriger": [
+        {
+          "id": 3558,
+          "slug": "normes-durabilite-revetements-menuiseries-exterieur"
+        }
+      ]
+    },
+    {
+      "groupe": 5,
+      "garder": 1624,
+      "garderSlug": "comment-nettoyer-efficacement-stores-venitiens-ete",
+      "rediriger": [
+        {
+          "id": 3560,
+          "slug": "comment-nettoyer-stores-venitiens-efficacement-ete"
+        }
+      ]
+    },
+    {
+      "groupe": 6,
+      "garder": 3313,
+      "garderSlug": "innovations-brise-soleil-orientables-terrasses-ensoleillees",
+      "rediriger": [
+        {
+          "id": 3562,
+          "slug": "innovations-brise-soleil-orientables-terrasses"
+        }
+      ]
+    },
+    {
+      "groupe": 7,
+      "garder": 3315,
+      "garderSlug": "installation-fenetre-double-battant-ventilation-salle-de-bain-ensoleillee",
+      "rediriger": [
+        {
+          "id": 3564,
+          "slug": "installation-fenetres-double-battant-ventilation-salle-bain-ensoleillee"
+        }
+      ]
+    },
+    {
+      "groupe": 8,
+      "garder": 3317,
+      "garderSlug": "porte-coulissante-optimiser-espace-petite-piece-ensoleillee",
+      "rediriger": [
+        {
+          "id": 3566,
+          "slug": "choisir-porte-coulissante-optimiser-espace"
+        }
+      ]
+    },
+    {
+      "groupe": 9,
+      "garder": 3319,
+      "garderSlug": "normes-performance-acoustique-fenetres-zones-urbaines-ete",
+      "rediriger": [
+        {
+          "id": 3569,
+          "slug": "normes-performance-acoustique-fenetres-zones-urbaines-ete-2"
+        }
+      ]
+    },
+    {
+      "groupe": 10,
+      "garder": 3321,
+      "garderSlug": "entretenir-joints-etancheite-portes-exterieures-fuites-air-ete",
+      "rediriger": [
+        {
+          "id": 3571,
+          "slug": "entretien-joints-etancheite-portes-exterieures-eviter-fuites-air-ete"
+        }
+      ]
+    },
+    {
+      "groupe": 12,
+      "garder": 3575,
+      "garderSlug": "installation-fenetres-en-arc-facade-ensoleillee",
+      "rediriger": [
+        {
+          "id": 3325,
+          "slug": "installation-fenetres-arc-transformer-facade-ensoleillee"
+        }
+      ]
+    }
+  ],
+  "noindex": [
+    1587,
+    1590,
+    1605,
+    1610,
+    1615,
+    1618,
+    1620,
+    1622,
+    1624,
+    3313,
+    3319,
+    3323,
+    3329,
+    3331,
+    3333,
+    3359,
+    3361,
+    3511,
+    3513,
+    3515,
+    3517,
+    3519,
+    3521,
+    3542,
+    3544,
+    3546,
+    3548,
+    3573
+  ],
+  "horsPerimetre": [
+    1605,
+    1615,
+    3323,
+    3331,
+    3361,
+    3519,
+    3544,
+    3546,
+    3573
+  ],
+  "brouillonASupprimer": 3533,
+  "brouillonAFinir": 3535
+}
