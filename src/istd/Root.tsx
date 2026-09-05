@@ -1,6 +1,7 @@
 import React from 'react';
 import { Composition } from 'remotion';
 import { LogoPreview } from './LogoPreview';
+import { POST, POSTS } from './Posts';
 import { framesFor, plansFor, Reel } from './Reel';
 import { Lang } from './copy';
 import { REEL as F } from './theme';
@@ -38,6 +39,19 @@ export const IstdRoot: React.FC = () => (
           />
         ))}
       </React.Fragment>
+    ))}
+
+    {/* Posts Instagram 4:5, images fixes. */}
+    {POSTS.map(({ id, component }) => (
+      <Composition
+        key={id}
+        id={id}
+        component={component}
+        durationInFrames={1}
+        fps={30}
+        width={POST.WIDTH}
+        height={POST.HEIGHT}
+      />
     ))}
 
     <Composition id="IstdLogoPreview" component={LogoPreview} durationInFrames={1} fps={30} width={2400} height={1000} />
